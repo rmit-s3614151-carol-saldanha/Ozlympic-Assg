@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OzlympicController">
+   <children>
+      <AnchorPane layoutX="-9.0" layoutY="-6.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="button1" layoutX="41.0" layoutY="46.0" mnemonicParsing="false" onAction="#clickButton1" text="Button" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
