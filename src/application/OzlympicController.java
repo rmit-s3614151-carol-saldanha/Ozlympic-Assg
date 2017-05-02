@@ -45,9 +45,10 @@ public class OzlympicController {
     @FXML
     void clickRunning(ActionEvent event) throws Exception {
 
-    	
+//    		Stage primaryStage = new Stage();
+//    		primaryStage.hide();
     		utility.displayUX(RunningController.class, "application/Running.fxml", null);
-			Parent root = FXMLLoader.load(getClass().getResource("/application/Running.fxml"));
+			//Parent root = FXMLLoader.load(getClass().getResource("/application/Running.fxml"));
 	
 	
     }

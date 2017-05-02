@@ -15,6 +15,7 @@ public class Utility {
 		{
 			ClassLoader classLoader = classname.getClassLoader();
 			Parent root = FXMLLoader.load(classLoader.getResource(fxmlFile));
+			primaryStage.setTitle("Ozlympic");
 			Scene scene = new Scene(root);
 			if(!Utility.isNullorEmpty(cssFile))
 			{
