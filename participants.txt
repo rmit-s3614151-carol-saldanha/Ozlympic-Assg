@@ -1,4 +1,4 @@
-oz1000,swimmers,Niraj Bohra,22,VIC
+oz1000 , swimmers,Niraj Bohra,22,VIC
 oz1001,swimmers,Eashan Tilve,25,VIC
 oz1002,swimmers,Deep Sharna,26,SA
 oz1003,swimmers,Soumil Roy,29,NSW

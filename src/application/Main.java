@@ -30,22 +30,14 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 	
-<<<<<<< HEAD
+
 		FileHandler s = new FileHandler();
 		s.getParticipantList();
-		System.out.println(s.getParticipants());
-		System.out.println(s.getParticipants().size());
+		s.getParticipants();
+		s.getParticipants().size();
 
-	    
 
-	
-=======
-//		FileHandler s = new FileHandler();
-//		s.getParticipantList();
-//		System.out.println(s.getParticipants());
-//		System.out.println(s.getParticipants().size());
->>>>>>> origin/master
-		launch(args);
+		//launch(args);
 	}
 }
 
