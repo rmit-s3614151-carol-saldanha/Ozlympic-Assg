@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import rmit.java.assignment.database.FileHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
@@ -30,6 +29,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 	
+<<<<<<< HEAD
 		FileHandler s = new FileHandler();
 		s.getParticipantList();
 		System.out.println(s.getParticipants());
@@ -38,6 +38,12 @@ public class Main extends Application {
 	    
 
 	
+=======
+//		FileHandler s = new FileHandler();
+//		s.getParticipantList();
+//		System.out.println(s.getParticipants());
+//		System.out.println(s.getParticipants().size());
+>>>>>>> origin/master
 		launch(args);
 	}
 }

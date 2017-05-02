@@ -1,16 +1,69 @@
 package application;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class OzlympicController {
 
     @FXML
-    private Button button1;
+    private Button running;
 
     @FXML
-    void clickButton1(ActionEvent event) {
+    private Text displayText;
+
+    @FXML
+    private Button displayGames;
+
+    @FXML
+    private Text welcomeText;
+
+    @FXML
+    private Button cycling;
+
+    @FXML
+    private Button displayAthletePoints;
+    
+    private static boolean isDBConnect = false;		
+    Utility utility = new Utility();
+    
+    public static boolean isDBConnectSuccessful()
+	{
+		return isDBConnect;
+	}
+
+        
+
+
+    @FXML
+    void clickRunning(ActionEvent event) throws Exception {
+
+    	
+    		utility.displayUX(RunningController.class, "application/Running.fxml", null);
+			Parent root = FXMLLoader.load(getClass().getResource("/application/Running.fxml"));
+	
+	
+    }
+
+    @FXML
+    void clickCycling(ActionEvent event) {
+
+    }
+
+    @FXML
+    void clickSwimming(ActionEvent event) {
+
+    }
+
+    @FXML
+    void clickDisplay(ActionEvent event) {
 
     }
 
