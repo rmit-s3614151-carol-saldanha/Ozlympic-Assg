@@ -15,9 +15,9 @@ public class Sprinter extends Athlete {
 	public static final int MAXIMUM_SPRINT_TIME = 20;
 
 	private String name;
-	private int age;
+	private String age;
 	private String state;
-	private int uniqueID;
+	private String uniqueID;
 	private int points = 0;
 
 	/**
@@ -44,7 +44,7 @@ public class Sprinter extends Athlete {
 	 *            uniquID: id of the sprinter
 	 * 
 	 */
-	public Sprinter(String name, int age, String state, int uniqueID) {
+	public Sprinter(String name, String age, String state, String uniqueID) {
 		super();
 		this.name = name;
 		this.age = age;
@@ -82,7 +82,7 @@ public class Sprinter extends Athlete {
 	 * @return int will return the sprinter's unique ID.
 	 */
 	@Override
-	public int getUniqueID() {
+	public String getUniqueID() {
 		return uniqueID;
 	}
 

@@ -13,9 +13,9 @@ import rmit.java.assignment.controller.Driver;
 public class SuperAthlete extends Athlete {
 
 	private String name;
-	private int age;
+	private String age;
 	private String state;
-	private int uniqueID;
+	private String uniqueID;
 	private int points = 0;
 	private int currentGame = 0;
 
@@ -32,7 +32,7 @@ public class SuperAthlete extends Athlete {
 	 *            uniquID: id of the superAthlete
 	 * 
 	 */
-	public SuperAthlete(String name, int age, String state, int uniqueID) {
+	public SuperAthlete(String name, String age, String state, String uniqueID) {
 		super();
 		this.name = name;
 		this.age = age;
@@ -99,7 +99,7 @@ public class SuperAthlete extends Athlete {
 	 * @return int will return the superAthlete's unique ID.
 	 */
 	@Override
-	public int getUniqueID() {
+	public String getUniqueID() {
 		return uniqueID;
 	}
 

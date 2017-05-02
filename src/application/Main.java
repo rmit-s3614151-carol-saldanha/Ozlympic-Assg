@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import rmit.java.assignment.database.FileHandler;
+import rmit.java.assignment.database.ParticipantList;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -29,14 +30,10 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		
+		ParticipantList run = new ParticipantList();
 	
-
-		FileHandler s = new FileHandler();
-		s.getParticipantList();
-		s.getParticipants();
-		s.getParticipants().size();
-
-
+	
 		//launch(args);
 	}
 }

@@ -14,9 +14,9 @@ public class Cyclist extends Athlete {
 	public static final int MINIMUM_CYCLING_TIME = 500;
 
 	private String name;
-	private int age;
+	private String age;
 	private String state;
-	private int uniqueID;
+	private String uniqueID;
 	private int points = 0;
 
 	/**
@@ -32,7 +32,7 @@ public class Cyclist extends Athlete {
 	 *            uniquID: id of the cyclist
 	 * 
 	 */
-	public Cyclist(String name, int age, String state, int uniqueID) {
+	public Cyclist(String name, String age, String state, String uniqueID) {
 		super();
 		this.name = name;
 		this.age = age;
@@ -93,7 +93,7 @@ public class Cyclist extends Athlete {
 	 * @return int will return the cyclist's unique ID.
 	 */
 	@Override
-	public int getUniqueID() {
+	public String getUniqueID() {
 		return uniqueID;
 	}
 

@@ -30,16 +30,13 @@ public class FileHandler {
 			int count = 0;
 
 			while ((readLine = b.readLine()) != null) {
-				participants.add(readLine);
+				 if( readLine.length() > 0 )  {
+					 participants.add(readLine);
+				 }
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-
-		int correctFormat = checkFormat();
-		if (correctFormat == 4) {
-			addAthletes();
 		}
 
 	}
@@ -48,77 +45,6 @@ public class FileHandler {
 		return this.participants;
 	}
 
-	public int checkFormat() {
-		int comma = 0;
-		for (int i = 0; i < getParticipants().size(); i++) {
-
-			comma = getParticipants().get(i).length() - getParticipants().get(i).replace(",", "").length();
-			if (comma == 4) {
-				return comma;
-			}
-		}
-		return comma;
-	}
-
-	public void addAthletes() {
-		int len = 0;
-		String ID = "";
-		String type = "";
-		String name = "";
-		String age = "";
-		String state = "";
-
-		for (int i = 0; i < getParticipants().size(); i++) {
-
-			getParticipants().set(i, getParticipants().get(i).replace(" ", ""));
-			len = getParticipants().get(i).indexOf(",");
-			ID = getParticipants().get(i).substring(0, len);
-			getParticipants().set(i, getParticipants().get(i).replace(ID + ",", ""));
-
-			getParticipants().set(i, getParticipants().get(i).replace(" ", ""));
-			len = getParticipants().get(i).indexOf(",");
-			type = getParticipants().get(i).substring(0, len);
-			getParticipants().set(i, getParticipants().get(i).replace(type + ",", ""));
-
-			getParticipants().set(i, getParticipants().get(i).replace(" ", ""));
-			len = getParticipants().get(i).indexOf(",");
-			name = getParticipants().get(i).substring(0, len);
-			getParticipants().set(i, getParticipants().get(i).replace(name + ",", ""));
-
-			getParticipants().set(i, getParticipants().get(i).replace(" ", ""));
-			len = getParticipants().get(i).indexOf(",");
-			age = getParticipants().get(i).substring(0, len);
-			getParticipants().set(i, getParticipants().get(i).replace(age + ",", ""));
-
-			getParticipants().set(i, getParticipants().get(i).replace(" ", ""));
-			len = getParticipants().get(i).indexOf(",");
-			state = getParticipants().get(i);
-			getParticipants().set(i, getParticipants().get(i).replace(state + ",", ""));
-
-			if (ID.equals("") || type.equals("") || name.equals("") || age.equals("") || state.equals("")) {
-				System.out.println("Error: Incorrect Data");
-			} else {
-				switch (type) {
-				case SWIMMERS:
-						
-					break;
-				case CYCLIST:
-
-					break;
-				case SPRINTERS:
-
-					break;
-				case SUPER:
-
-					break;
-				default:
-					break;
-				}
-			}
-
-		}
-
-	}
 	
 
 }

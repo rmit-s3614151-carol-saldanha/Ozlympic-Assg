@@ -14,7 +14,7 @@ public class Official extends Participants {
 	private String name;
 	private int age;
 	private String state;
-	private int uniqueID;
+	private String uniqueID;
 	private static final int FIRST_PLACE = 5;
 	private static final int SECOND_PLACE = 2;
 	private static final int THIRD_PLACE = 1;
@@ -32,7 +32,7 @@ public class Official extends Participants {
 	 *            uniqueID: ID of the official
 	 */
 
-	public Official(String name, int age, String state, int uniqueID) {
+	public Official(String name, int age, String state, String uniqueID) {
 		this.name = name;
 		this.age = age;
 		this.state = state;
@@ -63,7 +63,7 @@ public class Official extends Participants {
 	 * @return Official official
 	 */
 	@Override
-	public int getUniqueID() {
+	public String getUniqueID() {
 		return uniqueID;
 	}
 
