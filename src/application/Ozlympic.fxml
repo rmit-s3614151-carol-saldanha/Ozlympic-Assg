@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OzlympicController">
+<AnchorPane prefHeight="585.0" prefWidth="478.0" style="-fx-background-color: #ccff99;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OzlympicController">
    <children>
-      <AnchorPane layoutX="-9.0" layoutY="-6.0" prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="button1" layoutX="41.0" layoutY="46.0" mnemonicParsing="false" onAction="#clickButton1" text="Button" />
-         </children>
-      </AnchorPane>
+      <AnchorPane layoutX="-9.0" layoutY="-6.0" prefHeight="200.0" prefWidth="200.0" />
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="149.0" layoutY="49.0">
+         <image>
+            <Image url="@images/olympics.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="running" layoutX="101.0" layoutY="351.0" mnemonicParsing="false" onAction="#clickRunning" text="Running" />
+      <Text fx:id="welcomeText" layoutX="52.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Olympics!!Select a Game " wrappingWidth="411.21875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="cycling" layoutX="217.0" layoutY="351.0" mnemonicParsing="false" onAction="#clickCycling" text="Cycling" textOverrun="LEADING_ELLIPSIS" />
+      <Button layoutX="317.0" layoutY="351.0" mnemonicParsing="false" onAction="#clickSwimming" text="Swimming" />
+      <Button fx:id="displayGames" layoutX="61.0" layoutY="479.0" mnemonicParsing="false" onAction="#clickDisplay" text="Display all finishes games" />
+      <Button fx:id="displayAthletePoints" layoutX="280.0" layoutY="479.0" mnemonicParsing="false" text="Display all athlete points" />
+      <Text fx:id="displayText" layoutX="52.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Display Results" wrappingWidth="363.21875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
