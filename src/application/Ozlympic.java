@@ -8,11 +8,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import rmit.java.assignment.database.FileHandler;
 import rmit.java.assignment.database.ParticipantList;
+import rmit.java.assignment.model.Athlete;
+import rmit.java.assignment.model.Swimming;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 
-public class Main extends Application {
+public class Ozlympic extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 //		try {
@@ -31,9 +33,8 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		
-		ParticipantList run = new ParticipantList();
-	
-	
+//		ParticipantList run = new ParticipantList();
+//		System.out.println(run.getCyclists());
 		launch(args);
 	}
 }

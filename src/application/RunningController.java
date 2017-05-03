@@ -1,9 +1,12 @@
 package application;
 
+
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.sun.glass.events.MouseEvent;
+
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -35,7 +38,7 @@ import javafx.stage.Stage;
 public class RunningController  implements Initializable{
 
     @FXML
-    private ComboBox<?> addReferee;
+    private ListView<String> addReferee;
 
     @FXML
     private Button startGame;
@@ -56,58 +59,89 @@ public class RunningController  implements Initializable{
     
 
     @FXML
-    void clickMe(ActionEvent event) {
+    void addParticipants(ActionEvent event) {
+    	
+     	addParticipants.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        addParticipants.getSelectionModel().selectedItemProperty().addListener((obs,ov,nv)->{
+            addParticipants.setItems(addParticipants.getSelectionModel().getSelectedItems());
+        });
+ 
     	
 
-    	
-    	
-   
      
 
     	
     }
 
-    
+    void addReferee(ActionEvent event) {
    
-    
+    }
     public void initialize(URL url, ResourceBundle rb) {
     	
     	ListView<String> listView = new ListView<String>();
 
-    	addParticipants.getItems().add("item 1");
-    	addParticipants.getItems().add("item 2");
+    	addParticipants.getItems().add("Carol");
+    	addParticipants.getItems().add("Eashan");
+    	addParticipants.getItems().add("Niraj");
     	
-        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    	
+    	
+    	ListView<String> listView1 = new ListView<String>();
+    	addReferee.getItems().add("Chaitrali");
+    	addReferee.getItems().add("Soumil");
+    	addReferee.getItems().add("Naruto");		
+		
+    	listView1.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    	
+    	addParticipants.setOnMousePressed(new EventHandler<Event>() {
+    	@Override
 
-    }
-    
-//    @Override
+    	public void handle(Event event) {
+    		addParticipants.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    		ObservableList<String> selectedItems = addParticipants.getSelectionModel().getSelectedItems();
+    		for (String s : selectedItems) {
+    		System.out.println("removed item " + s);
+    		addParticipants.getItems().add(s);
+    		addParticipants.getSelectionModel().select(-1);
+    		addParticipants.getItems().remove(s);
+    		
+    		//exception.setText("");
 
-//    public void handle(Event event) {
-//
-//    ObservableList<String> selectedItems = selectedAthletes.getSelectionModel().getSelectedItems();
-//
-//
-//    for (String s : selectedItems) {
-//
-//    System.out.println("removed item " + s);
-//
-//    athletes.getItems().add(s);
-//
-//    selectedAthletes.getSelectionModel().select(-1);
-//
-//    selectedAthletes.getItems().remove(s);
-//
-//    count--;
-//
-//    exception.setText("");
-//
-//    }
+    		}
 
 
 
 
-    
+    	}
 
-//    });
+    	
+    	});
+    	
+    	addReferee.setOnMousePressed(new EventHandler<Event>() {
+        	@Override
+
+        	public void handle(Event event) {
+        		addReferee.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        		ObservableList<String> selectedItems = addReferee.getSelectionModel().getSelectedItems();
+        		for (String s : selectedItems) {
+        		System.out.println("removed item " + s);
+        		addReferee.getItems().add(s);
+        		addReferee.getSelectionModel().select(-1);
+        		addReferee.getItems().remove(s);
+        		
+        		//exception.setText("");
+
+        		}
+
+
+
+
+        	}
+
+        	
+        	});
+        	
+    	
+}
+
 }

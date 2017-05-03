@@ -26,6 +26,15 @@ public class Driver {
 
 	private Scanner scanInput = new Scanner(System.in);
 	private ParticipantList participantList;
+	
+	public ParticipantList getParticipantList() {
+		return participantList;
+	}
+
+	public void setParticipantList(ParticipantList participantList) {
+		this.participantList = participantList;
+	}
+
 	private static final int OPTION_1 = 1;
 	private static final int OPTION_2 = 2;
 	private static final int OPTION_3 = 3;

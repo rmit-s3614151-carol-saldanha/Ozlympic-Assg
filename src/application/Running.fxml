@@ -7,14 +7,14 @@
 
 <AnchorPane prefHeight="537.0" prefWidth="461.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RunningController">
    <children>
-      <AnchorPane layoutY="-3.0" prefHeight="544.0" prefWidth="518.0" style="-fx-background-color: #ccff99;">
+      <AnchorPane layoutY="-1.0" prefHeight="544.0" prefWidth="518.0" style="-fx-background-color: #ccff99;">
          <children>
-            <ComboBox fx:id="addReferee" layoutX="159.0" layoutY="256.0" prefHeight="69.0" prefWidth="279.0" />
            
             <Label fx:id="label1" layoutX="6.0" layoutY="134.0" prefHeight="17.0" prefWidth="153.0" text="Select 8 Participants" />
             <Label graphicTextGap="5.0" layoutX="6.0" layoutY="282.0" prefHeight="17.0" prefWidth="146.0" text="Select Referee" />
-            <Button layoutX="159.0" layoutY="398.0" mnemonicParsing="false" text="Start game" />
-            <ListView fx:id="addParticipants" layoutX="168.0" layoutY="34.0" onMouseClicked="#clickMe" prefHeight="200.0" prefWidth="200.0" />
+            <Button layoutX="259.0" layoutY="474.0" mnemonicParsing="false" text="Start game" />
+            <ListView fx:id="addParticipants" layoutX="142.0" layoutY="34.0" prefHeight="200.0" prefWidth="365.0" />
+            <ListView fx:id="addReferee" layoutX="142.0" layoutY="246.0" prefHeight="200.0" prefWidth="365.0" />
          </children></AnchorPane>
    </children>
 </AnchorPane>
