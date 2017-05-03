@@ -1,12 +1,9 @@
 package application;
 
-
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.sun.glass.events.MouseEvent;
-
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -29,122 +26,156 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import rmit.java.assignment.database.ParticipantList;
 
+public class RunningController implements Initializable {
 
+	@FXML
+	private ListView<String> addReferee;
 
-public class RunningController  implements Initializable{
+	@FXML
+	private ListView<String> gameList;
 
-    @FXML
-    private ListView<String> addReferee;
+	@FXML
+	private Button startGame;
 
-    @FXML
-    private Button startGame;
+	@FXML
+	private Label label1;
 
-    @FXML
-    private Label label1;
+	@FXML
+	private Label gameListHeader;
 
+	@FXML
+	private ListView<String> addParticipants;
 
-    
-    @FXML
-    private ListView<String> addParticipants;
+	// For Athletes
+	public static final ObservableList<String> athletes = FXCollections.observableArrayList();
 
+	// For Officials
+	public static final ObservableList<String> officials = FXCollections.observableArrayList();
+
+	// For Playing 8
+	public static final ObservableList<String> playerList = FXCollections.observableArrayList();
+
+	ParticipantList get = new ParticipantList();
 	
-    
-    
+	private String selectedPrev  = "";
 
+	@FXML
+	void addParticipants(ActionEvent event) {
 
-    
+		addParticipants.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		addParticipants.getSelectionModel().selectedItemProperty().addListener((obs, ov, nv) -> {
+			  gameList.setItems(addParticipants.getSelectionModel().getSelectedItems());
+		});
+	}
 
-    @FXML
-    void addParticipants(ActionEvent event) {
-    	
-     	addParticipants.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        addParticipants.getSelectionModel().selectedItemProperty().addListener((obs,ov,nv)->{
-            addParticipants.setItems(addParticipants.getSelectionModel().getSelectedItems());
-        });
- 
-    	
-
-     
-
-    	
-    }
-
-    void addReferee(ActionEvent event) {
-   
-    }
-    public void initialize(URL url, ResourceBundle rb) {
-    	
-    	ListView<String> listView = new ListView<String>();
-
-    	addParticipants.getItems().add("Carol");
-    	addParticipants.getItems().add("Eashan");
-    	addParticipants.getItems().add("Niraj");
-    	
-    	
-    	
-    	ListView<String> listView1 = new ListView<String>();
-    	addReferee.getItems().add("Chaitrali");
-    	addReferee.getItems().add("Soumil");
-    	addReferee.getItems().add("Naruto");		
+	void addReferee(ActionEvent event) {
 		
-    	listView1.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-    	
-    	addParticipants.setOnMousePressed(new EventHandler<Event>() {
-    	@Override
+		addReferee.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+		addReferee.getSelectionModel().selectedItemProperty().addListener((obs, ov, nv) -> {
+			 gameList.setItems(addParticipants.getSelectionModel().getSelectedItems());
+		});
+	}
+	
+	void removeParticipant(ActionEvent event){
+		gameList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		gameList.getSelectionModel().selectedItemProperty().addListener((obs, ov, nv) -> {
+			  addParticipants.setItems(gameList.getSelectionModel().getSelectedItems());
+		});
+	}
 
-    	public void handle(Event event) {
-    		int count = 3;
-    		addParticipants.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-    		ObservableList<String> selectedItems = addParticipants.getSelectionModel().getSelectedItems();
-    		for (String s : selectedItems) {
-    		System.out.println("removed item " + s);
-    		addParticipants.getItems().add(s);
-    		addParticipants.getSelectionModel().select(-1);
-    		addParticipants.getItems().remove(s);
-    		count --;
-    		
-    		//exception.setText("");
+	public void initialize(URL url, ResourceBundle rb) {
 
-    		}
-
-
-
-
-    	}
-
-    	
-    	});
-    	
-    	addReferee.setOnMousePressed(new EventHandler<Event>() {
-        	@Override
-
-        	public void handle(Event event) {
-        		int count =3;
-        		addReferee.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        		ObservableList<String> selectedItems = addReferee.getSelectionModel().getSelectedItems();
-        		for (String s : selectedItems) {
-        		System.out.println("removed item " + s);
-        		addReferee.getItems().add(s);
-        		addReferee.getSelectionModel().select(-1);
-        		addReferee.getItems().remove(s);
-        		
-        		//exception.setText("");
-
-        		}
+		for ( int i = 0 ; i < get.getSwimmers().size();i++ ){
+			athletes.add(get.getSwimmers().get(i).toString());
+		}
+		for ( int i = 0 ; i < get.getCyclists().size();i++ ){
+			athletes.add(get.getCyclists().get(i).toString());
+		}
+		for ( int i = 0 ; i < get.getSprinters().size();i++ ){
+			athletes.add(get.getSprinters().get(i).toString());
+		}
+		for ( int i = 0 ; i < get.getSuperAthletes().size();i++ ){
+			athletes.add(get.getSuperAthletes().get(i).toString());
+		}
+		for ( int i = 0 ; i < get.getOfficials().size();i++ ){
+			officials.add(get.getOfficials().get(i).toString());
+		}
+		
+		
+		addReferee.setItems(officials);
+		
+		addParticipants.setItems(athletes);
 
 
+		addParticipants.setOnMousePressed(new EventHandler<Event>() {
+			@Override
 
+			public void handle(Event event) {
+				int count = 3;
+				addParticipants.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+			
+				ObservableList<String> selectedItems = addParticipants.getSelectionModel().getSelectedItems();
+				for (String s : selectedItems) {
+					System.out.println("removed item " + s);
+					gameList.getItems().addAll(s);
+					addParticipants.getSelectionModel().select(-1);
+					addParticipants.getItems().remove(s);
+				
+					// exception.setText("");
+				}
 
-        	}
+			}
 
-        	
-        	});
-        	
-    	
-}
+		});
+
+		addReferee.setOnMousePressed(new EventHandler<Event>() {
+			@Override
+
+			public void handle(Event event) {
+			
+				addReferee.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+				String selectedItems = addReferee.getSelectionModel().getSelectedItem();
+					
+					gameList.getItems().add(selectedItems);
+					addParticipants.getSelectionModel().select(-1);
+					
+
+					// exception.setText("");
+				
+				
+					
+			}
+		});
+		
+		gameList.setOnMousePressed(new EventHandler<Event>() {
+			@Override
+
+			public void handle(Event event) {
+			
+				int count = 3 ;
+				gameList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+				ObservableList<String> selectedItems = gameList.getSelectionModel().getSelectedItems();
+				for (String s : selectedItems) {
+					System.out.println("removed item " + s);
+
+					addParticipants.getItems().addAll(s);
+					addParticipants.getSelectionModel().select(-1);
+					gameList.getItems().remove(s);
+
+					// exception.setText("");
+				}
+				
+				
+					
+			}
+		});
+
+	}
 
 }

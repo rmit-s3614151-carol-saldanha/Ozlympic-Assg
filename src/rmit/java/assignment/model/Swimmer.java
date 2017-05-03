@@ -121,7 +121,7 @@ public class Swimmer extends Athlete {
 	 */
 	@Override
 	public String toString() {
-		return "name=" + name + ", age=" + age + ", state=" + state + ", ID=" + uniqueID;
+		return "name=" + name + ", age=" + age + ", state=" + state + ", ID=" + uniqueID+"type"+type;
 	}
 
 	public String getType() {

@@ -125,7 +125,7 @@ public class Sprinter extends Athlete {
 	 */
 	@Override
 	public String toString() {
-		return "name=" + name + ", age=" + age + ", state=" + state + ", uniqueID=" + uniqueID;
+		return "name=" + name + ", age=" + age + ", state=" + state + ", uniqueID=" + uniqueID+"type"+type;
 	}
 
 	public String getType() {

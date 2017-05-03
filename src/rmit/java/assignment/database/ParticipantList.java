@@ -217,6 +217,15 @@ public class ParticipantList {
 					getSuperAthletes().add(new SuperAthlete(name, age, state, ID));
 					break;
 				default:
+					for (int j = 0; j < getOfficials().size(); j++) {
+
+						if (getOfficials().get(j).getUniqueID().contains(ID) == true) {
+
+							getOfficials().remove(j);
+
+						}
+					}
+					getOfficials().add(new Official(name, age, state, ID));
 					break;
 				}
 			}
