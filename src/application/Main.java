@@ -34,7 +34,11 @@ public class Main extends Application {
 		ParticipantList run = new ParticipantList();
 	
 	
+<<<<<<< HEAD
 			launch(args);
+=======
+		launch(args);
+>>>>>>> origin/master
 	}
 }
 
