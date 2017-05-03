@@ -33,19 +33,12 @@ public class Ozlympic extends Application {
 	
 	public static void main(String[] args) {
 		
-<<<<<<< HEAD:src/application/Ozlympic.java
-//		ParticipantList run = new ParticipantList();
-//		System.out.println(run.getCyclists());
-=======
+
 		ParticipantList run = new ParticipantList();
 	
 	
-<<<<<<< HEAD
 			launch(args);
-=======
->>>>>>> origin/master:src/application/Main.java
-		launch(args);
->>>>>>> origin/master
+
 	}
 }
 

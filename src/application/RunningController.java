@@ -97,6 +97,7 @@ public class RunningController  implements Initializable{
     	@Override
 
     	public void handle(Event event) {
+    		int count = 3;
     		addParticipants.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     		ObservableList<String> selectedItems = addParticipants.getSelectionModel().getSelectedItems();
     		for (String s : selectedItems) {
@@ -104,6 +105,7 @@ public class RunningController  implements Initializable{
     		addParticipants.getItems().add(s);
     		addParticipants.getSelectionModel().select(-1);
     		addParticipants.getItems().remove(s);
+    		count --;
     		
     		//exception.setText("");
 
@@ -121,6 +123,7 @@ public class RunningController  implements Initializable{
         	@Override
 
         	public void handle(Event event) {
+        		int count =3;
         		addReferee.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         		ObservableList<String> selectedItems = addReferee.getSelectionModel().getSelectedItems();
         		for (String s : selectedItems) {
