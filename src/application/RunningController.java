@@ -127,7 +127,7 @@ public class RunningController implements Initializable {
 					addParticipants.getSelectionModel().select(-1);
 					addParticipants.getItems().remove(s);
 				
-					// exception.setText("");
+					 exception.setText("");
 				}
 
 			}
