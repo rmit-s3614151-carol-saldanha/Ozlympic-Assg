@@ -19,6 +19,7 @@ public class Swimmer extends Athlete {
 	private String state;
 	private String uniqueID;
 	private int points;
+	private String type ="Swimmers";
 
 	/**
 	 * CONSTRUCTOR
@@ -38,6 +39,34 @@ public class Swimmer extends Athlete {
 		this.name = name;
 		this.age = age;
 		this.state = state;
+		this.uniqueID = uniqueID;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAge() {
+		return age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public void setUniqueID(String uniqueID) {
 		this.uniqueID = uniqueID;
 	}
 
@@ -93,6 +122,14 @@ public class Swimmer extends Athlete {
 	@Override
 	public String toString() {
 		return "name=" + name + ", age=" + age + ", state=" + state + ", ID=" + uniqueID;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

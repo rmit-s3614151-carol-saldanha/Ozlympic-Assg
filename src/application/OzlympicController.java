@@ -54,8 +54,8 @@ public class OzlympicController {
     }
 
     @FXML
-    void clickCycling(ActionEvent event) {
-
+    void clickCycling(ActionEvent event) throws Exception {
+    	
     }
 
     @FXML

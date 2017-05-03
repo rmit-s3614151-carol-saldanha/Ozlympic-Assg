@@ -15,6 +15,36 @@ public class SuperAthlete extends Athlete {
 	private String name;
 	private String age;
 	private String state;
+	private String type ="Super Athletes";
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAge() {
+		return age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public void setUniqueID(String uniqueID) {
+		this.uniqueID = uniqueID;
+	}
+
 	private String uniqueID;
 	private int points = 0;
 	private int currentGame = 0;
@@ -122,6 +152,14 @@ public class SuperAthlete extends Athlete {
 	@Override
 	public int getPoints() {
 		return this.points;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

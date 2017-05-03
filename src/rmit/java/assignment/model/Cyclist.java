@@ -18,6 +18,36 @@ public class Cyclist extends Athlete {
 	private String state;
 	private String uniqueID;
 	private int points = 0;
+	private String type = "Cyclist";
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAge() {
+		return age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public void setUniqueID(String uniqueID) {
+		this.uniqueID = uniqueID;
+	}
+
+
 
 	/**
 	 * CONSTRUCTOR
@@ -95,6 +125,14 @@ public class Cyclist extends Athlete {
 	@Override
 	public String getUniqueID() {
 		return uniqueID;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }
