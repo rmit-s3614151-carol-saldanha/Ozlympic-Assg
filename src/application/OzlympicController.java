@@ -55,17 +55,17 @@ public class OzlympicController {
 
     @FXML
     void clickCycling(ActionEvent event) throws Exception {
+    	utility.displayUX(CyclingController.class, "application/Cycling.fxml", null);
+    }
+
+    @FXML
+    void clickSwimming(ActionEvent event) throws Exception {
+    	utility.displayUX(SwimmingController.class, "application/Swimming.fxml", null);
+    }
+
+    @FXML
+    void clickDisplay(ActionEvent event) throws Exception {
     	
-    }
-
-    @FXML
-    void clickSwimming(ActionEvent event) {
-
-    }
-
-    @FXML
-    void clickDisplay(ActionEvent event) {
-
     }
 
 }
