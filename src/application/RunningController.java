@@ -34,11 +34,16 @@ public class RunningController implements Initializable {
 	@FXML
 	private Button Next;
 
+	private static final String TYPE_1 = "Sprinters";
 
-	@FXML
-	void e80606(ActionEvent event) {
+	private static final String TYPE_2 = "Super Athletes";
+	
+	private static final int MAXIMUM_PARTICIPANTS = 8;
+	
+	private String selectedAddParticipantList="";
+	
+	private String selectedParticipantList="";
 
-	}
 
 	// For Athletes
 	public static final ObservableList<String> athletes = FXCollections.observableArrayList();
@@ -50,7 +55,7 @@ public class RunningController implements Initializable {
 	public static final ObservableList<String> playerList = FXCollections.observableArrayList();
 
 	public static final ObservableList<String> selected = FXCollections.observableArrayList();
-	private static final Object Sprinters = "Sprinters";
+	
 
 	ParticipantList get = new ParticipantList();
 
@@ -58,33 +63,31 @@ public class RunningController implements Initializable {
 	void addParticipants(ActionEvent event) {
 
 		addParticipants.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		addParticipants.getSelectionModel().selectedItemProperty().addListener((obs, ov, nv) -> {
-			// gameList.setItems(addParticipants.getSelectionModel().getSelectedItems());
-		});
+		
 	}
+	
+	  @FXML
+	    void e80606(ActionEvent event) {
+
+	    }
 
 	@FXML
 	void nextPage(ActionEvent event) throws Exception {
-		if(selectedParticipants.getItems().size() <= 3){
-			try{
-				  throw  new TooFewAthleteException();
-			  }
-			  catch(TooFewAthleteException e)
-			  {
-				  System.out.println(e.getMessage());
-				  exception.setText(e.getMessage());
-				
-			  }
-		}
-		
-			else 
-			{	
-				Utility utility = new Utility();
-				utility.displayUX(RefereeController.class, "application/Referee.fxml", null);
-				}
+		if (selectedParticipants.getItems().size() <= 3) {
+			try {
+				throw new TooFewAthleteException();
+			} catch (TooFewAthleteException e) {
+				System.out.println(e.getMessage());
+				exception.setText(e.getMessage());
+
 			}
-		
-		
+		}
+
+		else {
+			Utility utility = new Utility();
+			utility.displayUX(RefereeController.class, "application/Referee.fxml", null);
+		}
+	}
 
 	public void initialize(URL url, ResourceBundle rb) {
 
@@ -102,24 +105,56 @@ public class RunningController implements Initializable {
 		}
 
 		addParticipants.setItems(athletes);
-		System.out.println("a" + addParticipants.getItems());
+		
 
 		right.setOnAction((ActionEvent event) -> {
+			
+			
 
 			addParticipants.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-			String potential = addParticipants.getSelectionModel().getSelectedItem();
-			int index = potential.indexOf(potential);
-			if (selectedParticipants.getItems().size()<=7) {
-//				if(selectedParticipants.){
-//					System.out.println("sprint");
-//				}
-				addParticipants.getSelectionModel().clearSelection();
-				addParticipants.getItems().remove(index);
-				selectedParticipants.getItems().addAll(potential);
+			if(addParticipants.getSelectionModel().getSelectedItem()!=null)
+				
+				selectedAddParticipantList = addParticipants.getSelectionModel().getSelectedItem();
+			if(selectedAddParticipantList.equals(""))
+			{
+				exception.setText("");
+			}
+			else
+			{
+			boolean isValid = false;
+			String type = "";
+			while (!isValid) {
+				if (selectedParticipants.getItems().size()+1 <= MAXIMUM_PARTICIPANTS) {
+
+					addParticipants.getSelectionModel().clearSelection();
+					type = selectedAddParticipantList.substring(selectedAddParticipantList.indexOf("type=") + 5, selectedAddParticipantList.length());
+					if (!type.equals(TYPE_1) && !type.equals(TYPE_2)) {
+						try {
+							throw new WrongTypeException();
+							} catch (WrongTypeException e) {
+							System.out.println(e.getMessage());
+							exception.setText(e.getMessage());
+
+						}
+						
+					} 
+					else {
+						exception.setText("");
+						addParticipants.getItems().remove(selectedAddParticipantList);
+						if(selectedParticipants.getItems().contains(selectedAddParticipantList)){
+							exception.setText("");
+						}
+						else
+						{
+						selectedParticipants.getItems().addAll(selectedAddParticipantList);
+						}
+					}
+				}
+				isValid = true;
+
 			}
 			
-			
-			if (selectedParticipants.getItems().size() == 8) {
+			if (selectedParticipants.getItems().size() == MAXIMUM_PARTICIPANTS) {
 
 				try {
 					throw new GameFullException();
@@ -128,18 +163,44 @@ public class RunningController implements Initializable {
 					exception.setText(e.getMessage());
 
 				}
+				isValid = true;
+
+			}
 			}
 
 		});
 
 		left.setOnAction((ActionEvent event) -> {
-			String s = selectedParticipants.getSelectionModel().getSelectedItem();
-			int index = s.indexOf(s);
-			if (s != null) {
-				selectedParticipants.getSelectionModel().clearSelection();
-				selectedParticipants.getItems().remove(s);
-				addParticipants.getItems().addAll(s);
+			selectedParticipants.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+			if(selectedParticipants.getSelectionModel().getSelectedItem()!=null)
+				
+			selectedParticipantList = selectedParticipants.getSelectionModel().getSelectedItem();
+			if(selectedParticipantList.equals(""))
+			{
+				exception.setText("");
 			}
+			else
+			{
+			boolean isValid = false;
+			while (!isValid) {
+				
+					 
+						exception.setText("");
+						selectedParticipants.getItems().remove(selectedParticipantList);
+						if(addParticipants.getItems().contains(selectedParticipantList)){
+							exception.setText("");
+						}
+						else
+						{
+						addParticipants.getItems().addAll(selectedParticipantList);
+						}
+						isValid = true;
+					}
+					
+				}
+				
+
+		
 		});
 
 	}

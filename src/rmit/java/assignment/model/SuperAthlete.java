@@ -141,7 +141,7 @@ public class SuperAthlete extends Athlete {
 	 */
 	@Override
 	public String toString() {
-		return "name=" + name + ", age=" + age + ", state=" + state + ", ID=" + uniqueID+"type"+type;
+		return "name=" + name + ", age=" + age + ", state=" + state + ", ID=" + uniqueID+"type="+type;
 	}
 
 	/**
