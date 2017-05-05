@@ -40,6 +40,9 @@ public class RunningController implements Initializable {
 	
 	private static final int MAXIMUM_PARTICIPANTS = 8;
 	
+	private static final int MINIMUM_PARTICIPANTS = 4;
+	
+	
 	private String selectedAddParticipantList="";
 	
 	private String selectedParticipantList="";
@@ -66,14 +69,10 @@ public class RunningController implements Initializable {
 		
 	}
 	
-	  @FXML
-	    void e80606(ActionEvent event) {
-
-	    }
 
 	@FXML
 	void nextPage(ActionEvent event) throws Exception {
-		if (selectedParticipants.getItems().size() <= 3) {
+		if (selectedParticipants.getItems().size() < MINIMUM_PARTICIPANTS) {
 			try {
 				throw new TooFewAthleteException();
 			} catch (TooFewAthleteException e) {
