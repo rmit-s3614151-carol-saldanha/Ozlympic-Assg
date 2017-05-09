@@ -90,27 +90,12 @@ public class SQLConnection {
 			statement.executeUpdate("INSERT INTO participants " + "VALUES ('oz1040','official','Facebook','42','TAS');");
 		    statement.executeUpdate("INSERT INTO participants " + "VALUES ('oz1041','official','Windows','42','SA');");
 		    statement.executeUpdate("INSERT INTO participants " + "VALUES ('oz1042','official','Carol', '42','VIC');");
-
-
-			ResultSet rs = statement.executeQuery("SELECT * FROM participants;");
-			while (rs.next()) {
-				String lastName = rs.getString("name");
-				String age = rs.getString("age");
-				String state = rs.getString("state");
-				String id = rs.getString("id");
-				String type = rs.getString("type");
-				
-				System.out.print("|"+lastName + "|");
-				System.out.print(age+"|");
-				System.out.print(state+"|");
-				System.out.print(id+"|");
-				System.out.println(type+"|");
-				
-			}
-			
-			
-			
 	
+		    if (connection.isClosed()) {
+				return false;
+			} else {
+				return true;
+			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -120,11 +105,7 @@ public class SQLConnection {
 			connection.close();
 		
 		}
-		if (connection.isClosed()) {
-			return false;
-		} else {
-			return true;
-		}
+		
 	}
 
 }

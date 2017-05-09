@@ -30,14 +30,12 @@ public class Ozlympic extends Application {
 		Utility utility = new Utility();
 		utility.displayUX(OzlympicController.class, "application/Ozlympic.fxml", null);
 	}
-	
+
 	public static void main(String[] args) {
 		
 
 		ParticipantList run = new ParticipantList();
-	
-	
-			launch(args);
+	   launch(args);
 
 	}
 }

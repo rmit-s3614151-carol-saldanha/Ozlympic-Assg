@@ -1,7 +1,10 @@
 package rmit.java.assignment.database;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -33,6 +36,7 @@ public class ParticipantList {
 	private String id = "";
 	FileHandler getFile = new FileHandler();
 	SQLConnection connect = new SQLConnection();
+	Connection connection = null;
 
 	/**
 	 * This method is used to generates unique ID
@@ -112,25 +116,125 @@ public class ParticipantList {
 
 		try {
 			if (connect.createConnection() == true) {
-				System.out.println("handle database connection");
-				
-				
-			
-					
-				 
+				System.out.println("Connection established");
+
+				addAthletesByDatabase();
+
 			} else {
 				getFile.getParticipantList();
 				int checkFormat = checkFormat();
 
 				if (checkFormat == 4) {
 
-					addAthletes();
+					addAthletesByFile();
 				}
-
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	public void addAthletesByDatabase() throws SQLException {
+		// TODO Auto-generated method stub
+		try {
+
+			Class.forName("org.sqlite.JDBC");
+			// ADD DATA ON SCREEN
+			connection = DriverManager
+					.getConnection("jdbc:sqlite:/Users/MacBook_Main/Documents/workspace/Ozlympic/Ozlympic.db");
+			connection.setAutoCommit(false);
+
+			String sql = "SELECT * from participants;";
+			// create a Statement from the connection
+			Statement statement = connection.createStatement();
+
+			ResultSet rs = statement.executeQuery(sql);
+			while (rs.next()) {
+				String id = rs.getString("name");
+				String type = rs.getString("age");
+				String name = rs.getString("state");
+				String state = rs.getString("id");
+				String age = rs.getString("type");
+
+				if (id.equals("") || age.equals("") || state.equals("") || type.equals("") || name.equals("")) {
+					System.out.println("Error : Null value found.");
+				} else {
+					System.out.println(id);
+					switch (type) {
+					case SWIMMERS:
+
+						for (int j = 0; j < getSwimmers().size(); j++) {
+
+							if (getSwimmers().get(j).getUniqueID().contains(id) == true) {
+
+								getSwimmers().remove(j);
+
+							}
+						}
+
+						getSwimmers().add(new Swimmer(name, age, state, id));
+						break;
+					case CYCLIST:
+
+						for (int j = 0; j < getCyclists().size(); j++) {
+
+							if (getCyclists().get(j).getUniqueID().contains(id) == true) {
+
+								getCyclists().remove(j);
+
+							}
+						}
+						getCyclists().add(new Cyclist(name, age, state, id));
+						break;
+					case SPRINTERS:
+
+						for (int j = 0; j < getSprinters().size(); j++) {
+
+							if (getSprinters().get(j).getUniqueID().contains(id) == true) {
+
+								getSprinters().remove(j);
+
+							}
+						}
+						getSprinters().add(new Sprinter(name, age, state, id));
+						break;
+					case SUPER:
+						for (int j = 0; j < getSuperAthletes().size(); j++) {
+
+							if (getSuperAthletes().get(j).getUniqueID().contains(id) == true) {
+
+								getSuperAthletes().remove(j);
+
+							}
+						}
+						getSuperAthletes().add(new SuperAthlete(name, age, state, id));
+						break;
+					default:
+						for (int j = 0; j < getOfficials().size(); j++) {
+
+							if (getOfficials().get(j).getUniqueID().contains(id) == true) {
+
+								getOfficials().remove(j);
+
+							}
+						}
+						getOfficials().add(new Official(name, age, state, id));
+						break;
+					}
+
+				}
+
+			}
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+
+			connection.close();
+
 		}
 	}
 
@@ -147,7 +251,7 @@ public class ParticipantList {
 		return comma;
 	}
 
-	public void addAthletes() {
+	public void addAthletesByFile() {
 		int len = 0;
 		String ID = "";
 		String type = "";
