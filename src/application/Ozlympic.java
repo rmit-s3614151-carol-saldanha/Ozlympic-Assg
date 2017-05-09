@@ -1,9 +1,17 @@
 package application;
 	
 
+import java.io.IOException;
+
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import rmit.java.assignment.database.FileHandler;
 import rmit.java.assignment.database.ParticipantList;
+import rmit.java.assignment.model.Athlete;
+import rmit.java.assignment.model.Swimming;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 
 public class Ozlympic extends Application {
@@ -20,7 +28,7 @@ public class Ozlympic extends Application {
 //			e.printStackTrace();
 //		}
 		Utility utility = new Utility();
-		utility.displayUX(RunningController.class, "application/Ozlympic.fxml", null);
+		utility.displayUX(OzlympicController.class, "application/Ozlympic.fxml", null);
 	}
 	
 	public static void main(String[] args) {
@@ -28,7 +36,8 @@ public class Ozlympic extends Application {
 
 		ParticipantList run = new ParticipantList();
 	
-		launch(args);
+	
+			launch(args);
 
 	}
 }

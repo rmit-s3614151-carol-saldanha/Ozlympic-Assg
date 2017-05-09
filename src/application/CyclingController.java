@@ -14,7 +14,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import rmit.java.assignment.database.ParticipantList;
 
-public class RunningController implements Initializable {
+public class CyclingController implements Initializable {
 
 	@FXML
 	private ListView<String> selectedParticipants;
@@ -34,7 +34,7 @@ public class RunningController implements Initializable {
 	@FXML
 	private Button Next;
 
-	private static final String TYPE_1 = "Sprinters";
+	private static final String TYPE_1 = "Cyclist";
 
 	private static final String TYPE_2 = "Super Athletes";
 	
@@ -127,6 +127,7 @@ public class RunningController implements Initializable {
 
 					addParticipants.getSelectionModel().clearSelection();
 					type = selectedAddParticipantList.substring(selectedAddParticipantList.indexOf("type=") + 5, selectedAddParticipantList.length());
+					System.out.println(type);
 					if (!type.equals(TYPE_1) && !type.equals(TYPE_2)) {
 						try {
 							throw new WrongTypeException();
