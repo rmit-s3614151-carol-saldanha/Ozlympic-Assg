@@ -1,5 +1,7 @@
 package rmit.java.assignment.database;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -30,6 +32,7 @@ public class ParticipantList {
 	private final String SUPER = "super";
 	private String id = "";
 	FileHandler getFile = new FileHandler();
+	SQLConnection connect = new SQLConnection();
 
 	/**
 	 * This method is used to generates unique ID
@@ -107,12 +110,27 @@ public class ParticipantList {
 	 */
 	public ParticipantList() {
 
-		getFile.getParticipantList();
-		int checkFormat = checkFormat();
+		try {
+			if (connect.createConnection() == true) {
+				System.out.println("handle database connection");
+				
+				
+			
+					
+				 
+			} else {
+				getFile.getParticipantList();
+				int checkFormat = checkFormat();
 
-		if (checkFormat == 4) {
+				if (checkFormat == 4) {
 
-			addAthletes();
+					addAthletes();
+				}
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
