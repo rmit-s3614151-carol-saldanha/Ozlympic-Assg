@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path=""/>
-	<classpathentry kind="lib" path="mysql-connector-java-3.1.14-bin.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
+<<<<<<< HEAD
+	<classpathentry kind="lib" path="/Users/MacBook_Main/Documents/workspace/Ozlympic/sqlite-jdbc-3.7.2.jar"/>
+=======
+>>>>>>> origin/master
 	<classpathentry kind="output" path="bin"/>
 </classpath>
