@@ -107,7 +107,8 @@ public class RefereeController implements Initializable {
 			}
 		 
 			driver.startGame();
-			driver.displayResults();
+			//driver.displayResults();
+			driver.displayPoints();
 			Utility utility = new Utility();
 			utility.displayUX(RunningController.class, "application/Running.fxml", null);
 		}
