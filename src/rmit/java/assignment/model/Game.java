@@ -172,8 +172,9 @@ public class Game {
 	 * This method is used to print the reults of swimming games
 	 * 
 	 */
-	public void displaySwimmingResults() {
+	public ArrayList<String> displaySwimmingResults() {
 		ArrayList<Athlete> swimmers = null;
+		ArrayList <String> results = new ArrayList<String>();
 		HashMap<Athlete, Float> timings = null;
 		int athleteCount = 0;
 		System.out.println("SWIMMING GAMES:");
@@ -183,12 +184,14 @@ public class Game {
 			athleteCount = 0;
 			System.out.println("SWIMMING GAME " + swimming.getGameID());
 			for (Athlete swimmer : swimmers) {
-				System.out.println(++athleteCount + ". " + swimmer + " Time: " + timings.get(swimmer));
+				//System.out.println(++athleteCount + ". " + swimmer + " Time: " + timings.get(swimmer));
+				results.add(++athleteCount + ". " + swimmer + " Time: " + timings.get(swimmer));
 			}
 			System.out.println("REFREE: " + swimming.getOfficial());
 			System.out.println();
 
 		}
+		return results;
 	}
 
 	/**

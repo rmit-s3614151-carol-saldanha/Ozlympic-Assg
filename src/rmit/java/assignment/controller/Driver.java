@@ -126,13 +126,13 @@ public class Driver {
 	/**
 	 * This method is used to display the results of all games in Ozlympics.
 	 */
-	public void displayResults() {
+	public ArrayList<String> displayResults() {
 		game.displaySwimmingResults();
 		System.out.println();
 //		game.displayCyclingResults();
 //		System.out.println();
 //		game.displayRunningResults();
-
+		return game.displaySwimmingResults();
 	}
 
 	/**
