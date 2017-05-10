@@ -100,6 +100,7 @@ public class Swimmer extends Athlete {
 	@Override
 	public float compete() {
 		Random randomGenerator = new Random();
+		
 		return MINIMUM_SWIM_TIME + randomGenerator.nextFloat() * (MAXIMUM_SWIM_TIME - MINIMUM_SWIM_TIME);
 	}
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -7,14 +9,20 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SwimmingController">
    <children>
-      <AnchorPane layoutX="-8.0" layoutY="-14.0" prefHeight="590.0" prefWidth="543.0" style="-fx-background-color: #ccff99;">
+      <AnchorPane layoutX="-8.0" layoutY="-14.0" prefHeight="590.0" prefWidth="543.0" style="-fx-background-color: #9966ff;">
          <children>
             <ListView fx:id="addParticipants" layoutX="18.0" layoutY="88.0" prefHeight="333.0" prefWidth="205.0" />
             <ListView fx:id="selectedParticipants" layoutX="314.0" layoutY="88.0" prefHeight="333.0" prefWidth="205.0" />
             <Button fx:id="right" layoutX="241.0" layoutY="181.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="46.0" text="&gt;" />
             <Button fx:id="left" layoutX="241.0" layoutY="228.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="46.0" text="&lt;" />
-            <Label fx:id="exception" layoutX="8.0" layoutY="21.0" prefHeight="34.0" prefWidth="524.0" textFill="#e80606" />
-            <Button fx:id="next" layoutX="235.0" layoutY="464.0" mnemonicParsing="false" onAction="#nextPage" prefHeight="27.0" prefWidth="61.0" text="Next" />
+            <Label fx:id="exception" layoutX="8.0" layoutY="21.0" prefHeight="34.0" prefWidth="524.0" style="-fx-font-family: Times new roman;" textFill="#33ccff">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <JFXButton fx:id="next" buttonType="RAISED" layoutX="240.0" layoutY="465.0" onAction="#nextPage" prefHeight="34.0" prefWidth="61.0" ripplerFill="#eb1010" style="-fx-background-color: #33ccff;" text="Next" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></JFXButton>
          </children>
       </AnchorPane>
    </children>

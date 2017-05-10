@@ -47,7 +47,7 @@ public class SuperAthlete extends Athlete {
 
 	private String uniqueID;
 	private int points = 0;
-	private int currentGame = 0;
+	private String currentGame ="";
 
 	/**
 	 * CONSTRUCTOR
@@ -78,7 +78,7 @@ public class SuperAthlete extends Athlete {
 	 *            currentGame: contains either 1,2 or 3 for swimming, cycling or
 	 *            runnning respectively.
 	 */
-	public void setCurrentGame(int currentGame) {
+	public void setCurrentGame(String currentGame) {
 		this.currentGame = currentGame;
 	}
 

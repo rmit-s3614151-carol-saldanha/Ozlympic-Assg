@@ -53,7 +53,7 @@ public class Official extends Participants {
 	 */
 	@Override
 	public String toString() {
-		return "name=" + name + ", age=" + age + ", state=" + state + ", uniqueID=" + uniqueID+"type"+type;
+		return "name=" + name + ", age=" + age + ", state=" + state + ", uniqueID=" + uniqueID+"type="+type;
 	}
 
 	

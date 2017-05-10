@@ -19,9 +19,11 @@ public class Game {
 	private ArrayList<Integer> uniqueRunningID = new ArrayList<Integer>();
 	private ArrayList<Integer> uniqueSwimmingID = new ArrayList<Integer>();
 	private ArrayList<Swimming> swimmingGames = new ArrayList<Swimming>();
+	
+
 	private ArrayList<Cycling> cyclingGames = new ArrayList<Cycling>();
 	private ArrayList<Running> runningGames = new ArrayList<Running>();
-	private int currentGame;
+	private String currentGame;
 	private static final char CYCLING_ID = 'C';
 	private static final char RUNNING_ID = 'R';
 	private static final char SWIMMING_ID = 'S';
@@ -47,7 +49,7 @@ public class Game {
 	 *            currentGame: contains either 1,2 or 3 for swimming, cycling or
 	 *            runnning respectively.
 	 */
-	public void setCurrentGame(int currentGame) {
+	public void setCurrentGame(String currentGame) {
 		this.currentGame = currentGame;
 	}
 
@@ -57,7 +59,7 @@ public class Game {
 	 * @return int currentGame: contains either 1,2 or 3 for swimming, cycling
 	 *         or runnning respectively.
 	 */
-	public int getCurrentGame() {
+	public String getCurrentGame() {
 		return currentGame;
 	}
 
@@ -129,10 +131,7 @@ public class Game {
 	 * 
 	 * @return Swimming new swimming game object
 	 */
-	public Swimming CreateNewSwimmingGame(ParticipantList participantList) {
-		Swimming swimming = new Swimming(this.generateUniqueSwimmingID(), this.assignOfficial(participantList));
-		return swimming;
-	}
+
 
 	/**
 	 * This method is used to create a new instance of Cycling

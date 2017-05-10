@@ -2,6 +2,8 @@ package application;
 
 import java.io.IOException;
 
+import com.jfoenix.controls.JFXButton;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +15,8 @@ import javafx.stage.Stage;
 
 public class OzlympicController {
 
-    @FXML
-    private Button running;
+	@FXML
+	private JFXButton running;
 
     @FXML
     private Text displayText;
@@ -66,6 +68,11 @@ public class OzlympicController {
     @FXML
     void clickDisplay(ActionEvent event) throws Exception {
     	
+    }
+    
+    @FXML
+    void displayAllAthletePoints(ActionEvent event) {
+
     }
 
 }

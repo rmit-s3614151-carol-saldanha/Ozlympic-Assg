@@ -184,7 +184,8 @@ public class CyclingController implements Initializable {
 			boolean isValid = false;
 			while (!isValid) {
 				
-					 
+					 	if(selectedParticipantList!=null)
+					 	{
 						exception.setText("");
 						selectedParticipants.getItems().remove(selectedParticipantList);
 						if(addParticipants.getItems().contains(selectedParticipantList)){
@@ -198,7 +199,7 @@ public class CyclingController implements Initializable {
 					}
 					
 				}
-				
+			}
 
 		
 		});

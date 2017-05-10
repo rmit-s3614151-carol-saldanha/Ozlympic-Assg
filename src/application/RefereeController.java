@@ -12,7 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import rmit.java.assignment.controller.Driver;
 import rmit.java.assignment.database.ParticipantList;
+import rmit.java.assignment.model.Game;
+import rmit.java.assignment.model.Swimming;
 
 public class RefereeController implements Initializable {
 
@@ -40,6 +43,8 @@ public class RefereeController implements Initializable {
 	
 	private String selectedRefereeList="";
 	
+	private Swimming swimming;
+	
 	
 
 
@@ -55,12 +60,19 @@ public class RefereeController implements Initializable {
 	public static final ObservableList<String> selected = FXCollections.observableArrayList();
 	
 
-	ParticipantList get = new ParticipantList();
+	//private Game game;
+	 
+	Driver driver = Ozlympic.driver;
+	ParticipantList get = driver.getParticipantList();
+	
+	Game game = driver.getGame();
 
 	@FXML
 	void addReferee(ActionEvent event) {
 
 		addReferee.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		System.out.println("adding referee");
+		
 		
 	}
 	
@@ -79,9 +91,25 @@ public class RefereeController implements Initializable {
 		}
 
 		else {
+			for (int i = 0; i < get.getOfficials().size(); i++) {
+				for (int j = 0; j < selectedReferee.getItems().size(); j++) {
+					String item = selectedReferee.getItems().get(j);
+					
+					if (get.getOfficials().get(i).getUniqueID()
+							.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
+						
+						game.getSwimmingGames().get(game.getSwimmingGames().size()-1).setOfficial(get.getOfficials().get(i));
+					}
+					//System.out.println("new referee" + game.getSwimmingGames().get(game.getSwimmingGames().size()-1).getOfficial());
+			
+				}
+				
+			}
+		 
+			driver.startGame();
+			driver.displayResults();
 			Utility utility = new Utility();
 			utility.displayUX(RunningController.class, "application/Running.fxml", null);
-			System.out.println(selectedReferee.getItems().size()+1);
 		}
 	}
 

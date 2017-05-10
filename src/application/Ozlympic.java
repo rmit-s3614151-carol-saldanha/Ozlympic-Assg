@@ -3,9 +3,11 @@ package application;
 
 import java.io.IOException;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import rmit.java.assignment.controller.Driver;
 import rmit.java.assignment.database.FileHandler;
 import rmit.java.assignment.database.ParticipantList;
 import rmit.java.assignment.model.Athlete;
@@ -14,7 +16,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 
+
+
 public class Ozlympic extends Application {
+	public static Driver driver = new Driver();
+
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 //		try {
@@ -33,11 +40,8 @@ public class Ozlympic extends Application {
 	
 	public static void main(String[] args) {
 		
+		launch(args);
 
-		ParticipantList run = new ParticipantList();
-	
-	
-			launch(args);
 
 	}
 }

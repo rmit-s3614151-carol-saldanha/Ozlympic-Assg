@@ -47,9 +47,8 @@ public class Swimming extends Game {
 	 * @param Official
 	 *            official: used to assign an official to the swimming game
 	 */
-	public Swimming(String gameID, Official official) {
-		this.gameID = gameID;
-		this.official = official;
+	public Swimming() {
+		
 	}
 
 	/**
@@ -145,5 +144,11 @@ public class Swimming extends Game {
 	public void setContestants(ArrayList<Athlete> contestants) {
 		this.contestants = contestants;
 	}
+	public void setOfficial(Official official) {
+		this.official = official;
+	}
 
+	public void addContestant(Athlete contestant) {
+		this.contestants.add(contestant); 
+	}
 }

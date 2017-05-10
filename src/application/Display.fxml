@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DisplayController">
+   <children>
+      <AnchorPane layoutX="-8.0" layoutY="-14.0" prefHeight="590.0" prefWidth="543.0" style="-fx-background-color: #9966ff;">
+         <children>
+            <JFXTextField fx:id="text" layoutX="70.0" layoutY="38.0" onAction="#display" prefHeight="466.0" prefWidth="390.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
