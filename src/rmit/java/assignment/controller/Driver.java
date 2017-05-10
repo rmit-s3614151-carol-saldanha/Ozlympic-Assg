@@ -86,7 +86,7 @@ public class Driver {
 	/**
 	 * This method is used to display points of all the athletes in Ozlympics
 	 */
-	public void displayPoints() {
+	private void displayPoints() {
 
 		HashMap<Athlete, Integer> pointsTable = new HashMap<Athlete, Integer>();
 
