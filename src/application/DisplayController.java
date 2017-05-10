@@ -10,9 +10,6 @@ public class DisplayController extends RefereeController{
     @FXML
     private JFXTextField text;
 
-    @FXML
-    void display(ActionEvent event) {
-    		text.setText(driver.displayResults());
-    }
+
 
 }
