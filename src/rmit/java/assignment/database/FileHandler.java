@@ -19,7 +19,7 @@ public class FileHandler {
 
 	}
 
-	public boolean getParticipantList() {
+	public void getParticipantList() {
 		try {
 
 			File f = new File(participantList);
@@ -34,13 +34,10 @@ public class FileHandler {
 					 participants.add(readLine);
 				 }
 			}
-			return true;
 
 		} catch (IOException e) {
 			e.printStackTrace();
-			return false;
 		}
-		
 
 	}
 
