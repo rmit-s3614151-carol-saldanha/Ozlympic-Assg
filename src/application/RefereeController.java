@@ -66,6 +66,8 @@ public class RefereeController implements Initializable {
 	ParticipantList get = driver.getParticipantList();
 	
 	Game game = driver.getGame();
+	
+	
 
 	@FXML
 	void addReferee(ActionEvent event) {
@@ -80,6 +82,7 @@ public class RefereeController implements Initializable {
 
 	@FXML
 	void runGame(ActionEvent event) throws Exception {
+		
 		if (selectedReferee.getItems().size()+1 == MAXIMUM_REFEREE) {
 			try {
 				throw new NoRefereeException();
@@ -90,7 +93,8 @@ public class RefereeController implements Initializable {
 			}
 		}
 
-		else {
+		else if(game.getCurrentGame().equals("SWIMMING")){
+			
 			for (int i = 0; i < get.getOfficials().size(); i++) {
 				for (int j = 0; j < selectedReferee.getItems().size(); j++) {
 					String item = selectedReferee.getItems().get(j);
@@ -105,20 +109,68 @@ public class RefereeController implements Initializable {
 				}
 				
 			}
-		 
 			driver.startGame();
-			driver.displayResults();
-<<<<<<< HEAD
+			driver.displaySwimmingResults();
+
 			driver.displayPoints();
-=======
->>>>>>> origin/master
 			Utility utility = new Utility();
-			utility.displayUX(DisplayController.class, "application/Display.fxml", null);
+			utility.displayUX(SwimmerAnimationController.class, "application/SwimmingAnimation.fxml", null);
+			
 		}
+			
+			else if(game.getCurrentGame().equals("RUNNING")){
+				for (int i = 0; i < get.getOfficials().size(); i++) {
+					for (int j = 0; j < selectedReferee.getItems().size(); j++) {
+						String item = selectedReferee.getItems().get(j);
+						
+						if (get.getOfficials().get(i).getUniqueID()
+								.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
+							
+							game.getRunningGames().get(game.getRunningGames().size()-1).setOfficial(get.getOfficials().get(i));
+						}
+						//System.out.println("new referee" + game.getSwimmingGames().get(game.getSwimmingGames().size()-1).getOfficial());
+				
+					}
+					
+				}
+		 
+				driver.startGame();
+				driver.displayRunningResults();
+
+				driver.displayPoints();
+				Utility utility = new Utility();
+				utility.displayUX(DisplayController.class, "application/Display.fxml", null);
+		}
+		
+			else if(game.getCurrentGame().equals("CYCLING")){
+				for (int i = 0; i < get.getOfficials().size(); i++) {
+					for (int j = 0; j < selectedReferee.getItems().size(); j++) {
+						String item = selectedReferee.getItems().get(j);
+						
+						if (get.getOfficials().get(i).getUniqueID()
+								.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
+							
+							game.getCyclingGames().get(game.getCyclingGames().size()-1).setOfficial(get.getOfficials().get(i));
+						}
+						//System.out.println("new referee" + game.getSwimmingGames().get(game.getSwimmingGames().size()-1).getOfficial());
+				
+					}
+					
+				}
+		 
+				driver.startGame();
+				driver.displayCyclingResults();
+
+				driver.displayPoints();
+				Utility utility = new Utility();
+				utility.displayUX(DisplayController.class, "application/Display.fxml", null);
+		}
+		
+	
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
-
+		officials.clear();
 	
 		
 		for (int i = 0; i< get.getOfficials().size();i++) {

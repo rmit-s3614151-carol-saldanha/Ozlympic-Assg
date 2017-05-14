@@ -6,72 +6,83 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import rmit.java.assignment.model.Athlete;
 
-public class DisplayController extends RefereeController implements Initializable{
-
-    @FXML
-    private JFXButton button;
-
-
-    @FXML
-    private Label label4;
+public class DisplayController extends RefereeController implements Initializable {
 
     @FXML
-    private Label label5;
+    private TableView<String> table;
+	
+    @FXML
+    private TableColumn<String, String> name;
 
     @FXML
-    private Label label6;
+    private TableColumn<String, String> state;
 
     @FXML
-    private Label label7;
+    private TableColumn<String, String> id;
 
     @FXML
-    private Label label8;
+    private TableColumn<String, String> time;
 
     @FXML
-    private Label label1;
+    private TableColumn<String, String> type;
+
+
 
     @FXML
-    private Label label2;
+    private TableColumn<String, String> age;
 
-    @FXML
-    private Label label3;
+	@FXML
+	private JFXButton home;
+	
+	
+	
+	public static final ObservableList<String> athletes = FXCollections.observableArrayList();
 
-    @FXML
-    void display(ActionEvent event) {
-    	
-    	//label.setText(driver.displayResults().get(0));
-    }
-    
-    public void initialize(URL url, ResourceBundle rb) {
-    	for(int i=0;i<driver.displayResults().size();i++){
-    	if(i==0){
-    	label1.setText(driver.displayResults().get(i));}
-    	else if(i==1){
-    		label2.setText(driver.displayResults().get(i));
-    	}
-    	else if(i==2){
-    		label3.setText(driver.displayResults().get(i));
-    	}
-    	else if(i==3){
-    		label4.setText(driver.displayResults().get(i));
-    	}
-    	else if(i==4){
-    		label5.setText(driver.displayResults().get(i));
-    	}
-    	else if(i==5){
-    		label6.setText(driver.displayResults().get(i));
-    	}
-    	else if(i==6){
-    		label7.setText(driver.displayResults().get(i));
-    	}
-    	else{
-    		label8.setText(driver.displayResults().get(i));
-    	}
-    	}
-}
+	@FXML
+	void homeMenu(ActionEvent event) throws Exception {
+		Utility utility = new Utility();
+		utility.displayUX(OzlympicController.class, "application/Ozlympic.fxml", null);
+	}
+
+	@FXML
+	void display(ActionEvent event) {
+
+		// label.setText(driver.displayResults().get(0));
+	}
+
+	public void initialize(URL url, ResourceBundle rb) {
+		//System.out.println("TIMINGS" + driver.getGame().getSwimmwerTimings());
+		 name.setCellValueFactory(new PropertyValueFactory<String, String>("name"));
+	        age.setCellValueFactory(new PropertyValueFactory<String, String>("age"));
+	        state.setCellValueFactory(new PropertyValueFactory<String, String>("state"));
+	        id.setCellValueFactory(new PropertyValueFactory<String, String>("ID"));
+	        type.setCellValueFactory(new PropertyValueFactory<String, String>("type"));
+	        time.setCellValueFactory(new PropertyValueFactory<String, String>("Time"));
+	       // table.getColumns().addAll(name,age,state,id,type,time);
+
+	        
+	    
+		if (game.getCurrentGame().equals("SWIMMING")) {
+			for (int i = 0; i < driver.displaySwimmingResults().size(); i++) {
+				athletes.add(driver.displaySwimmingResults().get(i));
+				
+			}
+			//System.out.println(athletes);
+			table.setItems(athletes);
+			
+			
+			
+		}
+	}
 }

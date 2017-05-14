@@ -19,7 +19,8 @@ import rmit.java.assignment.model.Swimming;
 import rmit.java.assignment.model.SuperAthlete;
 
 public class SwimmingController implements Initializable {
-
+	
+	
 	@FXML
 	private ListView<String> selectedParticipants;
 
@@ -49,7 +50,7 @@ public class SwimmingController implements Initializable {
 	private String selectedAddParticipantList = "";
 
 	private String selectedParticipantList = "";
-	//private Ozlympic ozlympic = new Ozlympic();
+	// private Ozlympic ozlympic = new Ozlympic();
 
 	// For Athletes
 	public static final ObservableList<String> athletes = FXCollections.observableArrayList();
@@ -64,7 +65,7 @@ public class SwimmingController implements Initializable {
 
 	Driver driver = Ozlympic.driver;
 	ParticipantList get = driver.getParticipantList();
-	
+
 	Game get1 = driver.getGame();
 
 	Swimming swimming = new Swimming();
@@ -89,12 +90,11 @@ public class SwimmingController implements Initializable {
 		}
 
 		else {
-			
+
 			System.out.println(selectedParticipants.getItems());
 			swimming.setCurrentGame(Driver.SWIMMING);
-			System.out.println("current game "+swimming.getCurrentGame());
-			
-			
+			System.out.println("current game " + swimming.getCurrentGame());
+
 			for (int i = 0; i < get.getSwimmers().size(); i++) {
 				for (int j = 0; j < selectedParticipants.getItems().size(); j++) {
 					String item = selectedParticipants.getItems().get(j);
@@ -103,41 +103,40 @@ public class SwimmingController implements Initializable {
 
 						swimming.addContestant(get.getSwimmers().get(i));
 					}
-					
-				}
-				//System.out.println("new" + swimming.getContestants());
-			}
-		
 
-		for (int i = 0; i < get.getSuperAthletes().size(); i++) {
-			for (int j = 0; j < selectedParticipants.getItems().size(); j++) {
-				String item = selectedParticipants.getItems().get(j);
-				if (get.getSuperAthletes().get(i).getUniqueID()
-						.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
-					((SuperAthlete)(get.getSuperAthletes().get(i))).setCurrentGame(Ozlympic.driver.SWIMMING);
-					swimming.addContestant(get.getSuperAthletes().get(i));
 				}
-				
+				// System.out.println("new" + swimming.getContestants());
 			}
-			//System.out.println("new" + swimming.getContestants());
 
-		}
-		
+			for (int i = 0; i < get.getSuperAthletes().size(); i++) {
+				for (int j = 0; j < selectedParticipants.getItems().size(); j++) {
+					String item = selectedParticipants.getItems().get(j);
+					if (get.getSuperAthletes().get(i).getUniqueID()
+							.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
+						((SuperAthlete) (get.getSuperAthletes().get(i))).setCurrentGame(Ozlympic.driver.SWIMMING);
+						swimming.addContestant(get.getSuperAthletes().get(i));
+					}
+
+				}
+				// System.out.println("new" + swimming.getContestants());
+
+			}
+
 			get1.getSwimmingGames().add(swimming);
-			 Ozlympic.driver.getGame().setCurrentGame(Driver.SWIMMING);
-			 
-		
-			
-	
+			Ozlympic.driver.getGame().setCurrentGame(Driver.SWIMMING);
+
 			Utility utility = new Utility();
 			utility.displayUX(RefereeController.class, "application/Referee.fxml", null);
 		}
-		
+
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
 		System.out.println("initializing ");
-
+		addParticipants.getItems().clear();
+		athletes.clear();
+		selectedParticipants.getItems().clear();
+		System.out.println(addParticipants.getItems().size());
 		for (int i = 0; i < get.getSwimmers().size(); i++) {
 			athletes.add(get.getSwimmers().get(i).toString());
 		}
@@ -152,6 +151,8 @@ public class SwimmingController implements Initializable {
 		}
 
 		addParticipants.setItems(athletes);
+		
+
 
 		right.setOnAction((ActionEvent event) -> {
 

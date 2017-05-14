@@ -22,23 +22,6 @@ public class Cycling extends Game {
 	private ArrayList<Athlete> contestants = new ArrayList<Athlete>();
 	private Athlete userPredictedWinner;
 
-	/**
-	 * This method is used to get the user predicted winner for this game
-	 * 
-	 * @return Athlete userPredictedWinner returns user predicted winner
-	 */
-	public Athlete getUserPredictedWinner() {
-		return userPredictedWinner;
-	}
-
-	/**
-	 * This method is used to set the user predicted winner for this game
-	 * 
-	 * @param Athlete userPredictedWinner 
-	 */
-	public void setUserPredictedWinner(Athlete userPredictedWinner) {
-		this.userPredictedWinner = userPredictedWinner;
-	}
 
 	/**
 	 * CONSTRUCTOR
@@ -48,9 +31,8 @@ public class Cycling extends Game {
 	 * @param Official
 	 *            official: used to assign an official to the cycling game
 	 */
-	public Cycling(String gameID, Official official) {
-		this.gameID = gameID;
-		this.official = official;
+	public Cycling() {
+		
 	}
 
 	/**
@@ -143,6 +125,14 @@ public class Cycling extends Game {
 	 */
 	public void setContestants(ArrayList<Athlete> contestants) {
 		this.contestants = contestants;
+	}
+	
+	public void addContestant(Athlete contestant) {
+		this.contestants.add(contestant); 
+	}
+	
+	public void setOfficial(Official official) {
+		this.official = official;
 	}
 
 }

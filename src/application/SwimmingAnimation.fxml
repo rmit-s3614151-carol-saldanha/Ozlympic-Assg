@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SwimmerAnimationController">
+   <children>
+      <AnchorPane layoutX="-15.0" layoutY="-18.0" prefHeight="595.0" prefWidth="492.0" />
+      <ImageView fx:id="swimPath" fitHeight="577.0" fitWidth="477.0">
+         <image>
+            <Image url="@images/swim%20path.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="participant1" fitHeight="57.0" fitWidth="52.0" layoutX="7.0" layoutY="468.0">
+         <image>
+            <Image url="@images/swimmer.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="participant2" fitHeight="57.0" fitWidth="52.0" layoutX="68.0" layoutY="468.0">
+         <image>
+            <Image url="@images/swimmer.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="participant3" fitHeight="57.0" fitWidth="52.0" layoutX="129.0" layoutY="468.0">
+         <image>
+            <Image url="@images/swimmer.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="participant4" fitHeight="57.0" fitWidth="52.0" layoutX="187.0" layoutY="468.0">
+         <image>
+            <Image url="@images/swimmer.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="participant5" fitHeight="57.0" fitWidth="52.0" layoutX="248.0" layoutY="468.0">
+         <image>
+            <Image url="@images/swimmer.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="participant6" fitHeight="57.0" fitWidth="52.0" layoutX="307.0" layoutY="468.0">
+         <image>
+            <Image url="@images/swimmer.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="participant7" fitHeight="57.0" fitWidth="52.0" layoutX="367.0" layoutY="468.0">
+         <image>
+            <Image url="@images/swimmer.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="participant8" fitHeight="57.0" fitWidth="52.0" layoutX="425.0" layoutY="468.0">
+         <image>
+            <Image url="@images/swimmer.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

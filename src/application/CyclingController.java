@@ -12,7 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import rmit.java.assignment.controller.Driver;
 import rmit.java.assignment.database.ParticipantList;
+import rmit.java.assignment.model.Cycling;
+import rmit.java.assignment.model.Game;
+import rmit.java.assignment.model.SuperAthlete;
+import rmit.java.assignment.model.Swimming;
 
 public class CyclingController implements Initializable {
 
@@ -60,7 +65,12 @@ public class CyclingController implements Initializable {
 	public static final ObservableList<String> selected = FXCollections.observableArrayList();
 	
 
-	ParticipantList get = new ParticipantList();
+	Driver driver = Ozlympic.driver;
+	ParticipantList get = driver.getParticipantList();
+
+	Game get1 = driver.getGame();
+
+	Cycling cycling = new Cycling();
 
 	@FXML
 	void addParticipants(ActionEvent event) {
@@ -83,12 +93,47 @@ public class CyclingController implements Initializable {
 		}
 
 		else {
+			System.out.println(selectedParticipants.getItems());
+			cycling.setCurrentGame(Driver.CYCLING);
+			System.out.println("current game " + cycling.getCurrentGame());
+
+			for (int i = 0; i < get.getCyclists().size(); i++) {
+				for (int j = 0; j < selectedParticipants.getItems().size(); j++) {
+					String item = selectedParticipants.getItems().get(j);
+					if (get.getCyclists().get(i).getUniqueID()
+							.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
+
+						cycling.addContestant(get.getCyclists().get(i));
+					}
+
+				}
+				// System.out.println("new" + swimming.getContestants());
+			}
+
+			for (int i = 0; i < get.getSuperAthletes().size(); i++) {
+				for (int j = 0; j < selectedParticipants.getItems().size(); j++) {
+					String item = selectedParticipants.getItems().get(j);
+					if (get.getSuperAthletes().get(i).getUniqueID()
+							.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
+						((SuperAthlete) (get.getSuperAthletes().get(i))).setCurrentGame(Ozlympic.driver.CYCLING);
+						cycling.addContestant(get.getSuperAthletes().get(i));
+					}
+
+				}
+				// System.out.println("new" + swimming.getContestants());
+
+			}
+
+			get1.getCyclingGames().add(cycling);
+			Ozlympic.driver.getGame().setCurrentGame(Driver.CYCLING);
+
 			Utility utility = new Utility();
 			utility.displayUX(RefereeController.class, "application/Referee.fxml", null);
 		}
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
+		athletes.clear();
 
 		for (int i = 0; i < get.getSwimmers().size(); i++) {
 			athletes.add(get.getSwimmers().get(i).toString());
@@ -127,7 +172,6 @@ public class CyclingController implements Initializable {
 
 					addParticipants.getSelectionModel().clearSelection();
 					type = selectedAddParticipantList.substring(selectedAddParticipantList.indexOf("type=") + 5, selectedAddParticipantList.length());
-					System.out.println(type);
 					if (!type.equals(TYPE_1) && !type.equals(TYPE_2)) {
 						try {
 							throw new WrongTypeException();

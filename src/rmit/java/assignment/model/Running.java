@@ -47,9 +47,8 @@ public class Running extends Game {
 	 * @param Official
 	 *            official: used to assign an official to the running game
 	 */
-	public Running(String gameID, Official official) {
-		this.gameID = gameID;
-		this.official = official;
+	public Running() {
+		
 	}
 
 	/**
@@ -142,6 +141,13 @@ public class Running extends Game {
 	 */
 	public void setContestants(ArrayList<Athlete> contestants) {
 		this.contestants = contestants;
+	}
+	public void addContestant(Athlete contestant) {
+		this.contestants.add(contestant); 
+	}
+
+	public void setOfficial(Official official) {
+		this.official = official;
 	}
 
 }

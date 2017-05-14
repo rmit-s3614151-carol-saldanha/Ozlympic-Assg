@@ -86,7 +86,7 @@ public class Driver {
 	/**
 	 * This method is used to display points of all the athletes in Ozlympics
 	 */
-	private void displayPoints() {
+	public void displayPoints() {
 
 		HashMap<Athlete, Integer> pointsTable = new HashMap<Athlete, Integer>();
 
@@ -126,13 +126,24 @@ public class Driver {
 	/**
 	 * This method is used to display the results of all games in Ozlympics.
 	 */
-	public ArrayList<String> displayResults() {
+	public ArrayList<String> displaySwimmingResults() {
 		game.displaySwimmingResults();
 		System.out.println();
 //		game.displayCyclingResults();
 //		System.out.println();
 //		game.displayRunningResults();
 		return game.displaySwimmingResults();
+	}
+	public ArrayList<String> displayRunningResults() {
+		game.displayRunningResults();
+		System.out.println();
+		return game.displayRunningResults();
+	}
+	
+	public ArrayList<String> displayCyclingResults() {
+		game.displayCyclingResults();
+		System.out.println();
+		return game.displayCyclingResults();
 	}
 
 	/**
@@ -153,43 +164,27 @@ public class Driver {
 			
 			official = swimming.getOfficial();
 			swimming.setContestants( official.computeWinners(swimming.getTimings()));
-//			if (swimming.getUserPredictedWinner() != null) {
-//				if (swimming.getUserPredictedWinner().getUniqueID() == swimming.getContestants().get(0).getUniqueID()) {
-//					System.out.println("CONGRADULATIONS! YOUR PREDICTION WAS CORRECT!");
-//				}
-//			}
-//			swimming.setUserPredictedWinner(null);
+
 			break;
-//		case CYCLING:
-//			Cycling cycling = getLastCyclingGame();
-//			athletes = cycling.getContestants();
-//			for (Athlete athlete : athletes) {
-//				cycling.recordAthleteTime(athlete.compete(), athlete);
-//			}
-//			official = cycling.getOfficial();
-//			cycling.setContestants(official.computeWinners(cycling.getTimings()));
-////			if (cycling.getUserPredictedWinner() != null) {
-////				if (cycling.getUserPredictedWinner().getUniqueID() == cycling.getContestants().get(0).getUniqueID()) {
-////					System.out.println("CONGRADULATIONS! YOUR PREDICTION WAS CORRECT!");
-////				}
-////			}
-////			cycling.setUserPredictedWinner(null);
-//			break;
-//		case RUNNING:
-//			Running running = getLastRunningGame();
-//			athletes = running.getContestants();
-//			for (Athlete athlete : athletes) {
-//				running.recordAthleteTime(athlete.compete(), athlete);
-//			}
-//			official = running.getOfficial();
-//			running.setContestants(official.computeWinners(running.getTimings()));
-////			if (running.getUserPredictedWinner() != null) {
-////				if (running.getUserPredictedWinner().getUniqueID() == running.getContestants().get(0).getUniqueID()) {
-////					System.out.println("CONGRADULATIONS! YOUR PREDICTION WAS CORRECT!");
-////				}
-////			}
-////			running.setUserPredictedWinner(null);
-////			break;
+		case CYCLING:
+			Cycling cycling = getLastCyclingGame();
+			athletes = cycling.getContestants();
+			for (Athlete athlete : athletes) {
+				cycling.recordAthleteTime(athlete.compete(), athlete);
+			}
+			official = cycling.getOfficial();
+			cycling.setContestants(official.computeWinners(cycling.getTimings()));
+
+			break;
+		case RUNNING:
+			Running running = getLastRunningGame();
+			athletes = running.getContestants();
+			for (Athlete athlete : athletes) {
+				running.recordAthleteTime(athlete.compete(), athlete);
+			}
+			official = running.getOfficial();
+			running.setContestants(official.computeWinners(running.getTimings()));
+			break;
 		default: System.out.println("Please, select a game first.");
 			;
 		}

@@ -19,10 +19,10 @@ public class Game {
 	private ArrayList<Integer> uniqueRunningID = new ArrayList<Integer>();
 	private ArrayList<Integer> uniqueSwimmingID = new ArrayList<Integer>();
 	private ArrayList<Swimming> swimmingGames = new ArrayList<Swimming>();
-	
 
 	private ArrayList<Cycling> cyclingGames = new ArrayList<Cycling>();
 	private ArrayList<Running> runningGames = new ArrayList<Running>();
+	HashMap<Athlete, Float> swimmwerTimings = null;
 	private String currentGame;
 	private static final char CYCLING_ID = 'C';
 	private static final char RUNNING_ID = 'R';
@@ -40,6 +40,14 @@ public class Game {
 		uniqueCyclingID.add(0);
 		uniqueRunningID.add(0);
 		uniqueSwimmingID.add(0);
+	}
+
+	public HashMap<Athlete, Float> getSwimmwerTimings() {
+		return swimmwerTimings;
+	}
+
+	public void setSwimmwerTimings(HashMap<Athlete, Float> swimmwerTimings) {
+		this.swimmwerTimings = swimmwerTimings;
 	}
 
 	/**
@@ -127,33 +135,6 @@ public class Game {
 	}
 
 	/**
-	 * This method is used to create a new instance of Swimming
-	 * 
-	 * @return Swimming new swimming game object
-	 */
-
-
-	/**
-	 * This method is used to create a new instance of Cycling
-	 * 
-	 * @return Cycling new cycling game object
-	 */
-	public Cycling CreateNewCyclingGame(ParticipantList participantList) {
-		Cycling cycling = new Cycling(this.generateUniqueCyclingID(), this.assignOfficial(participantList));
-		return cycling;
-	}
-
-	/**
-	 * This method is used to create a new instance of Running
-	 * 
-	 * @return Running new running game object
-	 */
-	public Running CreateNewRunningGame(ParticipantList participantList) {
-		Running running = new Running(this.generateUniqueRunningID(), this.assignOfficial(participantList));
-		return running;
-	}
-
-	/**
 	 * This method is used to print the participants of the game
 	 * 
 	 * @return int athleteCount number of athletes that are a part of the game
@@ -167,39 +148,43 @@ public class Game {
 		return athleteCount;
 	}
 
-
 	/**
 	 * This method is used to print the reults of swimming games
 	 * 
 	 */
 	public ArrayList<String> displaySwimmingResults() {
 		ArrayList<Athlete> swimmers = null;
-		ArrayList <String> results = new ArrayList<String>();
-		HashMap<Athlete, Float> timings = null;
+		ArrayList<String> swimmingResults = new ArrayList<String>();
+		
 		int athleteCount = 0;
-		System.out.println("SWIMMING GAMES:");
+		//System.out.println("SWIMMING GAMES:");
 		for (Swimming swimming : swimmingGames) {
 			swimmers = swimming.getContestants();
-			timings = swimming.getTimings();
+			swimmwerTimings = swimming.getTimings();
+			
 			athleteCount = 0;
-			System.out.println("SWIMMING GAME " + swimming.getGameID());
+			//System.out.println("SWIMMING GAME " + swimming.getGameID());
 			for (Athlete swimmer : swimmers) {
-				//System.out.println(++athleteCount + ". " + swimmer + " Time: " + timings.get(swimmer));
-				results.add(++athleteCount + ". " + swimmer + " Time: " + timings.get(swimmer));
+				// System.out.println(++athleteCount + ". " + swimmer + " Time:
+				// " + timings.get(swimmer));
+				swimmingResults.add(++athleteCount + ". " + swimmer + " Time: " + swimmwerTimings.get(swimmer));
 			}
-			System.out.println("REFREE: " + swimming.getOfficial());
-			System.out.println();
+			//System.out.println("REFREE: " + swimming.getOfficial());
+			//System.out.println();
 
 		}
-		return results;
+		return swimmingResults;
 	}
 
 	/**
 	 * This method is used to print the reults of running games
 	 * 
+	 * @return
+	 * 
 	 */
-	public void displayRunningResults() {
+	public ArrayList<String> displayRunningResults() {
 		ArrayList<Athlete> sprinters = null;
+		ArrayList<String> runningResults = new ArrayList<String>();
 		HashMap<Athlete, Float> timings = null;
 		int athleteCount = 0;
 		System.out.println("RUNNING GAMES:");
@@ -209,20 +194,26 @@ public class Game {
 			athleteCount = 0;
 			System.out.println("RUNNING GAME " + running.getGameID());
 			for (Athlete sprinter : sprinters) {
-				System.out.println(++athleteCount + ". " + sprinter + " Time: " + timings.get(sprinter));
+				// System.out.println(++athleteCount + ". " + sprinter + " Time:
+				// " + timings.get(sprinter));
+				runningResults.add(++athleteCount + ". " + sprinter + " Time: " + timings.get(sprinter));
 			}
 			System.out.println("REFREE: " + running.getOfficial());
 			System.out.println();
 
 		}
+		return runningResults;
 	}
 
 	/**
 	 * This method is used to print the reults of cycling games
 	 * 
+	 * @return
+	 * 
 	 */
-	public void displayCyclingResults() {
+	public ArrayList<String> displayCyclingResults() {
 		ArrayList<Athlete> cyclists = null;
+		ArrayList<String> cyclingResults = new ArrayList<String>();
 		HashMap<Athlete, Float> timings = null;
 		int athleteCount = 0;
 		System.out.println("CYCLING GAMES:");
@@ -232,13 +223,16 @@ public class Game {
 			athleteCount = 0;
 			System.out.println("CYCLING GAME " + cycling.getGameID());
 			for (Athlete cyclist : cyclists) {
-				System.out.println(++athleteCount + ". " + cyclist + " Time: " + timings.get(cyclist));
+				// System.out.println(++athleteCount + ". " + cyclist + " Time:
+				// " + timings.get(cyclist));
+				cyclingResults.add(++athleteCount + ". " + cyclist + " Time: " + timings.get(cyclist));
 			}
 			System.out.println("REFREE: " + cycling.getOfficial());
 			System.out.println();
 		}
+		return cyclingResults;
 	}
-	
+
 	/**
 	 * This method is used to get an official randomly from the participant
 	 * list.
