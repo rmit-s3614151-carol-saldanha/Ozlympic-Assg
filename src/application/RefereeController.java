@@ -110,11 +110,11 @@ public class RefereeController implements Initializable {
 				
 			}
 			driver.startGame();
-			driver.displaySwimmingResults();
+	//		driver.displaySwimmingResults();
 
 			driver.displayPoints();
 			Utility utility = new Utility();
-			utility.displayUX(SwimmerAnimationController.class, "application/SwimmingAnimation.fxml", null);
+			utility.displayUX(DisplayController.class, "application/Display.fxml", null);
 			
 		}
 			
@@ -135,7 +135,7 @@ public class RefereeController implements Initializable {
 				}
 		 
 				driver.startGame();
-				driver.displayRunningResults();
+			//	driver.displayRunningResults();
 
 				driver.displayPoints();
 				Utility utility = new Utility();
@@ -159,7 +159,7 @@ public class RefereeController implements Initializable {
 				}
 		 
 				driver.startGame();
-				driver.displayCyclingResults();
+			//	driver.displayCyclingResults();
 
 				driver.displayPoints();
 				Utility utility = new Utility();

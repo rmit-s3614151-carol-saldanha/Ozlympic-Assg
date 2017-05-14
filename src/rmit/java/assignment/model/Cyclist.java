@@ -19,6 +19,8 @@ public class Cyclist extends Athlete {
 	private String uniqueID;
 	private int points = 0;
 	private String type = "Cyclist";
+	private float atime = getATime();
+
 	public String getName() {
 		return name;
 	}
@@ -46,8 +48,6 @@ public class Cyclist extends Athlete {
 	public void setUniqueID(String uniqueID) {
 		this.uniqueID = uniqueID;
 	}
-
-
 
 	/**
 	 * CONSTRUCTOR
@@ -99,7 +99,7 @@ public class Cyclist extends Athlete {
 	 */
 	@Override
 	public String toString() {
-		return "name=" + name + ", age=" + age + ", state=" + state + ", ID=" + uniqueID+"type="+type;
+		return "name=" + name + ", age=" + age + ", state=" + state + ", ID=" + uniqueID + "type=" + type;
 	}
 
 	/**
@@ -133,6 +133,27 @@ public class Cyclist extends Athlete {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public float getAtime() {
+		return atime;
+	}
+
+	public void setAtime(float atime) {
+		this.atime = atime;
+	}
+
+	@Override
+	public float getATime() {
+		// TODO Auto-generated method stub
+		return atime;
+	}
+
+	@Override
+	public void setATime(float time) {
+		// TODO Auto-generated method stub
+		this.atime = time ;
+
 	}
 
 }

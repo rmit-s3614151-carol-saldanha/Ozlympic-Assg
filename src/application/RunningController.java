@@ -111,7 +111,7 @@ public class RunningController implements Initializable {
 					String item = selectedParticipants.getItems().get(j);
 					if (get.getSuperAthletes().get(i).getUniqueID()
 							.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
-						((SuperAthlete) (get.getSuperAthletes().get(i))).setCurrentGame(Ozlympic.driver.SWIMMING);
+						((SuperAthlete) (get.getSuperAthletes().get(i))).setCurrentGame(Ozlympic.driver.RUNNING);
 						running.addContestant(get.getSuperAthletes().get(i));
 					}
 

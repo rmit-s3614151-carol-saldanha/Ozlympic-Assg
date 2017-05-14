@@ -16,34 +16,35 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import rmit.java.assignment.model.Athlete;
+import rmit.java.assignment.model.Cyclist;
 
 public class DisplayController extends RefereeController implements Initializable {
 
 	@FXML
-	private TableView<String> table;
+	private TableView<Athlete> table;
 
 	@FXML
-	private TableColumn<String, String> name;
+	private TableColumn<Athlete, String> name;
 
 	@FXML
-	private TableColumn<String, String> state;
+	private TableColumn<Athlete, String> state;
 
 	@FXML
-	private TableColumn<String, String> id;
+	private TableColumn<Athlete, String> id;
 
 	@FXML
-	private TableColumn<String, String> time;
+	private TableColumn<Athlete, Float> time;
 
 	@FXML
-	private TableColumn<String, String> type;
+	private TableColumn<Athlete, String> type;
 
 	@FXML
-	private TableColumn<String, String> age;
+	private TableColumn<Athlete, String> age;
 
 	@FXML
 	private JFXButton home;
 
-	public static final ObservableList<String> athletes = FXCollections.observableArrayList();
+	private ObservableList<Athlete> athletes;
 
 	@FXML
 	void homeMenu(ActionEvent event) throws Exception {
@@ -58,6 +59,33 @@ public class DisplayController extends RefereeController implements Initializabl
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
+
+		if (game.getCurrentGame().equals(driver.SWIMMING)) {
+			athletes = FXCollections.observableArrayList(driver.displaySwimmingResults());
+		} else if (game.getCurrentGame().equals(driver.CYCLING)) {
+			athletes = FXCollections.observableArrayList(driver.displayCyclingResults());
+		} else if (game.getCurrentGame().equals(driver.RUNNING)) {
+			athletes = FXCollections.observableArrayList(driver.displayRunningResults());
+		}
+
+		id.setMinWidth(100);
+		id.setCellValueFactory(new PropertyValueFactory<Athlete, String>("uniqueID"));
+
+		name.setMinWidth(100);
+		name.setCellValueFactory(new PropertyValueFactory<Athlete, String>("name"));
+
+		age.setMinWidth(100);
+		age.setCellValueFactory(new PropertyValueFactory<Athlete, String>("age"));
+
+		state.setMinWidth(100);
+		state.setCellValueFactory(new PropertyValueFactory<Athlete, String>("state"));
+
+		type.setMinWidth(100);
+		type.setCellValueFactory(new PropertyValueFactory<Athlete, String>("type"));
+
+		time.setCellValueFactory(new PropertyValueFactory<Athlete, Float>("atime"));
+
+		table.setItems(athletes);
 
 	}
 }

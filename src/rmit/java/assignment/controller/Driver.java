@@ -198,7 +198,7 @@ public class Driver {
 	 * 
 	 */
 
-	public ArrayList<String> displaySwimmingResults() {
+	public ArrayList<Athlete> displaySwimmingResults() {
 
 		return game.displaySwimmingResults();
 
@@ -206,7 +206,7 @@ public class Driver {
 
 	}
 
-	public ArrayList<String> displayRunningResults() {
+	public ArrayList<Athlete> displayRunningResults() {
 
 		return game.displayRunningResults();
 
@@ -214,7 +214,7 @@ public class Driver {
 
 	}
 
-	public ArrayList<String> displayCyclingResults() {
+	public ArrayList<Athlete> displayCyclingResults() {
 
 		return game.displayCyclingResults();
 

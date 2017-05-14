@@ -33,9 +33,9 @@ public class Game {
 	private static final char RUNNING_ID = 'R';
 	private static final char SWIMMING_ID = 'S';
 	private static final int OFFICIALS_COUNT = 8;
+	
+	
 
-	private int pl = 0;
-	private int n = 0;
 
 	/**
 	 * CONSTRUCTOR
@@ -48,7 +48,7 @@ public class Game {
 		uniqueCyclingID.add(0);
 		uniqueRunningID.add(0);
 		uniqueSwimmingID.add(0);
-		pl++;
+
 	}
 
 	public HashMap<Athlete, Float> getSwimmwerTimings() {
@@ -170,15 +170,13 @@ public class Game {
 	 * 
 	 */
 
-	public ArrayList<String> displaySwimmingResults() {
+	public ArrayList<Athlete> displaySwimmingResults() {
 		FileHandler s = new FileHandler();
 		ArrayList<Athlete> swimmers = null;
 
 		ArrayList<String> swimmingResults = new ArrayList<String>();
 
 		int athleteCount = 0;
-
-		HashMap<Athlete, Float> timings = null;
 		ArrayList<String> results = new ArrayList<String>();
 
 		String sID = null;
@@ -191,12 +189,14 @@ public class Game {
 		swimmers = swimming.getContestants();
 		swimmwerTimings = swimming.getTimings();
 
+
 		athleteCount = 0;
 
 		// System.out.println("SWIMMING GAME " + swimming.getGameID());
 		for (Athlete swimmer : swimmers) {
 			// System.out.println(++athleteCount + ". " + swimmer + " Time:
 			// " + timings.get(swimmer));
+			swimmer.setATime(swimmwerTimings.get(swimmer));
 			swimmingResults.add(++athleteCount + ". " + swimmer + " Time: " + swimmwerTimings.get(swimmer));
 		}
 		// System.out.println("REFREE: " + swimming.getOfficial());
@@ -217,12 +217,12 @@ public class Game {
 			results.add(++athleteCount + ". " + swimmer + " Time: " + times);
 			aID = swimmer.getUniqueID();
 			s.writeFile(aID + "," + Float.toString(times) + "," + swimmer.getPoints());
-
+		
 		}
 
 		s.writeFile("\n" + "\n");
-
-		return results;
+		
+		return swimmers;
 
 	}
 
@@ -232,11 +232,11 @@ public class Game {
 	 * @return
 	 * 
 	 */
-	public ArrayList<String> displayRunningResults() {
+	public ArrayList<Athlete> displayRunningResults() {
 		FileHandler s = new FileHandler();
 		ArrayList<Athlete> sprinters = null;
 		ArrayList<String> runningResults = new ArrayList<String>();
-		HashMap<Athlete, Float> timings = null;
+		
 		int athleteCount = 0;
 		String rID = null;
 		String oID = null;
@@ -257,6 +257,7 @@ public class Game {
 
 		System.out.println("RUNNING GAME ID " + running.getGameID());
 		for (Athlete sprinter : sprinters) {
+			sprinter.setATime(sprinterTimings.get(sprinter));
 			// System.out.println(++athleteCount + ". " + sprinter + " Time:
 			// " + timings.get(sprinter));
 			times = sprinterTimings.get(sprinter);
@@ -270,7 +271,7 @@ public class Game {
 		}
 		s.writeFile("\n" + "\n");
 
-		return runningResults;
+		return sprinters;
 	}
 
 	/**
@@ -279,11 +280,11 @@ public class Game {
 	 * @return
 	 * 
 	 */
-	public ArrayList<String> displayCyclingResults() {
+	public ArrayList<Athlete> displayCyclingResults() {
 		FileHandler s = new FileHandler();
 		ArrayList<Athlete> cyclists = null;
 		ArrayList<String> cyclingResults = new ArrayList<String>();
-		HashMap<Athlete, Float> timings = null;
+		
 		int athleteCount = 0;
 		String cID = null;
 		String oID = null;
@@ -307,6 +308,7 @@ public class Game {
 		for (Athlete cyclist : cyclists) {
 			// System.out.println(++athleteCount + ". " + cyclist + " Time:
 			// " + timings.get(cyclist));
+			cyclist.setATime(cyclingTimings.get(cyclist));
 			times = cyclingTimings.get(cyclist);
 			aID = cyclist.getUniqueID();
 			s.writeFile(aID + "," + Float.toString(times) + "," + cyclist.getPoints());
@@ -316,7 +318,8 @@ public class Game {
 		System.out.println();
 
 		s.writeFile("\n" + "\n");
-		return cyclingResults;
+		
+		return cyclists;
 	}
 
 	/**
@@ -332,5 +335,9 @@ public class Game {
 
 		return participantList.getOfficials().get(random);
 	}
+
+
+
+	
 
 }

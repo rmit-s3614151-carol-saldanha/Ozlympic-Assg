@@ -19,7 +19,8 @@ public class Swimmer extends Athlete {
 	private String state;
 	private String uniqueID;
 	private int points;
-	private String type ="Swimmers";
+	private String type = "Swimmers";
+	private float atime = getATime();
 
 	/**
 	 * CONSTRUCTOR
@@ -100,7 +101,7 @@ public class Swimmer extends Athlete {
 	@Override
 	public float compete() {
 		Random randomGenerator = new Random();
-		
+
 		return MINIMUM_SWIM_TIME + randomGenerator.nextFloat() * (MAXIMUM_SWIM_TIME - MINIMUM_SWIM_TIME);
 	}
 
@@ -122,7 +123,7 @@ public class Swimmer extends Athlete {
 	 */
 	@Override
 	public String toString() {
-		return "name=" + name + ", age=" + age + ", state=" + state + ", ID=" + uniqueID+"type="+type;
+		return "name=" + name + ", age=" + age + ", state=" + state + ", ID=" + uniqueID + "type=" + type;
 	}
 
 	public String getType() {
@@ -131,6 +132,27 @@ public class Swimmer extends Athlete {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public float getAtime() {
+		return atime;
+	}
+
+	public void setAtime(float atime) {
+		this.atime = atime;
+	}
+
+	@Override
+	public float getATime() {
+		// TODO Auto-generated method stub
+		return atime;
+	}
+
+	@Override
+	public void setATime(float time) {
+		// TODO Auto-generated method stub
+		this.atime = time;
+
 	}
 
 }
