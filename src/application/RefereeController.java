@@ -66,6 +66,7 @@ public class RefereeController implements Initializable {
 	ParticipantList get = driver.getParticipantList();
 	
 	Game game = driver.getGame();
+	
 
 
 	@FXML

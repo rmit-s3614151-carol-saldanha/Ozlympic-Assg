@@ -1,5 +1,7 @@
 package rmit.java.assignment.model;
 
+import javafx.collections.ObservableList;
+
 /**
  *
  * Class Description: Abstract Class of athletes. 

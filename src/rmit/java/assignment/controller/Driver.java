@@ -140,7 +140,8 @@ public class Driver {
 	 * 
 	 */
 
-	public void displayPoints() {
+	public ArrayList<Athlete> displayPoints() {
+		ArrayList<Athlete> displayList = new ArrayList();
 
 		HashMap<Athlete, Integer> pointsTable = new HashMap<Athlete, Integer>();
 
@@ -173,7 +174,10 @@ public class Driver {
 		int athleteCount = 0;
 
 		Athlete nextAthlete = null;
+		for (Athlete athlete : pointsTable.keySet()) {
 
+			displayList.add(athlete);
+		}
 		while (!pointsTable.isEmpty()) {
 
 			maxPoints = 0;
@@ -190,11 +194,14 @@ public class Driver {
 
 			}
 
-			System.out.println(++athleteCount + ". " + nextAthlete + " Points: " + pointsTable.get(nextAthlete));
+			
 
 			pointsTable.remove(nextAthlete);
 
 		}
+		// System.out.println("POINTS TABLE ......:"+pointsTable);
+
+		return displayList;
 
 	}
 

@@ -11,7 +11,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<<<<<<< HEAD
 <AnchorPane prefHeight="585.0" prefWidth="478.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OzlympicController">
+=======
+
+
+
+<AnchorPane prefHeight="585.0" prefWidth="478.0" style="-fx-background-color: #9966ff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OzlympicController">
+>>>>>>> origin/master
    <children>
       <Label layoutX="96.0" layoutY="26.0" prefHeight="102.0" prefWidth="294.0" text="Ozlymp  cs">
          <font>

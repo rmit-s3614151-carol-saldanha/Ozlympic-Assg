@@ -71,8 +71,8 @@ public class OzlympicController {
     }
     
     @FXML
-    void displayAllAthletePoints(ActionEvent event) {
-
+    void displayAllAthletePoints(ActionEvent event) throws Exception {
+    	utility.displayUX(DisplayPointsController.class, "application/DisplayAthletePoints.fxml", null);
     }
 
 }
