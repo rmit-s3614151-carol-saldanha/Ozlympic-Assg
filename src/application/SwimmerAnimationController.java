@@ -1,12 +1,14 @@
 package application;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import rmit.java.assignment.model.Swimming;
@@ -45,7 +47,9 @@ public class SwimmerAnimationController extends RefereeController implements Ini
     public void initialize(URL url, ResourceBundle rb) {
     	
     	
+	
     	
+    	/*
     	if(driver.displaySwimmingResults().size() == 8)
     	{
     	TranslateTransition transition1 = new TranslateTransition();
@@ -239,6 +243,7 @@ public class SwimmerAnimationController extends RefereeController implements Ini
     	ParallelTransition parallel = new ParallelTransition(transition1,transition2,transition3,transition4,transition5,transition6,transition7);
     	parallel.play();
     	}
+    	*/
 }
 
 }

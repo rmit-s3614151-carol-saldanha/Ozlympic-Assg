@@ -19,34 +19,30 @@ import rmit.java.assignment.model.Athlete;
 
 public class DisplayController extends RefereeController implements Initializable {
 
-    @FXML
-    private TableView<String> table;
-	
-    @FXML
-    private TableColumn<String, String> name;
+	@FXML
+	private TableView<String> table;
 
-    @FXML
-    private TableColumn<String, String> state;
+	@FXML
+	private TableColumn<String, String> name;
 
-    @FXML
-    private TableColumn<String, String> id;
+	@FXML
+	private TableColumn<String, String> state;
 
-    @FXML
-    private TableColumn<String, String> time;
+	@FXML
+	private TableColumn<String, String> id;
 
-    @FXML
-    private TableColumn<String, String> type;
+	@FXML
+	private TableColumn<String, String> time;
 
+	@FXML
+	private TableColumn<String, String> type;
 
-
-    @FXML
-    private TableColumn<String, String> age;
+	@FXML
+	private TableColumn<String, String> age;
 
 	@FXML
 	private JFXButton home;
-	
-	
-	
+
 	public static final ObservableList<String> athletes = FXCollections.observableArrayList();
 
 	@FXML
@@ -62,27 +58,6 @@ public class DisplayController extends RefereeController implements Initializabl
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
-		//System.out.println("TIMINGS" + driver.getGame().getSwimmwerTimings());
-		 name.setCellValueFactory(new PropertyValueFactory<String, String>("name"));
-	        age.setCellValueFactory(new PropertyValueFactory<String, String>("age"));
-	        state.setCellValueFactory(new PropertyValueFactory<String, String>("state"));
-	        id.setCellValueFactory(new PropertyValueFactory<String, String>("ID"));
-	        type.setCellValueFactory(new PropertyValueFactory<String, String>("type"));
-	        time.setCellValueFactory(new PropertyValueFactory<String, String>("Time"));
-	       // table.getColumns().addAll(name,age,state,id,type,time);
 
-	        
-	    
-		if (game.getCurrentGame().equals("SWIMMING")) {
-			for (int i = 0; i < driver.displaySwimmingResults().size(); i++) {
-				athletes.add(driver.displaySwimmingResults().get(i));
-				
-			}
-			//System.out.println(athletes);
-			table.setItems(athletes);
-			
-			
-			
-		}
 	}
 }

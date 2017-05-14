@@ -33,7 +33,8 @@ public class Swimming extends Game {
 	/**
 	 * This method is used to set the user predicted winner for this game
 	 * 
-	 * @param Athlete userPredictedWinner 
+	 * @param Athlete
+	 *            userPredictedWinner
 	 */
 	public void setUserPredictedWinner(Athlete userPredictedWinner) {
 		this.userPredictedWinner = userPredictedWinner;
@@ -48,7 +49,7 @@ public class Swimming extends Game {
 	 *            official: used to assign an official to the swimming game
 	 */
 	public Swimming() {
-		
+
 	}
 
 	/**
@@ -144,11 +145,12 @@ public class Swimming extends Game {
 	public void setContestants(ArrayList<Athlete> contestants) {
 		this.contestants = contestants;
 	}
+
 	public void setOfficial(Official official) {
 		this.official = official;
 	}
 
 	public void addContestant(Athlete contestant) {
-		this.contestants.add(contestant); 
+		this.contestants.add(contestant);
 	}
 }

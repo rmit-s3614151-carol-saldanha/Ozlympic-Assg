@@ -18,7 +18,6 @@ import rmit.java.assignment.model.Game;
 import rmit.java.assignment.model.Running;
 import rmit.java.assignment.model.SuperAthlete;
 
-
 public class RunningController implements Initializable {
 
 	@FXML
