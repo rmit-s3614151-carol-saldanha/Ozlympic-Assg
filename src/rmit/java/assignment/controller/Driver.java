@@ -170,7 +170,7 @@ public class Driver {
 		}
 
 		int maxPoints;
-
+		
 		int athleteCount = 0;
 
 		Athlete nextAthlete = null;
@@ -194,7 +194,7 @@ public class Driver {
 
 			}
 
-			
+		
 
 			pointsTable.remove(nextAthlete);
 
