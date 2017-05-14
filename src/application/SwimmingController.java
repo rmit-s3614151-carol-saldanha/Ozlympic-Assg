@@ -4,16 +4,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.Alert.AlertType;
 import rmit.java.assignment.controller.Driver;
 import rmit.java.assignment.database.ParticipantList;
 import rmit.java.assignment.model.Game;
@@ -32,8 +35,7 @@ public class SwimmingController implements Initializable {
 	@FXML
 	private Button right;
 
-	@FXML
-	private Label exception;
+	
 
 	@FXML
 	private ListView<String> addParticipants;
@@ -44,7 +46,9 @@ public class SwimmingController implements Initializable {
 	@FXML
 	private JFXButton back;
 	
-	
+
+    @FXML
+    private JFXDialog except;
 
 	private static final String TYPE_1 = "Swimmers";
 
@@ -99,7 +103,11 @@ public class SwimmingController implements Initializable {
 				throw new TooFewAthleteException();
 			} catch (TooFewAthleteException e) {
 				System.out.println(e.getMessage());
-				exception.setText(e.getMessage());
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Message");
+				alert.setHeaderText("Error: To Few Athlete Exception ");
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
 
 			}
 		}
@@ -176,7 +184,7 @@ public class SwimmingController implements Initializable {
 
 				selectedAddParticipantList = addParticipants.getSelectionModel().getSelectedItem();
 			if (selectedAddParticipantList.equals("")) {
-				exception.setText("");
+				// Do nothing
 			} else {
 				boolean isValid = false;
 				String type = "";
@@ -200,15 +208,19 @@ public class SwimmingController implements Initializable {
 
 								System.out.println(e.getMessage());
 
-								exception.setText(e.getMessage());
+								Alert alert = new Alert(AlertType.ERROR);
+								alert.setTitle("Error Message");
+								alert.setHeaderText("Error : Wrong Type Exception");
+								alert.setContentText(e.getMessage());
+								alert.showAndWait();
 
 							}
 
 						} else {
-							exception.setText("");
+						
 							addParticipants.getItems().remove(selectedAddParticipantList);
 							if (selectedParticipants.getItems().contains(selectedAddParticipantList)) {
-								exception.setText("");
+								// Do nothing
 							} else {
 								selectedParticipants.getItems().addAll(selectedAddParticipantList);
 
@@ -225,7 +237,11 @@ public class SwimmingController implements Initializable {
 						throw new GameFullException();
 					} catch (GameFullException e) {
 						System.out.println(e.getMessage());
-						exception.setText(e.getMessage());
+						Alert alert = new Alert(AlertType.WARNING);
+						alert.setTitle("Error Message");
+						alert.setHeaderText("Error : Game Full Exception");
+						alert.setContentText(e.getMessage());
+						alert.showAndWait();
 
 					}
 					isValid = true;
@@ -241,18 +257,18 @@ public class SwimmingController implements Initializable {
 
 				selectedParticipantList = selectedParticipants.getSelectionModel().getSelectedItem();
 			if (selectedParticipantList.equals("")) {
-				exception.setText("");
+				// Do nothing
 			} else {
 				boolean isValid = false;
 				while (!isValid) {
 
-					exception.setText("");
+				
 					if (selectedParticipants.getSelectionModel().getSelectedItem() != null) {
 						System.out.println(selectedParticipantList);
 						selectedParticipants.getItems().remove(selectedParticipantList);
 					}
 					if (addParticipants.getItems().contains(selectedParticipantList)) {
-						exception.setText("");
+						//Do nothing
 					} else {
 						addParticipants.getItems().addAll(selectedParticipantList);
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
@@ -8,28 +9,39 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CyclingController">
+<AnchorPane prefHeight="573.0" prefWidth="535.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CyclingController">
    <children>
-      <AnchorPane layoutX="-8.0" layoutY="-28.0" prefHeight="590.0" prefWidth="543.0" style="-fx-background-color: #9966ff;">
+      <AnchorPane layoutX="-8.0" layoutY="-7.0" prefHeight="590.0" prefWidth="543.0" style="-fx-background-color: #FFF;">
          <children>
-            <ListView fx:id="addParticipants" layoutX="18.0" layoutY="88.0" prefHeight="333.0" prefWidth="205.0" />
-            <ListView fx:id="selectedParticipants" layoutX="314.0" layoutY="88.0" prefHeight="333.0" prefWidth="205.0" />
-            <Button fx:id="right" layoutX="241.0" layoutY="181.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="46.0" text="&gt;" />
-            <Button fx:id="left" layoutX="241.0" layoutY="228.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="46.0" text="&lt;" />
-            <Label fx:id="exception" layoutX="8.0" layoutY="21.0" prefHeight="34.0" prefWidth="524.0" style="-fx-font-family: Times new roman;" textFill="#33ccff">
-               <font>
-                  <Font size="24.0" />
-               </font></Label>
-            <JFXButton fx:id="next" buttonType="RAISED" layoutX="234.0" layoutY="459.0" onAction="#nextPage" prefHeight="34.0" prefWidth="61.0" ripplerFill="#e83232" style="-fx-background-color: #33ccff;" text="Next" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="back" buttonType="RAISED" layoutX="328.0" layoutY="459.0" onAction="#back" prefHeight="34.0" prefWidth="61.0" ripplerFill="#e83232" style="-fx-background-color: #33ccff;" text="Back" textFill="WHITE">
+            <ImageView fitHeight="436.0" fitWidth="413.0" layoutX="63.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/cycling_bg.png" />
+               </image>
+            </ImageView>
+            <ListView fx:id="addParticipants" layoutX="18.0" layoutY="99.0" opacity="0.84" prefHeight="148.0" prefWidth="495.0" />
+            <ListView fx:id="selectedParticipants" layoutX="14.0" layoutY="319.0" opacity="0.84" prefHeight="184.0" prefWidth="505.0" />
+            <Button fx:id="right" layoutX="183.0" layoutY="270.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="46.0" rotate="90.0" text="&gt;" />
+            <Button fx:id="left" cacheShape="false" layoutX="268.0" layoutY="271.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="46.0" rotate="90.0" text="&lt;" />
+            <JFXButton fx:id="next" layoutX="264.0" layoutY="532.0" onAction="#nextPage" prefHeight="34.0" prefWidth="61.0" ripplerFill="#e83232" style="-fx-background-color: #064C88;" text="Next" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXButton>
+            <JFXButton fx:id="back" layoutX="172.0" layoutY="531.0" onAction="#back" prefHeight="34.0" prefWidth="61.0" ripplerFill="#e83232" style="-fx-background-color: #064C88;" text="Back" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="160.0" layoutY="20.0" prefHeight="40.0" prefWidth="228.0" text="Cycling Game" textFill="#900000">
+               <font>
+                  <Font name="Trebuchet MS" size="32.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="79.0" text="Select Participants">
+               <font>
+                  <Font name="Trebuchet MS" size="17.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

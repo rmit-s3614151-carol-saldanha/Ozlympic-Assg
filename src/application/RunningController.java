@@ -10,10 +10,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.Alert.AlertType;
 import rmit.java.assignment.controller.Driver;
 import rmit.java.assignment.database.ParticipantList;
 import rmit.java.assignment.model.Game;
@@ -31,8 +33,6 @@ public class RunningController implements Initializable {
 	@FXML
 	private Button right;
 
-	@FXML
-	private Label exception;
 
 	@FXML
 	private ListView<String> addParticipants;
@@ -86,6 +86,7 @@ public class RunningController implements Initializable {
     void back(ActionEvent event) throws Exception {
 		Utility utility = new Utility();
 		utility.displayUX(OzlympicController.class, "application/Ozlympic.fxml", null);
+		
     }
 
 
@@ -96,7 +97,11 @@ public class RunningController implements Initializable {
 				throw new TooFewAthleteException();
 			} catch (TooFewAthleteException e) {
 				System.out.println(e.getMessage());
-				exception.setText(e.getMessage());
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Message");
+				alert.setHeaderText("Error: To Few Athlete Exception ");
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
 
 			}
 		}
@@ -170,7 +175,7 @@ public class RunningController implements Initializable {
 
 				selectedAddParticipantList = addParticipants.getSelectionModel().getSelectedItem();
 			if (selectedAddParticipantList.equals("")) {
-				exception.setText("");
+				// Do nothing
 			} else {
 				boolean isValid = false;
 				String type = "";
@@ -185,17 +190,21 @@ public class RunningController implements Initializable {
 								throw new WrongTypeException();
 							} catch (WrongTypeException e) {
 								System.out.println(e.getMessage());
-								exception.setText(e.getMessage());
+								Alert alert = new Alert(AlertType.ERROR);
+								alert.setTitle("Error Message");
+								alert.setHeaderText("Error : Wrong Type Exception");
+								alert.setContentText(e.getMessage());
+								alert.showAndWait();
 
 							}
 
 						} else {
-							exception.setText("");
+							// Do Nothing
 							addParticipants.getItems().remove(selectedAddParticipantList);
 							if (selectedParticipants.getItems().contains(selectedAddParticipantList)) {
-								exception.setText("");
+								
 							} else {
-								exception.setText("");
+								
 								selectedParticipants.getItems().addAll(selectedAddParticipantList);
 							}
 						}
@@ -210,7 +219,11 @@ public class RunningController implements Initializable {
 						throw new GameFullException();
 					} catch (GameFullException e) {
 						System.out.println(e.getMessage());
-						exception.setText(e.getMessage());
+						Alert alert = new Alert(AlertType.WARNING);
+						alert.setTitle("Error Message");
+						alert.setHeaderText("Error : Game Full Exception");
+						alert.setContentText(e.getMessage());
+						alert.showAndWait();
 
 					}
 					isValid = true;
@@ -226,16 +239,16 @@ public class RunningController implements Initializable {
 
 				selectedParticipantList = selectedParticipants.getSelectionModel().getSelectedItem();
 			if (selectedParticipantList.equals("")) {
-				exception.setText("");
+				// Do nothing
 			} else {
 				boolean isValid = false;
 				while (!isValid) {
 
 					if (selectedParticipantList != null) {
-						exception.setText("");
+						// Do nothing
 						selectedParticipants.getItems().remove(selectedParticipantList);
 						if (addParticipants.getItems().contains(selectedParticipantList)) {
-							exception.setText("");
+							// Do nothing
 						} else {
 							addParticipants.getItems().addAll(selectedParticipantList);
 						}

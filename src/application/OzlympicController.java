@@ -67,7 +67,8 @@ public class OzlympicController {
 
     @FXML
     void clickDisplay(ActionEvent event) throws Exception {
-    	
+    	DisplayAllGames g = new DisplayAllGames();
+    	g.display();
     	utility.displayUX(DisplayAllGames.class, "application/DisplayAllGames.fxml", null);
     }
     

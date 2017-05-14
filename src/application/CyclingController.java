@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -31,9 +33,6 @@ public class CyclingController implements Initializable {
 
 	@FXML
 	private Button right;
-
-	@FXML
-	private Label exception;
 
 	@FXML
 	private ListView<String> addParticipants;
@@ -100,8 +99,12 @@ public class CyclingController implements Initializable {
 				throw new TooFewAthleteException();
 			} catch (TooFewAthleteException e) {
 				System.out.println(e.getMessage());
-				exception.setText(e.getMessage());
-
+		
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Message");
+				alert.setHeaderText("Error: To Few Athlete Exception ");
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
 			}
 		}
 
@@ -174,7 +177,7 @@ public class CyclingController implements Initializable {
 				selectedAddParticipantList = addParticipants.getSelectionModel().getSelectedItem();
 			if(selectedAddParticipantList.equals(""))
 			{
-				exception.setText("");
+				// Do nothing 
 			}
 			else
 			{
@@ -189,17 +192,21 @@ public class CyclingController implements Initializable {
 						try {
 							throw new WrongTypeException();
 							} catch (WrongTypeException e) {
-							System.out.println(e.getMessage());
-							exception.setText(e.getMessage());
+						
+							Alert alert = new Alert(AlertType.ERROR);
+							alert.setTitle("Error Message");
+							alert.setHeaderText("Error : Wrong Type Exception");
+							alert.setContentText(e.getMessage());
+							alert.showAndWait();
 
 						}
 						
 					} 
 					else {
-						exception.setText("");
+				
 						addParticipants.getItems().remove(selectedAddParticipantList);
 						if(selectedParticipants.getItems().contains(selectedAddParticipantList)){
-							exception.setText("");
+						
 						}
 						else
 						{
@@ -217,7 +224,12 @@ public class CyclingController implements Initializable {
 					throw new GameFullException();
 				} catch (GameFullException e) {
 					System.out.println(e.getMessage());
-					exception.setText(e.getMessage());
+					Alert alert = new Alert(AlertType.WARNING);
+					alert.setTitle("Error Message");
+					alert.setHeaderText("Error : Game Full Exception");
+					alert.setContentText(e.getMessage());
+					alert.showAndWait();
+
 
 				}
 				isValid = true;
@@ -234,7 +246,7 @@ public class CyclingController implements Initializable {
 			selectedParticipantList = selectedParticipants.getSelectionModel().getSelectedItem();
 			if(selectedParticipantList.equals(""))
 			{
-				exception.setText("");
+				//Do nothing
 			}
 			else
 			{
@@ -243,10 +255,10 @@ public class CyclingController implements Initializable {
 				
 					 	if(selectedParticipantList!=null)
 					 	{
-						exception.setText("");
+				
 						selectedParticipants.getItems().remove(selectedParticipantList);
 						if(addParticipants.getItems().contains(selectedParticipantList)){
-							exception.setText("");
+				
 						}
 						else
 						{
