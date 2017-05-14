@@ -66,13 +66,13 @@ public class RefereeController implements Initializable {
 	ParticipantList get = driver.getParticipantList();
 	
 	Game game = driver.getGame();
-<<<<<<< HEAD
+
 
 	@FXML
 	void back(ActionEvent event) throws Exception {
 		if (game.getCurrentGame().equals(driver.SWIMMING)){
 			Utility utility = new Utility();
-			utility.displayUX(RunningController.class, "application/Running.fxml", null);
+			utility.displayUX(SwimmingController.class, "application/Swimming.fxml", null);
 				}
 		else if (game.getCurrentGame().equals(driver.CYCLING)){
 			Utility utility = new Utility();
@@ -80,13 +80,10 @@ public class RefereeController implements Initializable {
 				}
 		else {
 			Utility utility = new Utility();
-			utility.displayUX(SwimmingController.class, "application/Swimming.fxml", null);
+			utility.displayUX(RunningController.class, "application/Running.fxml", null);
 				}
 	}
-=======
-	
-	
->>>>>>> origin/master
+
 
 	@FXML
 	void addReferee(ActionEvent event) {
@@ -143,16 +140,7 @@ public class RefereeController implements Initializable {
 		}
 
 
-		else if (game.getCurrentGame().equals(driver.RUNNING)) {
-			for (int i = 0; i < get.getOfficials().size(); i++) {
-				for (int j = 0; j < selectedReferee.getItems().size(); j++) {
-					String item = selectedReferee.getItems().get(j);
-
-					if (get.getOfficials().get(i).getUniqueID()
-							.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
-
-						game.getRunningGames().get(game.getRunningGames().size() - 1)
-								.setOfficial(get.getOfficials().get(i));
+		
 
 			
 			else if(game.getCurrentGame().equals("RUNNING")){
