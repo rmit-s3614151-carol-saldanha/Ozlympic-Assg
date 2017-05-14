@@ -68,6 +68,14 @@ public class Official extends Participants {
 		return uniqueID;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	/**
 	 * This method is used to compute and print the results of the game.
 	 * 
