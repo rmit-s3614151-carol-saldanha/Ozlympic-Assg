@@ -126,13 +126,17 @@ public class Driver {
 	/**
 	 * This method is used to display the results of all games in Ozlympics.
 	 */
+<<<<<<< HEAD
 	public ArrayList<String> displaySwimmingResults() {
+=======
+	public void displayResults() {
+>>>>>>> origin/master
 		game.displaySwimmingResults();
 		System.out.println();
 //		game.displayCyclingResults();
 //		System.out.println();
 //		game.displayRunningResults();
-		return game.displaySwimmingResults();
+		//return game.displaySwimmingResults();
 	}
 	public ArrayList<String> displayRunningResults() {
 		game.displayRunningResults();
@@ -164,6 +168,7 @@ public class Driver {
 			
 			official = swimming.getOfficial();
 			swimming.setContestants( official.computeWinners(swimming.getTimings()));
+<<<<<<< HEAD
 
 			break;
 		case CYCLING:
@@ -184,6 +189,15 @@ public class Driver {
 			}
 			official = running.getOfficial();
 			running.setContestants(official.computeWinners(running.getTimings()));
+=======
+			
+//			if (swimming.getUserPredictedWinner() != null) {
+//				if (swimming.getUserPredictedWinner().getUniqueID() == swimming.getContestants().get(0).getUniqueID()) {
+//					System.out.println("CONGRADULATIONS! YOUR PREDICTION WAS CORRECT!");
+//				}
+//			}
+//			swimming.setUserPredictedWinner(null);
+>>>>>>> origin/master
 			break;
 		default: System.out.println("Please, select a game first.");
 			;
