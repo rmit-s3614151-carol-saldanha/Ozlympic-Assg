@@ -55,7 +55,8 @@ public class Animation extends Application {
 		Random rand = new Random();
 
 		int numOfPlayers = rand.nextInt(8);
-		 Circle circle = new Circle(200); 
+		 Circle circle = new Circle(200);
+		 Circle circle1 = new Circle(200);
 		 circle.fillProperty().set(Color.ALICEBLUE);
 
 		if (numOfPlayers < 4) {
@@ -69,21 +70,38 @@ public class Animation extends Application {
 			PathTransition transition5 = new PathTransition();
 			PathTransition transition6 = new PathTransition();
 			PathTransition transition7 = new PathTransition();
-			transition.setPath(circle);
+			ArrayList<PathTransition> listT = new ArrayList<PathTransition>();
+			listT.add(transition);
+			listT.add(transition1);
+			listT.add(transition2);
+			listT.add(transition3);
+			listT.add(transition4);
+			listT.add(transition5);
+			listT.add(transition6);
+			listT.add(transition7);
+			
+			
+		//	transition.setPath(circle);
 			pane.getChildren().add(circle);
+		
 			circle.setTranslateX(200);
 			circle.setTranslateY(350);
-			
+			int j = 10; 
 			for (int i = 0; i < numOfPlayers; i++) {
 				 
-				
+				add.get(i).setLayoutX(-50+j);
+				add.get(i).setLayoutY(0);
+				j= j + 10 ;
 				pane.getChildren().add(add.get(i));
+				listT.get(i).setPath(circle);
 				
-				transition.setNode(add.get(i));
-				transition.setDuration(Duration.seconds(time.get(i)));
+				listT.get(i).setNode(add.get(i));
+				listT.get(i).setDuration(Duration.seconds(time.get(i)));
+				//transition.setDuration(Duration.seconds(time.get(i)));
+				listT.get(i).play();
 				
 			}
-			transition.play();
+			
 		}
 
 		/*

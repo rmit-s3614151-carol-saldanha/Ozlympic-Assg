@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+import java.sql.Timestamp;
+
+import rmit.java.assignment.database.FileHandler;
 import rmit.java.assignment.database.ParticipantList;
 
 /**
@@ -19,7 +22,6 @@ public class Game {
 	private ArrayList<Integer> uniqueRunningID = new ArrayList<Integer>();
 	private ArrayList<Integer> uniqueSwimmingID = new ArrayList<Integer>();
 	private ArrayList<Swimming> swimmingGames = new ArrayList<Swimming>();
-	
 
 	private ArrayList<Cycling> cyclingGames = new ArrayList<Cycling>();
 	private ArrayList<Running> runningGames = new ArrayList<Running>();
@@ -132,7 +134,6 @@ public class Game {
 	 * @return Swimming new swimming game object
 	 */
 
-
 	/**
 	 * This method is used to create a new instance of Cycling
 	 * 
@@ -167,32 +168,102 @@ public class Game {
 		return athleteCount;
 	}
 
-
+	/** 
+	 * TIMESTAMP 
+	 */
+	public Timestamp getTimeStamp() {
+		  Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	     return timestamp;
+	}
+	 
 	/**
 	 * This method is used to print the reults of swimming games
 	 * 
 	 */
+
 	public ArrayList<String> displaySwimmingResults() {
+		FileHandler s = new FileHandler();
 		ArrayList<Athlete> swimmers = null;
-		ArrayList <String> results = new ArrayList<String>();
 		HashMap<Athlete, Float> timings = null;
+		ArrayList<String> results = new ArrayList<String>();
 		int athleteCount = 0;
-		System.out.println("SWIMMING GAMES:");
+		String sID = null ;
+		String oID = null ;
+		String aID = null ;
+		float times = 0 ;
+		System.out.println("Swimming GAMES:");
 		for (Swimming swimming : swimmingGames) {
 			swimmers = swimming.getContestants();
 			timings = swimming.getTimings();
 			athleteCount = 0;
-			System.out.println("SWIMMING GAME " + swimming.getGameID());
-			for (Athlete swimmer : swimmers) {
-				//System.out.println(++athleteCount + ". " + swimmer + " Time: " + timings.get(swimmer));
-				results.add(++athleteCount + ". " + swimmer + " Time: " + timings.get(swimmer));
-			}
-			System.out.println("REFREE: " + swimming.getOfficial());
+			sID = generateUniqueSwimmingID();
 			System.out.println();
+			System.out.println("SWIMMING GAME " + sID);
+			oID = swimming.getOfficial().getUniqueID();
+			System.out.println("REFREE: " + oID);
+			System.out.println(generateUniqueSwimmingID());
+			s.writeFile(sID+","+oID+","+getTimeStamp()+"\n");
+			for (Athlete swimmer : swimmers) {
+				times  = timings.get(swimmer);
+				//System.out.println(++athleteCount + ". " + swimmers + " Time: " + timings.get(swimmers));
+				results.add(++athleteCount + ". " + swimmer + " Time: " +times);
+				aID = swimmer.getUniqueID();
+				s.writeFile(aID+","+Float.toString(times)+","+swimmer.getPoints());
+				
+			}
+			s.writeFile("\n"+"\n");
 
 		}
+		
+			
+			
+		
 		return results;
 	}
+/*
+	public ArrayList<Athlete> displaySwimmingResults() {
+		ArrayList<Athlete> swimmers = null;
+		ArrayList<String> results = new ArrayList<String>();
+		HashMap<Athlete, Float> timings = null;
+		int athleteCount = 0;
+		//System.out.println("SWIMMING GAMES:");
+		Athlete athlete = null;
+
+		for (Swimming swimming : swimmingGames  ) {
+			
+			swimmers = swimming.getContestants();
+			
+			timings = swimming.getTimings();
+			//athleteCount++;
+			
+		}
+			
+		//athleteCount = 0;
+			
+			//System.out.println("SWIMMING GAME " + swimming.getGameID());
+			
+			for (Athlete ath : swimmers) {
+				// System.out.println(++athleteCount + ". " + swimmer + " Time:
+				// " + timings.get(swimmer));
+				
+				//ath.setTime(timings.get(swimmers));
+				//results.add(++athleteCount + ". " + swimmer + " ,Time: " + timings.get(swimmer));
+				s.writeFile(ath.toString()+" "+timings.get(ath).toString()+"\n");
+				//s.writeFile();
+				athleteCount++;
+				System.out.println("ATHLETE COUNT"+athleteCount);
+			}
+			
+	//		System.out.println("REFREE: " + swimming.getOfficial());
+			System.out.println();
+		
+	
+		// Problem in Array List
+
+		
+		return swimmers;
+	}
+	*/
 
 	/**
 	 * This method is used to print the reults of running games
@@ -238,7 +309,7 @@ public class Game {
 			System.out.println();
 		}
 	}
-	
+
 	/**
 	 * This method is used to get an official randomly from the participant
 	 * list.

@@ -86,7 +86,7 @@ public class Driver {
 	/**
 	 * This method is used to display points of all the athletes in Ozlympics
 	 */
-	private void displayPoints() {
+	public void displayPoints() {
 
 		HashMap<Athlete, Integer> pointsTable = new HashMap<Athlete, Integer>();
 
@@ -126,13 +126,13 @@ public class Driver {
 	/**
 	 * This method is used to display the results of all games in Ozlympics.
 	 */
-	public ArrayList<String> displayResults() {
+	public void displayResults() {
 		game.displaySwimmingResults();
 		System.out.println();
 //		game.displayCyclingResults();
 //		System.out.println();
 //		game.displayRunningResults();
-		return game.displaySwimmingResults();
+		//return game.displaySwimmingResults();
 	}
 
 	/**
@@ -153,6 +153,7 @@ public class Driver {
 			
 			official = swimming.getOfficial();
 			swimming.setContestants( official.computeWinners(swimming.getTimings()));
+			
 //			if (swimming.getUserPredictedWinner() != null) {
 //				if (swimming.getUserPredictedWinner().getUniqueID() == swimming.getContestants().get(0).getUniqueID()) {
 //					System.out.println("CONGRADULATIONS! YOUR PREDICTION WAS CORRECT!");

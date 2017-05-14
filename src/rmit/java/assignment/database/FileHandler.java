@@ -3,8 +3,11 @@ package rmit.java.assignment.database;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import rmit.java.assignment.model.Game;
 
 public class FileHandler {
 	// File name
@@ -30,9 +33,9 @@ public class FileHandler {
 			int count = 0;
 
 			while ((readLine = b.readLine()) != null) {
-				 if( readLine.length() > 0 )  {
-					 participants.add(readLine);
-				 }
+				if (readLine.length() > 0) {
+					participants.add(readLine);
+				}
 			}
 
 		} catch (IOException e) {
@@ -45,6 +48,22 @@ public class FileHandler {
 		return this.participants;
 	}
 
+	public void writeFile(String string) {
 	
+		FileWriter writer = null;
+
+		try {
+			writer = new FileWriter("game.txt", true);
+
+			writer.write(string.toString() + "\n"
+					);
+
+			writer.close();// flushes the stream.
+
+		} catch (IOException e) {
+			System.err.println("File cannot be created, or cannot be opened");
+			System.exit(0);
+		}
+	}
 
 }

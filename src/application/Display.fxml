@@ -9,17 +9,19 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DisplayController">
    <children>
-      <AnchorPane layoutX="-8.0" layoutY="-14.0" prefHeight="590.0" prefWidth="543.0" style="-fx-background-color: #9966ff;">
+      <AnchorPane layoutX="-12.0" layoutY="-7.0" prefHeight="590.0" prefWidth="543.0" style="-fx-background-color: #9966ff;">
          <children>
-            <JFXButton fx:id="button" layoutX="231.0" layoutY="543.0" onAction="#display" text="Display" />
-            <Label fx:id="label1" layoutX="8.0" layoutY="21.0" prefHeight="52.0" prefWidth="609.0" text="label 1" />
-            <Label fx:id="label2" layoutX="12.0" layoutY="85.0" prefHeight="52.0" prefWidth="603.0" text="label 2" />
-            <Label fx:id="label3" layoutX="12.0" layoutY="146.0" prefHeight="52.0" prefWidth="603.0" text="label 3" />
-            <Label fx:id="label4" layoutX="12.0" layoutY="212.0" prefHeight="52.0" prefWidth="603.0" text="label 4" />
-            <Label fx:id="label5" layoutX="12.0" layoutY="276.0" prefHeight="52.0" prefWidth="603.0" text="label 5" />
-            <Label fx:id="label6" layoutX="12.0" layoutY="343.0" prefHeight="52.0" prefWidth="596.0" text="label 6" />
-            <Label fx:id="label7" layoutX="12.0" layoutY="406.0" prefHeight="52.0" prefWidth="603.0" text="label 7" />
-            <Label fx:id="label8" layoutX="8.0" layoutY="465.0" prefHeight="52.0" prefWidth="603.0" text="label 8" />
+            <ListView fx:id="list" layoutX="42.0" layoutY="265.0" prefHeight="211.0" prefWidth="434.0" />
+            <TableView fx:id="table" layoutX="31.0" layoutY="38.0" prefHeight="192.0" prefWidth="453.0">
+              <columns>
+                <TableColumn fx:id="tableID" prefWidth="78.0" text="ID" />
+                  <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="age" prefWidth="75.0" text="Age" />
+                  <TableColumn fx:id="state" prefWidth="75.0" text="State" />
+                  <TableColumn fx:id="type" prefWidth="75.0" text="Type" />
+                  <TableColumn fx:id="time" prefWidth="75.0" text="Time" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </children>
