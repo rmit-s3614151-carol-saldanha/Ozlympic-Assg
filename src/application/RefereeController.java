@@ -38,12 +38,15 @@ public class RefereeController implements Initializable {
 	private Button Next;
 
 	private static final int MAXIMUM_REFEREE = 1;
-
-	private String selectedAddRefereeList = "";
-
-	private String selectedRefereeList = "";
-
+	
+	private String selectedAddRefereeList="";
+	
+	private String selectedRefereeList="";
+	
 	private Swimming swimming;
+	
+	
+
 
 	// For Athletes
 	public static final ObservableList<String> athletes = FXCollections.observableArrayList();
@@ -55,13 +58,15 @@ public class RefereeController implements Initializable {
 	public static final ObservableList<String> playerList = FXCollections.observableArrayList();
 
 	public static final ObservableList<String> selected = FXCollections.observableArrayList();
+	
 
-	// private Game game;
-
+	//private Game game;
+	 
 	Driver driver = Ozlympic.driver;
 	ParticipantList get = driver.getParticipantList();
-
+	
 	Game game = driver.getGame();
+<<<<<<< HEAD
 
 	@FXML
 	void back(ActionEvent event) throws Exception {
@@ -78,19 +83,26 @@ public class RefereeController implements Initializable {
 			utility.displayUX(SwimmingController.class, "application/Swimming.fxml", null);
 				}
 	}
+=======
+	
+	
+>>>>>>> origin/master
 
 	@FXML
 	void addReferee(ActionEvent event) {
 
 		addReferee.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		System.out.println("adding referee");
-
+		
+		
 	}
+	
+	
 
 	@FXML
 	void runGame(ActionEvent event) throws Exception {
-
-		if (selectedReferee.getItems().size() + 1 == MAXIMUM_REFEREE) {
+		
+		if (selectedReferee.getItems().size()+1 == MAXIMUM_REFEREE) {
 			try {
 				throw new NoRefereeException();
 			} catch (NoRefereeException e) {
@@ -100,32 +112,36 @@ public class RefereeController implements Initializable {
 			}
 		}
 
-		else if (game.getCurrentGame().equals(driver.SWIMMING)) {
+
+		
+
+
+		else if(game.getCurrentGame().equals("SWIMMING")){
+			
 
 			for (int i = 0; i < get.getOfficials().size(); i++) {
 				for (int j = 0; j < selectedReferee.getItems().size(); j++) {
 					String item = selectedReferee.getItems().get(j);
-
+					
 					if (get.getOfficials().get(i).getUniqueID()
 							.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
-
-						game.getSwimmingGames().get(game.getSwimmingGames().size() - 1)
-								.setOfficial(get.getOfficials().get(i));
+						
+						game.getSwimmingGames().get(game.getSwimmingGames().size()-1).setOfficial(get.getOfficials().get(i));
 					}
-					// System.out.println("new referee" +
-					// game.getSwimmingGames().get(game.getSwimmingGames().size()-1).getOfficial());
-
+					//System.out.println("new referee" + game.getSwimmingGames().get(game.getSwimmingGames().size()-1).getOfficial());
+			
 				}
-
+				
 			}
 			driver.startGame();
-			driver.displaySwimmingResults();
+	//		driver.displaySwimmingResults();
 
 			driver.displayPoints();
 			Utility utility = new Utility();
 			utility.displayUX(DisplayController.class, "application/Display.fxml", null);
-
+			
 		}
+
 
 		else if (game.getCurrentGame().equals(driver.RUNNING)) {
 			for (int i = 0; i < get.getOfficials().size(); i++) {
@@ -137,100 +153,131 @@ public class RefereeController implements Initializable {
 
 						game.getRunningGames().get(game.getRunningGames().size() - 1)
 								.setOfficial(get.getOfficials().get(i));
+
+			
+			else if(game.getCurrentGame().equals("RUNNING")){
+				for (int i = 0; i < get.getOfficials().size(); i++) {
+					for (int j = 0; j < selectedReferee.getItems().size(); j++) {
+						String item = selectedReferee.getItems().get(j);
+						
+						if (get.getOfficials().get(i).getUniqueID()
+								.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
+							
+							game.getRunningGames().get(game.getRunningGames().size()-1).setOfficial(get.getOfficials().get(i));
+						}
+						//System.out.println("new referee" + game.getSwimmingGames().get(game.getSwimmingGames().size()-1).getOfficial());
+				
+
 					}
-					// System.out.println("new referee" +
-					// game.getSwimmingGames().get(game.getSwimmingGames().size()-1).getOfficial());
-
+					
 				}
+		 
+				driver.startGame();
+			//	driver.displayRunningResults();
 
-			}
-
-			driver.startGame();
-			driver.displayRunningResults();
-
-			driver.displayPoints();
-			Utility utility = new Utility();
-			utility.displayUX(DisplayController.class, "application/Display.fxml", null);
+				driver.displayPoints();
+				Utility utility = new Utility();
+				utility.displayUX(DisplayController.class, "application/Display.fxml", null);
 		}
-
-		else if (game.getCurrentGame().equals("CYCLING")) {
-			for (int i = 0; i < get.getOfficials().size(); i++) {
-				for (int j = 0; j < selectedReferee.getItems().size(); j++) {
-					String item = selectedReferee.getItems().get(j);
-
-					if (get.getOfficials().get(i).getUniqueID()
-							.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
-
-						game.getCyclingGames().get(game.getCyclingGames().size() - 1)
-								.setOfficial(get.getOfficials().get(i));
+		
+			else if(game.getCurrentGame().equals("CYCLING")){
+				for (int i = 0; i < get.getOfficials().size(); i++) {
+					for (int j = 0; j < selectedReferee.getItems().size(); j++) {
+						String item = selectedReferee.getItems().get(j);
+						
+						if (get.getOfficials().get(i).getUniqueID()
+								.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
+							
+							game.getCyclingGames().get(game.getCyclingGames().size()-1).setOfficial(get.getOfficials().get(i));
+						}
+						//System.out.println("new referee" + game.getSwimmingGames().get(game.getSwimmingGames().size()-1).getOfficial());
+				
 					}
-					// System.out.println("new referee" +
-					// game.getSwimmingGames().get(game.getSwimmingGames().size()-1).getOfficial());
-
+					
 				}
+		 
+				driver.startGame();
+			//	driver.displayCyclingResults();
 
-			}
-
-			driver.startGame();
-			driver.displayCyclingResults();
-
-			driver.displayPoints();
-			Utility utility = new Utility();
-			utility.displayUX(DisplayController.class, "application/Display.fxml", null);
+				driver.displayPoints();
+				Utility utility = new Utility();
+				utility.displayUX(DisplayController.class, "application/Display.fxml", null);
 		}
-
+		
+	
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
 		officials.clear();
-
-		for (int i = 0; i < get.getOfficials().size(); i++) {
+	
+		
+		for (int i = 0; i< get.getOfficials().size();i++) {
 			officials.add(get.getOfficials().get(i).toString());
 		}
 
 		addReferee.setItems(officials);
+		
 
 		right.setOnAction((ActionEvent event) -> {
+			
+			
 
 			addReferee.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-			System.out.println(selectedReferee.getItems().size() + 1);
-			if (addReferee.getSelectionModel().getSelectedItem() != null)
-
+			System.out.println(selectedReferee.getItems().size()+1);
+			if(addReferee.getSelectionModel().getSelectedItem()!=null)
+				
 				selectedAddRefereeList = addReferee.getSelectionModel().getSelectedItem();
-			if (selectedAddRefereeList.equals("")) {
+			if(selectedAddRefereeList.equals(""))
+			{
 				exception.setText("");
-			} else if (selectedReferee.getItems().size() + 1 == MAXIMUM_REFEREE) {
-				exception.setText("");
-				addReferee.getItems().remove(selectedAddRefereeList);
-				selectedReferee.getItems().addAll(selectedAddRefereeList);
-
 			}
+			else if(selectedReferee.getItems().size()+1 == MAXIMUM_REFEREE)
+			{
+						exception.setText("");
+						addReferee.getItems().remove(selectedAddRefereeList);
+						selectedReferee.getItems().addAll(selectedAddRefereeList);
+						
+					
+			}
+		
+			
+			
+			
+			
 
 		});
 
 		left.setOnAction((ActionEvent event) -> {
 			selectedReferee.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-			if (selectedReferee.getSelectionModel().getSelectedItem() != null)
-
-				selectedRefereeList = selectedReferee.getSelectionModel().getSelectedItem();
-			if (selectedRefereeList.equals("")) {
+			if(selectedReferee.getSelectionModel().getSelectedItem()!=null)
+				
+			selectedRefereeList = selectedReferee.getSelectionModel().getSelectedItem();
+			if(selectedRefereeList.equals(""))
+			{
 				exception.setText("");
-			} else {
-				boolean isValid = false;
-				while (!isValid) {
-
-					exception.setText("");
-					selectedReferee.getItems().remove(selectedRefereeList);
-					if (addReferee.getItems().contains(selectedRefereeList)) {
-						exception.setText("");
-					} else {
-						addReferee.getItems().addAll(selectedRefereeList);
-					}
-					isValid = true;
-				}
-
 			}
+			else
+			{
+			boolean isValid = false;
+			while (!isValid) {
+				
+					 
+						exception.setText("");
+						selectedReferee.getItems().remove(selectedRefereeList);
+						if(addReferee.getItems().contains(selectedRefereeList)){
+							exception.setText("");
+						}
+						else
+						{
+						addReferee.getItems().addAll(selectedRefereeList);
+						}
+						isValid = true;
+					}
+					
+				}
+				
 
+		
 		});
 
 	}

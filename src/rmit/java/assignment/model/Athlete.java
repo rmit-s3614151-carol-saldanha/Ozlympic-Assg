@@ -38,4 +38,8 @@ public abstract class Athlete extends Participants {
 	 * @return int will return the athletes unique ID.
 	 */
 	public abstract String getUniqueID();
+	
+	public abstract float getATime();
+	public abstract void setATime(float time);
+	
 }
