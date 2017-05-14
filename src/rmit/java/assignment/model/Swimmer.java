@@ -2,6 +2,9 @@ package rmit.java.assignment.model;
 
 import java.util.Random;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 /**
  *
  * Class Description: Class that represents swimmers. Superclass: Athlete
@@ -21,6 +24,7 @@ public class Swimmer extends Athlete {
 	private int points;
 	private String type = "Swimmers";
 	private float atime = getATime();
+	// Image image = new Image(file.toURI().toString());
 
 	/**
 	 * CONSTRUCTOR

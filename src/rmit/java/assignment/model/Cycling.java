@@ -69,6 +69,9 @@ public class Cycling extends Game {
 		}
 	}
 
+	public void setGameID(String ID) {
+		this.gameID = ID;
+	}
 	/**
 	 * This method is used to get the Cycling Games unique ID
 	 * 

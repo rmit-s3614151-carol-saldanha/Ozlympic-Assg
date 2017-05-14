@@ -35,8 +35,8 @@ public class ParticipantList {
 	private final String SUPER = "super";
 	private String id = "";
 	FileHandler getFile = new FileHandler();
-	//SQLConnection connect = new SQLConnection();
-	//Connection connection = null;
+	SQLConnection connect = new SQLConnection();
+	Connection connection = connect.createConnection();
 
 	/**
 	 * This method is used to generates unique ID
@@ -110,11 +110,19 @@ public class ParticipantList {
 	 * CONSTRUCTOR
 	 * 
 	 * creates the database of all participants
+	 * @throws SQLException 
 	 * 
 	 */
-	public ParticipantList() {
-
-
+	public ParticipantList() throws SQLException {
+		
+		
+		if (connection.isClosed()  ){
+			System.out.println("Error");
+		}
+		else {
+			addAthletesByDatabase();
+		}
+/*
 				getFile.getParticipantList();
 				int checkFormat = checkFormat();
 
@@ -123,18 +131,13 @@ public class ParticipantList {
 					addAthletesByFile();
 				}
 			
-		
+		*/
 	}
-/*
+
 	public void addAthletesByDatabase() throws SQLException {
 		// TODO Auto-generated method stub
 		try {
 
-			Class.forName("org.sqlite.JDBC");
-			// ADD DATA ON SCREEN
-			connection = DriverManager
-					.getConnection("jdbc:sqlite:/Users/MacBook_Main/Documents/workspace/Ozlympic/Ozlympic.db");
-			connection.setAutoCommit(false);
 
 			String sql = "SELECT * from participants;";
 			// create a Statement from the connection
@@ -142,11 +145,11 @@ public class ParticipantList {
 
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
-				String id = rs.getString("name");
-				String type = rs.getString("age");
-				String name = rs.getString("state");
-				String state = rs.getString("id");
-				String age = rs.getString("type");
+				String id = rs.getString("id");
+				String type = rs.getString("type");
+				String name = rs.getString("name");
+				String state = rs.getString("state");
+				String age = rs.getString("age");
 
 				if (id.equals("") || age.equals("") || state.equals("") || type.equals("") || name.equals("")) {
 					System.out.println("Error : Null value found.");
@@ -218,17 +221,13 @@ public class ParticipantList {
 
 			}
 
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-
 		} finally {
 
 			connection.close();
 
 		}
 	}
-*/
+
 	public int checkFormat() {
 		int comma = 0;
 		for (int i = 0; i < getFile.getParticipants().size(); i++) {
@@ -241,7 +240,7 @@ public class ParticipantList {
 		}
 		return comma;
 	}
-
+/*
 	public void addAthletesByFile() {
 		int len = 0;
 		String ID = "";
@@ -345,5 +344,5 @@ public class ParticipantList {
 
 		}
 
-	}
+	}*/
 }

@@ -1,5 +1,6 @@
 package rmit.java.assignment.controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import java.util.HashMap;
@@ -84,7 +85,12 @@ public class Driver {
 
 	public Driver() {
 
-		participantList = new ParticipantList();
+		try {
+			participantList = new ParticipantList();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		game = new Game();
 

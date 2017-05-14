@@ -94,6 +94,11 @@ public class Running extends Game {
 		return contestants;
 	}
 
+	
+	public void setGameID(String ID) {
+		this.gameID = ID;
+	}
+	
 	/**
 	 * This method is used to get the running Games unique ID
 	 * 

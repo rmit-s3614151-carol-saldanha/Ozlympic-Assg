@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -9,48 +11,54 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DisplayController">
+<AnchorPane prefHeight="647.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DisplayController">
    <children>
-      <AnchorPane layoutX="-8.0" layoutY="-14.0" prefHeight="590.0" prefWidth="543.0" style="-fx-background-color: #9966ff;">
+      <AnchorPane layoutX="-1.0" prefHeight="647.0" prefWidth="611.0" style="-fx-background-color: #9966ff;">
          <children>
-            <JFXButton fx:id="home" layoutX="203.0" layoutY="520.0" onAction="#homeMenu" prefHeight="41.0" prefWidth="104.0" style="-fx-background-color: #33ccff;" text="Home" textFill="WHITE">
+            <JFXButton fx:id="home" layoutX="240.0" layoutY="523.0" onAction="#homeMenu" prefHeight="41.0" prefWidth="104.0" style="-fx-background-color: #33ccff;" text="Home" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <TableView fx:id="table" layoutX="38.0" layoutY="149.0" prefHeight="338.0" prefWidth="472.0">
+            <TableView fx:id="table" layoutX="35.0" layoutY="260.0" prefHeight="241.0" prefWidth="518.0">
                <columns>
                   <TableColumn fx:id="id" prefWidth="60.0" text="id" />
                   <TableColumn fx:id="type" prefWidth="82.0" text="type" />
-                  <TableColumn fx:id="name" prefWidth="107.0" text="name" />
-                  <TableColumn fx:id="age" prefWidth="63.0" text="age" />
-                  <TableColumn fx:id="state" prefWidth="62.0" text="state" />
-                  <TableColumn fx:id="time" prefWidth="93.0" text="time" />
+                  <TableColumn fx:id="name" prefWidth="154.0" text="name" />
+                  <TableColumn fx:id="age" prefWidth="53.0" text="age" />
+                  <TableColumn fx:id="state" prefWidth="69.0" text="state" />
+                  <TableColumn fx:id="time" prefWidth="99.0" text="time" />
                </columns>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" color="#e80505" />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
             </TableView>
-            <Label fx:id="gameID" layoutX="175.0" layoutY="27.0" text="Game ID" textFill="#900000">
+            <Label fx:id="gameID" layoutX="181.0" layoutY="100.0" text="Game ID" textFill="#900000">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <ImageView fitHeight="110.0" fitWidth="126.0" layoutX="44.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="110.0" fitWidth="126.0" layoutX="47.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/scorecardIcon.png" />
                </image>
             </ImageView>
-            <Label fx:id="refereeName" layoutX="298.0" layoutY="73.0" prefHeight="18.0" prefWidth="68.0" textFill="#900000">
+            <Label fx:id="refereeName" layoutX="298.0" layoutY="158.0" prefHeight="18.0" prefWidth="75.0" textFill="#900000">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="refereeID" layoutX="175.0" layoutY="51.0" text="Referee ID" textFill="#900000">
+            <Label fx:id="refereeID" layoutX="179.0" layoutY="129.0" text="Referee ID" textFill="#900000">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="refereeID" layoutX="269.0" layoutY="51.0" />
-            <Label fx:id="gameID" layoutX="269.0" layoutY="27.0" />
-            <Label layoutX="175.0" layoutY="74.0" text="Referee Name" textFill="#900000">
+            <Label fx:id="refereeID" layoutX="271.0" layoutY="129.0" prefHeight="17.0" prefWidth="68.0" />
+            <Label fx:id="gameID" layoutX="271.0" layoutY="100.0" prefHeight="17.0" prefWidth="57.0" />
+            <Label layoutX="181.0" layoutY="159.0" text="Referee Name" textFill="#900000">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>

@@ -3,11 +3,15 @@ package rmit.java.assignment.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 
 import rmit.java.assignment.database.FileHandler;
 import rmit.java.assignment.database.ParticipantList;
+import rmit.java.assignment.database.SQLConnection;
 
 /**
  *
@@ -33,9 +37,8 @@ public class Game {
 	private static final char RUNNING_ID = 'R';
 	private static final char SWIMMING_ID = 'S';
 	private static final int OFFICIALS_COUNT = 8;
-	
-	
-
+	private SQLConnection con = new SQLConnection();
+	private Connection connection = null;
 
 	/**
 	 * CONSTRUCTOR
@@ -158,174 +161,6 @@ public class Game {
 	}
 
 	/**
-	 * TIMESTAMP
-	 */
-	public Timestamp getTimeStamp() {
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		return timestamp;
-	}
-
-	/**
-	 * This method is used to print the reults of swimming games
-	 * 
-	 */
-
-	public ArrayList<Athlete> displaySwimmingResults() {
-		FileHandler s = new FileHandler();
-		ArrayList<Athlete> swimmers = null;
-
-		ArrayList<String> swimmingResults = new ArrayList<String>();
-
-		int athleteCount = 0;
-		ArrayList<String> results = new ArrayList<String>();
-
-		String sID = null;
-		String oID = null;
-		String aID = null;
-		float times = 0;
-		System.out.println("Swimming GAMES:");
-
-		Swimming swimming = swimmingGames.get(swimmingGames.size() - 1);
-		
-		swimmers = swimming.getContestants();
-		swimmwerTimings = swimming.getTimings();
-
-
-		athleteCount = 0;
-
-		// System.out.println("SWIMMING GAME " + swimming.getGameID());
-		for (Athlete swimmer : swimmers) {
-			// System.out.println(++athleteCount + ". " + swimmer + " Time:
-			// " + timings.get(swimmer));
-			swimmer.setATime(swimmwerTimings.get(swimmer));
-			swimmingResults.add(++athleteCount + ". " + swimmer + " Time: " + swimmwerTimings.get(swimmer));
-		}
-		// System.out.println("REFREE: " + swimming.getOfficial());
-		// System.out.println();
-
-		sID = generateUniqueSwimmingID();
-		swimming.setGameID(sID);
-		System.out.println();
-		System.out.println("SWIMMING GAME " + sID);
-		oID = swimming.getOfficial().getUniqueID();
-		System.out.println("REFREE: " + oID);
-
-		s.writeFile(sID + "," + oID + "," + getTimeStamp() + "\n");
-
-		for (Athlete swimmer : swimmers) {
-			times = swimmwerTimings.get(swimmer);
-			// System.out.println(++athleteCount + ". " + swimmers + " Time:
-			// " + timings.get(swimmers));
-			results.add(++athleteCount + ". " + swimmer + " Time: " + times);
-			aID = swimmer.getUniqueID();
-			s.writeFile(aID + "," + Float.toString(times) + "," + swimmer.getPoints());
-		
-		}
-
-		s.writeFile("\n" + "\n");
-		
-		return swimmers;
-
-	}
-
-	/**
-	 * This method is used to print the reults of running games
-	 * 
-	 * @return
-	 * 
-	 */
-	public ArrayList<Athlete> displayRunningResults() {
-		FileHandler s = new FileHandler();
-		ArrayList<Athlete> sprinters = null;
-		ArrayList<String> runningResults = new ArrayList<String>();
-		
-		int athleteCount = 0;
-		String rID = null;
-		String oID = null;
-		float times = 0;
-		String aID = null;
-
-		System.out.println("RUNNING GAMES:");
-		Running running = runningGames.get(runningGames.size() - 1);
-		sprinters = running.getContestants();
-		sprinterTimings = running.getTimings();
-		athleteCount = 0;
-
-		rID = generateUniqueRunningID();
-		oID = running.getOfficial().getUniqueID();
-		System.out.println("REFREE: " + oID);
-
-		s.writeFile(rID + "," + oID + "," + getTimeStamp() + "\n");
-
-		System.out.println("RUNNING GAME ID " + running.getGameID());
-		for (Athlete sprinter : sprinters) {
-			sprinter.setATime(sprinterTimings.get(sprinter));
-			// System.out.println(++athleteCount + ". " + sprinter + " Time:
-			// " + timings.get(sprinter));
-			times = sprinterTimings.get(sprinter);
-			aID = sprinter.getUniqueID();
-			s.writeFile(aID + "," + Float.toString(times) + "," + sprinter.getPoints());
-			runningResults.add(++athleteCount + ". " + sprinter + " Time: " + sprinterTimings.get(sprinter));
-
-			System.out.println("REFREE: " + running.getOfficial());
-			System.out.println();
-
-		}
-		s.writeFile("\n" + "\n");
-
-		return sprinters;
-	}
-
-	/**
-	 * This method is used to print the reults of cycling games
-	 * 
-	 * @return
-	 * 
-	 */
-	public ArrayList<Athlete> displayCyclingResults() {
-		FileHandler s = new FileHandler();
-		ArrayList<Athlete> cyclists = null;
-		ArrayList<String> cyclingResults = new ArrayList<String>();
-		
-		int athleteCount = 0;
-		String cID = null;
-		String oID = null;
-		float times = 0;
-		String aID = null;
-
-		System.out.println("CYCLING GAMES:");
-		Cycling cycling = cyclingGames.get(cyclingGames.size() - 1);
-
-		cyclists = cycling.getContestants();
-		cyclingTimings = cycling.getTimings();
-		athleteCount = 0;
-		cID = generateUniqueCyclingID();
-		
-		System.out.println();
-		System.out.println("Cycling GAME " + cID);
-		oID = cycling.getOfficial().getUniqueID();
-		System.out.println("REFREE: " + oID);
-
-		s.writeFile(cID + "," + oID + "," + getTimeStamp() + "\n");
-
-		for (Athlete cyclist : cyclists) {
-			// System.out.println(++athleteCount + ". " + cyclist + " Time:
-			// " + timings.get(cyclist));
-			cyclist.setATime(cyclingTimings.get(cyclist));
-			times = cyclingTimings.get(cyclist);
-			aID = cyclist.getUniqueID();
-			s.writeFile(aID + "," + Float.toString(times) + "," + cyclist.getPoints());
-			cyclingResults.add(++athleteCount + ". " + cyclist + " Time: " + cyclingTimings.get(cyclist));
-		}
-		System.out.println("REFREE: " + cycling.getOfficial());
-		System.out.println();
-
-		s.writeFile("\n" + "\n");
-		
-		return cyclists;
-	}
-
-	/**
 	 * This method is used to get an official randomly from the participant
 	 * list.
 	 * 
@@ -339,8 +174,270 @@ public class Game {
 		return participantList.getOfficials().get(random);
 	}
 
+	/**
+	 * TIMESTAMP
+	 */
+	public Timestamp getTimeStamp() {
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		return timestamp;
+	}
 
+	/**
+	 * This method is used to print the reults of swimming games
+	 * 
+	 */
 
-	
+	public ArrayList<Athlete> displaySwimmingResults() {
+
+		FileHandler set = new FileHandler();
+		ArrayList<Athlete> swimmers = null;
+		ArrayList<String> results = new ArrayList<String>();
+		String sID = null;
+		String oID = null;
+		String aID = null;
+		float times = 0;
+		String insertResult = null;
+		PreparedStatement stm = null;
+
+		Swimming swimming = swimmingGames.get(swimmingGames.size() - 1);
+
+		swimmers = swimming.getContestants();
+		swimmwerTimings = swimming.getTimings();
+
+		sID = generateUniqueSwimmingID();
+		oID = swimming.getOfficial().getUniqueID();
+
+		for (Athlete swimmer : swimmers)
+			swimmer.setATime(swimmwerTimings.get(swimmer));
+
+		swimming.setGameID(sID);
+		set.writeFile(sID + "," + oID + "," + getTimeStamp() + "\n");
+
+		try {
+
+			connection = con.createConnection();
+
+			for (Athlete swimmer : swimmers) {
+
+				connection.setAutoCommit(false);
+
+				times = swimmwerTimings.get(swimmer);
+				aID = swimmer.getUniqueID();
+
+				insertResult = "INSERT INTO results VALUES ('" + sID + "','" + oID + "','" + aID + "','"
+						+ Float.toString(times) + "','" + swimmer.getPoints() + "');";
+
+				stm = connection.prepareStatement(insertResult);
+				stm.executeUpdate();
+
+				set.writeFile(aID + "," + Float.toString(times) + "," + swimmer.getPoints());
+
+			}
+			connection.commit();
+
+			set.writeFile("\n" + "\n");
+		} catch (SQLException e) {
+			if (connection != null) {
+				try {
+					connection.rollback();
+				} catch (SQLException excep) {
+				}
+			}
+			// e.printStackTrace();
+		} finally {
+			if (stm != null) {
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if (connection != null) {
+				try {
+
+					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return swimmers;
+	}
+
+	/**
+	 * This method is used to print the reults of running games
+	 * 
+	 * @return
+	 * 
+	 */
+	public ArrayList<Athlete> displayRunningResults() {
+
+		FileHandler set = new FileHandler();
+		ArrayList<Athlete> sprinters = null;
+
+		String rID = null;
+		String oID = null;
+		float times = 0;
+		String aID = null;
+		String insertResult = null;
+		PreparedStatement stm = null;
+
+		Running running = runningGames.get(runningGames.size() - 1);
+
+		sprinters = running.getContestants();
+		sprinterTimings = running.getTimings();
+
+		rID = generateUniqueRunningID();
+		oID = running.getOfficial().getUniqueID();
+		running.setGameID(rID);
+
+		set.writeFile(rID + "," + oID + "," + getTimeStamp() + "\n");
+
+		try {
+			connection = con.createConnection();
+
+			for (Athlete sprinter : sprinters) {
+
+				connection.setAutoCommit(false);
+
+				sprinter.setATime(sprinterTimings.get(sprinter));
+				times = sprinterTimings.get(sprinter);
+				aID = sprinter.getUniqueID();
+
+				set.writeFile(aID + "," + Float.toString(times) + "," + sprinter.getPoints());
+
+				insertResult = "INSERT INTO results VALUES ('" + rID + "','" + oID + "','" + aID + "','"
+						+ Float.toString(times) + "','" + sprinter.getPoints() + "');";
+
+				stm = connection.prepareStatement(insertResult);
+				stm.executeUpdate();
+
+			}
+			connection.commit();
+
+			set.writeFile("\n" + "\n");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			if (connection != null) {
+				try {
+					connection.rollback();
+				} catch (SQLException exception) {
+					System.out.println("Error : please contact admin");
+				}
+			}
+			// e.printStackTrace();
+		} finally {
+			if (stm != null) {
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if (connection != null) {
+				try {
+					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+		}
+		return sprinters;
+	}
+
+	/**
+	 * This method is used to print the reults of cycling games
+	 * 
+	 * @return
+	 * 
+	 */
+	public ArrayList<Athlete> displayCyclingResults() {
+
+		FileHandler set = new FileHandler();
+		ArrayList<Athlete> cyclists = null;
+
+		String cID = null;
+		String oID = null;
+		float times = 0;
+		String aID = null;
+		String insertResult = null;
+		PreparedStatement stm = null;
+
+		Cycling cycling = cyclingGames.get(cyclingGames.size() - 1);
+
+		cyclists = cycling.getContestants();
+		cyclingTimings = cycling.getTimings();
+
+		cID = generateUniqueCyclingID();
+		cycling.setGameID(cID);
+		oID = cycling.getOfficial().getUniqueID();
+
+		set.writeFile(cID + "," + oID + "," + getTimeStamp() + "\n");
+
+		try {
+			connection = con.createConnection();
+
+			for (Athlete cyclist : cyclists) {
+
+				connection.setAutoCommit(false);
+				cyclist.setATime(cyclingTimings.get(cyclist));
+				times = cyclingTimings.get(cyclist);
+				aID = cyclist.getUniqueID();
+
+				set.writeFile(aID + "," + Float.toString(times) + "," + cyclist.getPoints());
+				insertResult = "INSERT INTO results VALUES ('" + cID + "','" + oID + "','" + aID + "','"
+						+ Float.toString(times) + "','" + cyclist.getPoints() + "');";
+
+				stm = connection.prepareStatement(insertResult);
+				stm.executeUpdate();
+
+			}
+
+			connection.commit();
+
+			set.writeFile("\n" + "\n");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			if (connection != null) {
+				try {
+					connection.rollback();
+				} catch (SQLException excep) {
+				}
+			}
+			e.printStackTrace();
+		} finally {
+			if (stm != null) {
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if (connection != null) {
+				try {
+					connection.setAutoCommit(true);
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+
+		}
+
+		set.writeFile("\n" + "\n");
+
+		return cyclists;
+	}
 
 }
