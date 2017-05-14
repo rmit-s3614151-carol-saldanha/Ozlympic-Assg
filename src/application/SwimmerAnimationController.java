@@ -49,7 +49,7 @@ public class SwimmerAnimationController extends RefereeController implements Ini
     	
 	
     	
-    	/*
+    	
     	if(driver.displaySwimmingResults().size() == 8)
     	{
     	TranslateTransition transition1 = new TranslateTransition();
@@ -243,7 +243,7 @@ public class SwimmerAnimationController extends RefereeController implements Ini
     	ParallelTransition parallel = new ParallelTransition(transition1,transition2,transition3,transition4,transition5,transition6,transition7);
     	parallel.play();
     	}
-    	*/
+    	
 }
 
 }

@@ -136,7 +136,7 @@ public class RefereeController implements Initializable {
 
 			driver.displayPoints();
 			Utility utility = new Utility();
-			utility.displayUX(DisplayController.class, "application/Display.fxml", null);
+			utility.displayUX(SwimmerAnimationController.class, "application/SwimmingAnimation.fxml", null);
 			
 		}
 

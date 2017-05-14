@@ -24,7 +24,7 @@ public class SQLConnection {
 			try {
 				Class.forName("org.sqlite.JDBC");
 				connection = DriverManager
-						.getConnection("jdbc:sqlite:/Users/MacBook_Main/Documents/workspace/Ozlympic/Ozlympic.db");
+						.getConnection("jdbc:sqlite:/Users/carolsaldanha/Documents/workspace/AP_TWO/Ozlympic.db");
 				connection.setAutoCommit(true);
 				return connection;
 			}  catch (ClassNotFoundException e) {

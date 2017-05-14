@@ -61,16 +61,6 @@ public class DisplayPointsController extends RefereeController implements Initia
 
 	public void initialize(URL url, ResourceBundle rb) {
 
-//		if (game.getCurrentGame().equals(driver.SWIMMING)) {
-//			athletes = FXCollections.observableArrayList(driver.displaySwimmingResults());
-//		} else if (game.getCurrentGame().equals(driver.CYCLING)) {
-//			athletes = FXCollections.observableArrayList(driver.displayCyclingResults());
-//		} else if (game.getCurrentGame().equals(driver.RUNNING)) {
-//			athletes = FXCollections.observableArrayList(driver.displayRunningResults());
-//		}
-//		for (int i = 0; i < driver.displayPoints().size(); i++) {
-//			athletes.add(driver.displayPoints().get(i));
-//		}
 		
 		id.setMinWidth(100);
 		id.setCellValueFactory(new PropertyValueFactory<Athlete, String>("uniqueID"));
@@ -90,23 +80,22 @@ public class DisplayPointsController extends RefereeController implements Initia
 		points.setCellValueFactory(new PropertyValueFactory<Athlete, Float>("points"));
 		points.setSortable(false);
 		ObservableList<Athlete> list = FXCollections.observableArrayList();;
-		//table.setItems(athletes1);
 		System.out.println("adding to list "+ driver.displayPoints());
-//		for(Athlete athlete:driver.displayPoints().keySet()){
-//			list.add(athlete);
-//			System.out.println("adding to list " + athlete);
-//			}
-//			table.setItems(list);
 		System.out.println("size"+driver.displayPoints().size());
 		for(int i =0;i<driver.displayPoints().size();i++){
 		list.add(driver.displayPoints().get(i));
-
-	}	//table.setBackground();
-		System.out.println("LIST" +list);
+		
+	}	
+		
 		
 		
 		table.setItems(list);
 		points.setSortable(true);
+		
+		points.setSortType(TableColumn.SortType.DESCENDING);
+		table.getSortOrder().add(points);
+		points.setSortable(true);
+		table.sort();
 		
 		
 		//Collections.sort(l, new TalbeColumnListComparator(table.getSortOrder());
