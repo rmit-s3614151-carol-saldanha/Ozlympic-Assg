@@ -186,6 +186,7 @@ public class Game {
 		System.out.println("Swimming GAMES:");
 
 		Swimming swimming = swimmingGames.get(swimmingGames.size() - 1);
+		
 		swimmers = swimming.getContestants();
 		swimmwerTimings = swimming.getTimings();
 
@@ -203,6 +204,7 @@ public class Game {
 		// System.out.println();
 
 		sID = generateUniqueSwimmingID();
+		swimming.setGameID(sID);
 		System.out.println();
 		System.out.println("SWIMMING GAME " + sID);
 		oID = swimming.getOfficial().getUniqueID();
@@ -298,6 +300,7 @@ public class Game {
 		cyclingTimings = cycling.getTimings();
 		athleteCount = 0;
 		cID = generateUniqueCyclingID();
+		
 		System.out.println();
 		System.out.println("Cycling GAME " + cID);
 		oID = cycling.getOfficial().getUniqueID();

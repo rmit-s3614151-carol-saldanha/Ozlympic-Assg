@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
@@ -16,16 +18,43 @@
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <TableView fx:id="table" layoutX="39.0" layoutY="50.0" prefHeight="437.0" prefWidth="471.0">
+            <TableView fx:id="table" layoutX="38.0" layoutY="149.0" prefHeight="338.0" prefWidth="472.0">
                <columns>
-                  <TableColumn fx:id="name" prefWidth="75.0" text="name" />
-                  <TableColumn fx:id="age" prefWidth="75.0" text="age" />
-                  <TableColumn fx:id="state" prefWidth="75.0" text="state" />
-                  <TableColumn fx:id="id" prefWidth="75.0" text="id" />
-                  <TableColumn fx:id="type" prefWidth="75.0" text="type" />
-                  <TableColumn fx:id="time" prefWidth="75.0" text="time" />
+                  <TableColumn fx:id="id" prefWidth="60.0" text="id" />
+                  <TableColumn fx:id="type" prefWidth="82.0" text="type" />
+                  <TableColumn fx:id="name" prefWidth="107.0" text="name" />
+                  <TableColumn fx:id="age" prefWidth="63.0" text="age" />
+                  <TableColumn fx:id="state" prefWidth="62.0" text="state" />
+                  <TableColumn fx:id="time" prefWidth="93.0" text="time" />
                </columns>
             </TableView>
+            <Label fx:id="gameID" layoutX="175.0" layoutY="27.0" text="Game ID" textFill="#900000">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="110.0" fitWidth="126.0" layoutX="44.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/scorecardIcon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="refereeName" layoutX="298.0" layoutY="73.0" prefHeight="18.0" prefWidth="68.0" textFill="#900000">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="refereeID" layoutX="175.0" layoutY="51.0" text="Referee ID" textFill="#900000">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="refereeID" layoutX="269.0" layoutY="51.0" />
+            <Label fx:id="gameID" layoutX="269.0" layoutY="27.0" />
+            <Label layoutX="175.0" layoutY="74.0" text="Referee Name" textFill="#900000">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

@@ -44,6 +44,15 @@ public class DisplayController extends RefereeController implements Initializabl
 	@FXML
 	private JFXButton home;
 
+	@FXML
+	private Label refereeID;
+
+	@FXML
+	private Label gameID;
+	
+    @FXML
+    private Label refereeName;
+
 	private ObservableList<Athlete> athletes;
 
 	@FXML
@@ -59,9 +68,15 @@ public class DisplayController extends RefereeController implements Initializabl
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
-
+		refereeID.setText("");
+		
 		if (game.getCurrentGame().equals(driver.SWIMMING)) {
 			athletes = FXCollections.observableArrayList(driver.displaySwimmingResults());
+			refereeID.setText(game.getSwimmingGames().get(game.getSwimmingGames().size() - 1).getOfficial().getUniqueID()
+					.toString());
+			gameID.setText(game.getSwimmingGames().get(game.getSwimmingGames().size() -1 ).getGameID() );
+			refereeName.setText(game.getSwimmingGames().get(game.getSwimmingGames().size() - 1 ).getOfficial().getName());
+
 		} else if (game.getCurrentGame().equals(driver.CYCLING)) {
 			athletes = FXCollections.observableArrayList(driver.displayCyclingResults());
 		} else if (game.getCurrentGame().equals(driver.RUNNING)) {
