@@ -19,7 +19,8 @@
                <font>
                   <Font size="24.0" />
                </font></Label>
-            <JFXButton fx:id="next" buttonType="RAISED" layoutX="221.0" layoutY="462.0" onAction="#runGame" prefHeight="38.0" prefWidth="98.0" ripplerFill="#d80808" style="-fx-background-color: #33ccff;" text="Run Game" textFill="WHITE" />
+            <JFXButton fx:id="next" buttonType="RAISED" layoutX="143.0" layoutY="462.0" onAction="#runGame" prefHeight="38.0" prefWidth="98.0" ripplerFill="#d80808" style="-fx-background-color: #33ccff;" text="Run Game" textFill="WHITE" />
+            <JFXButton fx:id="back" buttonType="RAISED" layoutX="294.0" layoutY="462.0" onAction="#back" prefHeight="38.0" prefWidth="98.0" ripplerFill="#d80808" style="-fx-background-color: #33ccff;" text="Back" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

@@ -3,6 +3,8 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -37,7 +39,10 @@ public class CyclingController implements Initializable {
 	private ListView<String> addParticipants;
 
 	@FXML
-	private Button Next;
+	private JFXButton Next;
+	
+	@FXML
+	private JFXButton back;
 
 	private static final String TYPE_1 = "Cyclist";
 
@@ -76,6 +81,14 @@ public class CyclingController implements Initializable {
 	void addParticipants(ActionEvent event) {
 
 		addParticipants.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		
+	}
+	
+	@FXML
+	void back(ActionEvent event) throws Exception {
+
+		Utility utility = new Utility();
+		utility.displayUX(OzlympicController.class, "application/Ozlympic.fxml", null);
 		
 	}
 	
