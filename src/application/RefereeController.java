@@ -65,11 +65,11 @@ public class RefereeController implements Initializable {
 
 	@FXML
 	void back(ActionEvent event) throws Exception {
-		if (game.getCurrentGame().equals("RUNNING")){
+		if (game.getCurrentGame().equals(driver.SWIMMING)){
 			Utility utility = new Utility();
 			utility.displayUX(RunningController.class, "application/Running.fxml", null);
 				}
-		else if (game.getCurrentGame().equals("CYCLING")){
+		else if (game.getCurrentGame().equals(driver.CYCLING)){
 			Utility utility = new Utility();
 			utility.displayUX(CyclingController.class, "application/Cycling.fxml", null);
 				}
@@ -100,7 +100,7 @@ public class RefereeController implements Initializable {
 			}
 		}
 
-		else if (game.getCurrentGame().equals("SWIMMING")) {
+		else if (game.getCurrentGame().equals(driver.SWIMMING)) {
 
 			for (int i = 0; i < get.getOfficials().size(); i++) {
 				for (int j = 0; j < selectedReferee.getItems().size(); j++) {
@@ -127,7 +127,7 @@ public class RefereeController implements Initializable {
 
 		}
 
-		else if (game.getCurrentGame().equals("RUNNING")) {
+		else if (game.getCurrentGame().equals(driver.RUNNING)) {
 			for (int i = 0; i < get.getOfficials().size(); i++) {
 				for (int j = 0; j < selectedReferee.getItems().size(); j++) {
 					String item = selectedReferee.getItems().get(j);
