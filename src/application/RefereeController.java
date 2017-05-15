@@ -8,10 +8,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.Alert.AlertType;
 import rmit.java.assignment.controller.Driver;
 import rmit.java.assignment.database.ParticipantList;
 import rmit.java.assignment.model.Game;
@@ -28,8 +30,6 @@ public class RefereeController implements Initializable {
 	@FXML
 	private Button right;
 
-	@FXML
-	private Label exception;
 
 	@FXML
 	private ListView<String> addReferee;
@@ -89,7 +89,7 @@ public class RefereeController implements Initializable {
 	@FXML
 	void addReferee(ActionEvent event) {
 
-		addReferee.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		addReferee.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		System.out.println("adding referee");
 		
 		
@@ -105,7 +105,11 @@ public class RefereeController implements Initializable {
 				throw new NoRefereeException();
 			} catch (NoRefereeException e) {
 				System.out.println(e.getMessage());
-				exception.setText(e.getMessage());
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Error Message");
+				alert.setHeaderText("Error : No Match Referee Exception");
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
 
 			}
 		}
@@ -218,11 +222,11 @@ public class RefereeController implements Initializable {
 				selectedAddRefereeList = addReferee.getSelectionModel().getSelectedItem();
 			if(selectedAddRefereeList.equals(""))
 			{
-				exception.setText("");
+				// Do Nothing
 			}
 			else if(selectedReferee.getItems().size()+1 == MAXIMUM_REFEREE)
 			{
-						exception.setText("");
+						// Do Nothing
 						addReferee.getItems().remove(selectedAddRefereeList);
 						selectedReferee.getItems().addAll(selectedAddRefereeList);
 						
@@ -243,7 +247,7 @@ public class RefereeController implements Initializable {
 			selectedRefereeList = selectedReferee.getSelectionModel().getSelectedItem();
 			if(selectedRefereeList.equals(""))
 			{
-				exception.setText("");
+				// DO Nothing
 			}
 			else
 			{
@@ -251,10 +255,10 @@ public class RefereeController implements Initializable {
 			while (!isValid) {
 				
 					 
-						exception.setText("");
+				
 						selectedReferee.getItems().remove(selectedRefereeList);
 						if(addReferee.getItems().contains(selectedRefereeList)){
-							exception.setText("");
+	
 						}
 						else
 						{

@@ -72,21 +72,22 @@ public class DisplayPointsController extends RefereeController implements Initia
 //			athletes.add(driver.displayPoints().get(i));
 //		}
 		
-		id.setMinWidth(100);
+		id.setMinWidth(20);
 		id.setCellValueFactory(new PropertyValueFactory<Athlete, String>("uniqueID"));
 
-		name.setMinWidth(100);
+		name.setMinWidth(30);
 		name.setCellValueFactory(new PropertyValueFactory<Athlete, String>("name"));
 
-		age.setMinWidth(100);
+		age.setMinWidth(5);
 		age.setCellValueFactory(new PropertyValueFactory<Athlete, String>("age"));
 
-		state.setMinWidth(100);
+		state.setMinWidth(30);
 		state.setCellValueFactory(new PropertyValueFactory<Athlete, String>("state"));
 
-		type.setMinWidth(100);
+		type.setMinWidth(40);
 		type.setCellValueFactory(new PropertyValueFactory<Athlete, String>("type"));
 
+		points.setMinWidth(30);
 		points.setCellValueFactory(new PropertyValueFactory<Athlete, Float>("points"));
 		points.setSortable(false);
 		ObservableList<Athlete> list = FXCollections.observableArrayList();;
@@ -109,7 +110,7 @@ public class DisplayPointsController extends RefereeController implements Initia
 		points.setSortable(true);
 		
 		
-		//Collections.sort(l, new TalbeColumnListComparator(table.getSortOrder());
+	//	Collections.sort(l, new TalbeColumnListComparator(table.getSortOrder());
 		
 
 	}	

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
@@ -10,20 +11,30 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DisplayAllGames">
    <children>
-      <AnchorPane layoutX="-8.0" layoutY="-14.0" prefHeight="590.0" prefWidth="543.0" style="-fx-background-color: #9966ff;">
+      <AnchorPane layoutX="-8.0" layoutY="-14.0" prefHeight="590.0" prefWidth="543.0" style="-fx-background-color: #FFF;">
          <children>
-            <TableView fx:id="table" layoutX="157.0" layoutY="68.0" prefHeight="422.0" prefWidth="230.0" style="-fx-background-image: url('@images/olympics.png');">
-               <columns>
-                  <TableColumn fx:id="id" prefWidth="75.0" text="id" />    
-                  <TableColumn fx:id="time" prefWidth="75.0" text="time" />
-                  <TableColumn fx:id="points" prefWidth="75.0" text="points" />
-               </columns>
-            </TableView>
-            <JFXButton fx:id="home" layoutX="203.0" layoutY="520.0" onAction="#homeMenu" prefHeight="41.0" prefWidth="104.0" style="-fx-background-color: #33ccff;" text="Home" textFill="WHITE">
+            <JFXButton fx:id="home" layoutX="240.0" layoutY="511.0" onAction="#homeMenu" prefHeight="41.0" prefWidth="104.0" style="-fx-background-color: #33ccff;" text="Home" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
+            <ListView fx:id="list" layoutX="39.0" layoutY="121.0" prefHeight="284.0" prefWidth="461.0" style="-fx-background-color: #fff;; -fx-border-color: #fff;" />
+            <Pagination fx:id="pagination" layoutX="45.0" layoutY="433.0" prefHeight="71.0" prefWidth="181.0" />
+            <Label layoutX="39.0" layoutY="94.0" prefHeight="17.0" prefWidth="62.0" text="Athlete ID">
+               <font>
+                  <Font name="Trebuchet MS" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="102.0" layoutY="96.0" text="Time Recorded">
+               <font>
+                  <Font name="Trebuchet MS" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="189.0" layoutY="96.0" text="Points">
+               <font>
+                  <Font name="Trebuchet MS" size="10.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
