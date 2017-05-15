@@ -13,24 +13,14 @@
 
 <AnchorPane prefHeight="647.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DisplayController">
    <children>
-
       <AnchorPane layoutX="-1.0" prefHeight="647.0" prefWidth="611.0" style="-fx-background-color: #FFF;">
          <children>
             <JFXButton fx:id="home" layoutX="251.0" layoutY="566.0" onAction="#homeMenu" prefHeight="1.0" prefWidth="102.0" style="-fx-background-color: #064C88;" text="Home" textFill="WHITE">
-
-      <AnchorPane prefHeight="678.0" prefWidth="610.0" style="-fx-background-color: #ffffff;">
-         <children>
-            <JFXButton fx:id="home" layoutX="229.0" layoutY="628.0" onAction="#homeMenu" prefHeight="43.0" prefWidth="99.0" style="-fx-background-color: #064c88;" text="Home" textFill="WHITE">
-
                <font>
                   <Font size="22.0" />
                </font>
             </JFXButton>
-
-            <TableView fx:id="table" layoutX="57.0" layoutY="251.0" prefHeight="244.0" prefWidth="498.0">
-
-            <TableView fx:id="table" layoutX="40.0" layoutY="164.0" prefHeight="241.0" prefWidth="518.0">
-
+            <TableView fx:id="table" layoutX="57.0" layoutY="251.0" prefHeight="244.0" prefWidth="498.0" style="-fx-background-image: url(/'Users/MacBook_Main/Documents/workspace/Ozlympic/src/application/images/scoredcard_bg';">
                <columns>
                   <TableColumn fx:id="id" prefWidth="60.0" text="id" />
                   <TableColumn fx:id="type" prefWidth="82.0" text="type" />
@@ -46,44 +36,27 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-           <Label fx:id="gameID" layoutX="181.0" layoutY="100.0" text="Game ID:" textFill="#ff0505">
-
-            <Label fx:id="gameID" layoutX="179.0" layoutY="27.0" text="Game ID :" textFill="#171313">
-
+            <Label fx:id="gameID" layoutX="181.0" layoutY="100.0" text="Game ID:" textFill="#ff0505">
                <font>
                   <Font name="Trebuchet MS" size="17.0" />
                </font>
             </Label>
-            <ImageView fitHeight="110.0" fitWidth="126.0" layoutX="46.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="110.0" fitWidth="126.0" layoutX="47.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/scorecardIcon.png" />
                </image>
             </ImageView>
-
             <Label fx:id="refereeName" layoutX="307.0" layoutY="158.0" prefHeight="18.0" prefWidth="75.0" style="-fx-text-fill: #064C88;" textFill="#064c88">
-
-            <Label fx:id="refereeName" layoutX="279.0" layoutY="100.0" prefHeight="18.0" prefWidth="75.0" textFill="#221f1f">
-
                <font>
                   <Font name="Trebuchet MS" size="17.0" />
                </font>
             </Label>
-
             <Label fx:id="refereeID" layoutX="179.0" layoutY="129.0" text="Referee ID:" textFill="RED">
-
-            <Label fx:id="refereeID" layoutX="181.0" layoutY="66.0" text="Referee ID :" textFill="#282424">
-
                <font>
                   <Font name="Trebuchet MS" size="17.0" />
                </font>
             </Label>
-
             <Label fx:id="refereeID" layoutX="271.0" layoutY="129.0" prefHeight="17.0" prefWidth="68.0" style="-fx-text-fill: #064C88;" textFill="#064c88">
-
-            <Label fx:id="refereeID" layoutX="272.0" layoutY="66.0" prefHeight="17.0" prefWidth="68.0" />
-            <Label fx:id="gameID" layoutX="270.0" layoutY="27.0" prefHeight="17.0" prefWidth="57.0" />
-            <Label layoutX="179.0" layoutY="101.0" text="Referee Name :" textFill="#322f2f">
-
                <font>
                   <Font name="Trebuchet MS" size="17.0" />
                </font></Label>
@@ -96,7 +69,6 @@
                   <Font name="Trebuchet MS" size="17.0" />
                </font>
             </Label>
-
             <Label fx:id="gameID1" layoutX="281.0" layoutY="110.0" prefHeight="17.0" prefWidth="57.0" style="-fx-text-fill: #064C88;" textFill="#064c88">
                <font>
                   <Font name="Trebuchet MS" size="17.0" />
@@ -117,37 +89,6 @@
                   <Image url="@images/bronze.jpg" />
                </image>
             </ImageView>
-
-            <ImageView fx:id="WinnerImg" fitHeight="89.0" fitWidth="110.0" layoutX="72.0" layoutY="418.0">
-               <image>
-                  <Image url="@../../bin/application/images/winner.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="tropheeImg" fitHeight="65.0" fitWidth="110.0" layoutX="378.0" layoutY="428.0">
-               <image>
-                  <Image url="@../../bin/application/images/Trophy-Star.gif" />
-               </image>
-            </ImageView>
-            <Label fx:id="winner" layoutX="225.0" layoutY="428.0" prefHeight="37.0" prefWidth="148.0" style="-fx-font-family: Impact, Charcoal, sans-serif;" textOverrun="LEADING_WORD_ELLIPSIS">
-               <font>
-                  <Font size="30.0" />
-               </font></Label>
-            <ImageView fitHeight="136.0" fitWidth="148.0" layoutX="197.0" layoutY="484.0">
-               <image>
-                  <Image url="@../../bin/application/images/olympics.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="winner2" layoutX="94.0" layoutY="576.0" prefHeight="37.0" prefWidth="121.0" style="-fx-font-family: Impact, Charcoal, sans-serif;" textOverrun="LEADING_WORD_ELLIPSIS">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-            <Label fx:id="winner3" layoutX="333.0" layoutY="576.0" prefHeight="37.0" prefWidth="148.0" style="-fx-font-family: Impact, Charcoal, sans-serif;" textOverrun="LEADING_WORD_ELLIPSIS">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-
          </children>
       </AnchorPane>
    </children>

@@ -108,13 +108,9 @@ public class DisplayPointsController extends RefereeController implements Initia
 		
 		table.setItems(list);
 		points.setSortable(true);
-
-
-		points.setSortType(TableColumn.SortType.DESCENDING);
-		table.getSortOrder().add(points);
-		points.setSortable(true);
-		table.sort();
-
+		
+		
+	//	Collections.sort(l, new TalbeColumnListComparator(table.getSortOrder());
 		
 
 	}	
