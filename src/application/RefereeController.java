@@ -145,6 +145,7 @@ public class RefereeController implements Initializable {
 				}
 			}
 			// Start game
+			System.out.println("Official Selected....");
 			driver.startGame();
 			driver.displayPoints();
 			// Show UI Screen of display.fxml
@@ -210,7 +211,7 @@ public class RefereeController implements Initializable {
 		right.setOnAction((ActionEvent event) -> {
 
 			addReferee.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-			System.out.println(selectedReferee.getItems().size() + 1);
+		//	System.out.println(selectedReferee.getItems().size() + 1);
 			if (addReferee.getSelectionModel().getSelectedItem() != null)
 
 				selectedAddRefereeList = addReferee.getSelectionModel().getSelectedItem();

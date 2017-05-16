@@ -122,12 +122,13 @@ public class SwimmingController implements Initializable {
 	 */
 	@FXML
 	void nextPage(ActionEvent event) throws Exception {
+		
 		if (selectedParticipants.getItems().size() < MINIMUM_PARTICIPANTS) {
 			try {
 				throw new TooFewAthleteException();
 			} catch (TooFewAthleteException e) {
 				// Throw Too Few Athlete exception in Dialog box
-				System.out.println(e.getMessage());
+				//System.out.println(e.getMessage());
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error Message");
 				alert.setHeaderText("Error: To Few Athlete Exception ");
@@ -139,7 +140,7 @@ public class SwimmingController implements Initializable {
 
 			// Select Participants
 			swimming.setCurrentGame(Driver.SWIMMING);
-
+			System.out.println("current game " + swimming.getCurrentGame());
 			for (int i = 0; i < get.getSwimmers().size(); i++) {
 				for (int j = 0; j < selectedParticipants.getItems().size(); j++) {
 					String item = selectedParticipants.getItems().get(j);
@@ -165,7 +166,7 @@ public class SwimmingController implements Initializable {
 				}
 
 			}
-
+			System.out.println("Participants Selected....");
 			get1.getSwimmingGames().add(swimming);
 			Ozlympic.driver.getGame().setCurrentGame(Driver.SWIMMING);
 			Utility utility = new Utility();
@@ -175,11 +176,11 @@ public class SwimmingController implements Initializable {
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
-		System.out.println("initializing ");
+		System.out.println("Initializing.. ");
 		addParticipants.getItems().clear();
 		athletes.clear();
 		selectedParticipants.getItems().clear();
-		System.out.println(addParticipants.getItems().size());
+	
 		for (int i = 0; i < get.getSwimmers().size(); i++) {
 			athletes.add(get.getSwimmers().get(i).toString());
 		}

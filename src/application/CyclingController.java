@@ -168,12 +168,10 @@ public class CyclingController implements Initializable {
 
 			}
 			// Adds game to arrayList of games
-
+			System.out.println("Participants Selected....");
 			get1.getCyclingGames().add(cycling);
-
 			// set current game
 			Ozlympic.driver.getGame().setCurrentGame(Driver.CYCLING);
-
 			Utility utility = new Utility();
 			utility.displayUX(RefereeController.class, "application/Referee.fxml", null);
 		}
@@ -183,6 +181,7 @@ public class CyclingController implements Initializable {
 	 * It initializes all the values in the controller
 	 */
 	public void initialize(URL url, ResourceBundle rb) {
+		System.out.println("Initializing.. ");
 		athletes.clear();
 
 		for (int i = 0; i < get.getSwimmers().size(); i++) {

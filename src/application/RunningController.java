@@ -163,6 +163,7 @@ public class RunningController implements Initializable {
 				}
 
 			}
+			System.out.println("Participants Selected....");
 			// Set current game and run
 			get1.getRunningGames().add(running);
 			Ozlympic.driver.getGame().setCurrentGame(Driver.RUNNING);
@@ -176,6 +177,7 @@ public class RunningController implements Initializable {
 	 * It initializes all the values in the controller
 	 */
 	public void initialize(URL url, ResourceBundle rb) {
+		System.out.println("Initializing.. ");
 		athletes.clear();
 
 		for (int i = 0; i < get.getSwimmers().size(); i++) {
