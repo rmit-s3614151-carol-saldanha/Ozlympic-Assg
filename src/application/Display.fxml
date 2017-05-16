@@ -20,7 +20,7 @@
                   <Font name="Trebuchet MS" size="14.0" />
                </font>
             </JFXButton>
-            <TableView fx:id="table" layoutX="57.0" layoutY="194.0" prefHeight="244.0" prefWidth="498.0">
+            <TableView fx:id="table" layoutX="57.0" layoutY="194.0" prefHeight="244.0" prefWidth="498.0" style="-fx-background-image: url(/'Users/MacBook_Main/Documents/workspace/Ozlympic/src/application/images/scoredcard_bg';">
                <columns>
                   <TableColumn fx:id="id" prefWidth="60.0" text="id" />
                   <TableColumn fx:id="type" editable="false" text="type" />
