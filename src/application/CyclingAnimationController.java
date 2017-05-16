@@ -160,49 +160,49 @@ public class CyclingAnimationController extends RefereeController implements Ini
 		transition1.setPath(circle);
 		transition1.setNode(participant1);
 
-		transition1.setDuration(Duration.seconds(5));
+		transition1.setDuration(Duration.seconds(time.get(0) /40));
 
 		PathTransition transition2 = new PathTransition();
 		transition2.setPath(circle);
 		transition2.setNode(participant2);
-		transition2.setDuration(Duration.seconds(4));
+		transition2.setDuration(Duration.seconds(time.get(1) /40));
 
 		PathTransition transition3 = new PathTransition();
 		transition3.setPath(circle);
 		transition3.setNode(participant3);
-		transition3.setDuration(Duration.seconds(3));
+		transition3.setDuration(Duration.seconds(time.get(2) /40));
 
 		PathTransition transition4 = new PathTransition();
 		transition4.setPath(circle);
 		transition4.setNode(participant4);
-		transition4.setDuration(Duration.seconds(8));
+		transition4.setDuration(Duration.seconds(time.get(3) /40));
 
 		PathTransition transition5 = new PathTransition();
 		transition5.setPath(circle);
 		transition5.setNode(participant5);
-		transition5.setDuration(Duration.seconds(7));
+		transition5.setDuration(Duration.seconds(time.get(4) /40));
 
 		PathTransition transition6 = new PathTransition();
 		transition6.setPath(circle);
 		transition6.setNode(participant6);
-		transition6.setDuration(Duration.seconds(6));
+		transition6.setDuration(Duration.seconds(time.get(5) /40));
 
 		PathTransition transition7 = new PathTransition();
 		transition7.setPath(circle);
 		transition7.setNode(participant7);
-		transition7.setDuration(Duration.seconds(9));
+		transition7.setDuration(Duration.seconds(time.get(6) /40));
 
 		PathTransition transition8 = new PathTransition();
 		transition8.setPath(circle);
 		transition8.setNode(participant8);
-		transition8.setDuration(Duration.seconds(10));
+		transition1.setDuration(Duration.seconds(time.get(7) /40));
 
 		if (driver.displayCyclingResults().size() == 8) {
 
-			transition5.setDuration(Duration.seconds(time.get(4) / 60));
-			transition6.setDuration(Duration.seconds(time.get(5) / 60));
-			transition7.setDuration(Duration.seconds(time.get(6) / 60));
-			transition8.setDuration(Duration.seconds(time.get(7) / 60));
+			transition5.setDuration(Duration.seconds(time.get(4) /40));
+			transition6.setDuration(Duration.seconds(time.get(5) /40));
+			transition7.setDuration(Duration.seconds(time.get(6) /40));
+			transition8.setDuration(Duration.seconds(time.get(7) /40));
 			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4,
 					transition5, transition6, transition7, transition8);
 			parallel.play();
@@ -237,7 +237,7 @@ public class CyclingAnimationController extends RefereeController implements Ini
 			participant7.setVisible(false);
 			participant8.setVisible(false);
 
-			transition5.setDuration(Duration.seconds(time.get(4) / 60));
+			transition5.setDuration(Duration.seconds(time.get(4) /40));
 
 			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4,
 					transition5);
@@ -250,8 +250,8 @@ public class CyclingAnimationController extends RefereeController implements Ini
 			label5.setText("5) " + name.get(4));
 		} else if (driver.displayCyclingResults().size() == 6) {
 
-			transition5.setDuration(Duration.seconds(time.get(4) / 60));
-			transition6.setDuration(Duration.seconds(time.get(5) / 60));
+			transition5.setDuration(Duration.seconds(time.get(4) /40));
+			transition6.setDuration(Duration.seconds(time.get(5) /40));
 			participant7.setVisible(false);
 			participant8.setVisible(false);
 			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4,
@@ -266,9 +266,9 @@ public class CyclingAnimationController extends RefereeController implements Ini
 
 		} else {
 
-			transition5.setDuration(Duration.seconds(time.get(4) / 60));
-			transition6.setDuration(Duration.seconds(time.get(5) / 60));
-			transition7.setDuration(Duration.seconds(time.get(6) / 60));
+			transition5.setDuration(Duration.seconds(time.get(4) /40));
+			transition6.setDuration(Duration.seconds(time.get(5) /40));
+			transition7.setDuration(Duration.seconds(time.get(6) /40));
 			participant8.setVisible(false);
 			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4,
 					transition5, transition6, transition7);
