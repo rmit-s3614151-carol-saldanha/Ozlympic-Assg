@@ -150,7 +150,7 @@ public class RefereeController implements Initializable {
 			driver.displayPoints();
 			// Show UI Screen of display.fxml
 			Utility utility = new Utility();
-			utility.displayUX(DisplayController.class, "application/Display.fxml", null);
+			utility.displayUX(SwimmerAnimationController.class, "application/SwimmingAnimation.fxml", null);
 
 		} else if (game.getCurrentGame().equals("RUNNING")) {
 			for (int i = 0; i < get.getOfficials().size(); i++) {
@@ -168,7 +168,7 @@ public class RefereeController implements Initializable {
 			driver.startGame();
 			driver.displayPoints();
 			Utility utility = new Utility();
-			utility.displayUX(DisplayController.class, "application/Display.fxml", null);
+			utility.displayUX(RunningAnimationController.class, "application/RunningAnimation.fxml", null);
 		}
 
 		else if (game.getCurrentGame().equals("CYCLING")) {
@@ -189,7 +189,7 @@ public class RefereeController implements Initializable {
 			driver.startGame();
 			driver.displayPoints();
 			Utility utility = new Utility();
-			utility.displayUX(DisplayController.class, "application/Display.fxml", null);
+			utility.displayUX(CyclingAnimationController.class, "application/CyclingAnimation.fxml", null);
 		}
 
 	}
