@@ -193,7 +193,7 @@ public class Game {
 	 * 
 	 */
 	public ArrayList<Athlete> displaySwimmingResults() {
-
+		System.out.println("Displaying Swimming Results");
 		ArrayList<Athlete> swimmers = null;
 		String sID = null;
 		String oID = null;
@@ -292,6 +292,7 @@ public class Game {
 		return swimmers;
 	}
 
+	
 	/**
 	 * This class is used to store the sprinter data into file and database.
 	 * 

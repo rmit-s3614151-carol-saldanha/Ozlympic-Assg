@@ -20,7 +20,7 @@
                   <Font name="Trebuchet MS" size="14.0" />
                </font>
             </JFXButton>
-            <TableView fx:id="table" layoutX="57.0" layoutY="194.0" prefHeight="244.0" prefWidth="498.0" style="-fx-background-image: url(/'Users/MacBook_Main/Documents/workspace/Ozlympic/src/application/images/scoredcard_bg';">
+            <TableView fx:id="table" layoutX="57.0" layoutY="194.0" prefHeight="244.0" prefWidth="498.0" style="-fx-background-image: ;">
                <columns>
                   <TableColumn fx:id="id" prefWidth="60.0" text="id" />
                   <TableColumn fx:id="type" editable="false" text="type" />
@@ -48,7 +48,7 @@
             </ImageView>
             <Label fx:id="refereeName" layoutX="307.0" layoutY="105.0" prefHeight="18.0" prefWidth="75.0" style="-fx-text-fill: #064C88;" textFill="#064c88">
                <font>
-                  <Font name="Trebuchet MS" size="17.0" />
+                  <Font name="Trebuchet MS" size="15.0" />
                </font>
             </Label>
             <Label fx:id="refereeID" layoutX="179.0" layoutY="75.0" text="Referee ID:" textFill="RED">
@@ -58,7 +58,7 @@
             </Label>
             <Label fx:id="refereeID" layoutX="276.0" layoutY="75.0" prefHeight="17.0" prefWidth="68.0" style="-fx-text-fill: #064C88;" textFill="#064c88">
                <font>
-                  <Font name="Trebuchet MS" size="17.0" />
+                  <Font name="Trebuchet MS" size="15.0" />
                </font></Label>
             <Label fx:id="gameID" layoutX="268.0" layoutY="45.0" prefHeight="17.0" prefWidth="57.0" style="-fx-text-fill: #064C88;">
                <font>
@@ -71,7 +71,7 @@
             </Label>
             <Label fx:id="gameID1" layoutX="277.0" layoutY="47.0" prefHeight="17.0" prefWidth="57.0" style="-fx-text-fill: #064C88;" textFill="#064c88">
                <font>
-                  <Font name="Trebuchet MS" size="17.0" />
+                  <Font name="Trebuchet MS" size="15.0" />
                </font>
             </Label>
             <ImageView fitHeight="20.0" fitWidth="40.0" layoutX="23.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">

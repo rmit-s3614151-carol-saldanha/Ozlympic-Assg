@@ -30,6 +30,13 @@ public class FileHandler {
 
 	// Empty constructor
 	public FileHandler() {
+		try {
+			FileWriter writer = new FileWriter("game.txt");
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
