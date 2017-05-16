@@ -1,13 +1,13 @@
 package rmit.java.assignment.database;
 
+import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
-
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import rmit.java.assignment.model.Athlete;
 import rmit.java.assignment.model.Cyclist;
 import rmit.java.assignment.model.Official;
@@ -17,9 +17,10 @@ import rmit.java.assignment.model.Swimmer;
 
 /**
  *
- * Class Description: Database Class that contains data of all the participants
- * 
  * @author : Carol Benita Saldanha
+ * @version 1.0
+ * @classDescription Class Description: Database Class that contains data of all
+ *                   the participants
  */
 public class ParticipantList {
 
@@ -36,7 +37,6 @@ public class ParticipantList {
 	private String id = "";
 	FileHandler getFile = new FileHandler();
 	SQLConnection connect = new SQLConnection();
-	Connection connection = connect.createConnection();
 
 	/**
 	 * This method is used to generates unique ID
@@ -110,38 +110,29 @@ public class ParticipantList {
 	 * CONSTRUCTOR
 	 * 
 	 * creates the database of all participants
-	 * @throws SQLException 
+	 * 
+	 * @throws SQLException
 	 * 
 	 */
-	public ParticipantList() throws SQLException {
-		
-		
-		if (connection.isClosed()  ){
-			System.out.println("Error");
-		}
-		else {
-			addAthletesByDatabase();
-		}
-/*
-				getFile.getParticipantList();
-				int checkFormat = checkFormat();
+	public ParticipantList() {
 
-				if (checkFormat == 4) {
+		// Add by database at first
+		addAthletesByDatabase();
 
-					addAthletesByFile();
-				}
-			
-		*/
 	}
 
-	public void addAthletesByDatabase() throws SQLException {
+	public void addAthletesByDatabase() {
+		Connection connection = null;
 		// TODO Auto-generated method stub
 		try {
-
-
+			connection = connect.createConnection();
 			String sql = "SELECT * from participants;";
+			String sqlClear = "DELETE FROM results;";
+
 			// create a Statement from the connection
 			Statement statement = connection.createStatement();
+			Statement stmt = connection.createStatement();
+			stmt.executeUpdate(sqlClear);
 
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
@@ -154,63 +145,47 @@ public class ParticipantList {
 				if (id.equals("") || age.equals("") || state.equals("") || type.equals("") || name.equals("")) {
 					System.out.println("Error : Null value found.");
 				} else {
-					System.out.println(id);
+
 					switch (type) {
 					case SWIMMERS:
-
 						for (int j = 0; j < getSwimmers().size(); j++) {
-
 							if (getSwimmers().get(j).getUniqueID().contains(id) == true) {
-
 								getSwimmers().remove(j);
-
 							}
 						}
 
 						getSwimmers().add(new Swimmer(name, age, state, id));
 						break;
 					case CYCLIST:
-
 						for (int j = 0; j < getCyclists().size(); j++) {
-
 							if (getCyclists().get(j).getUniqueID().contains(id) == true) {
-
 								getCyclists().remove(j);
-
 							}
 						}
 						getCyclists().add(new Cyclist(name, age, state, id));
 						break;
 					case SPRINTERS:
-
 						for (int j = 0; j < getSprinters().size(); j++) {
-
 							if (getSprinters().get(j).getUniqueID().contains(id) == true) {
-
 								getSprinters().remove(j);
-
 							}
 						}
 						getSprinters().add(new Sprinter(name, age, state, id));
 						break;
 					case SUPER:
 						for (int j = 0; j < getSuperAthletes().size(); j++) {
-
 							if (getSuperAthletes().get(j).getUniqueID().contains(id) == true) {
 
 								getSuperAthletes().remove(j);
-
 							}
 						}
 						getSuperAthletes().add(new SuperAthlete(name, age, state, id));
 						break;
 					default:
 						for (int j = 0; j < getOfficials().size(); j++) {
-
 							if (getOfficials().get(j).getUniqueID().contains(id) == true) {
 
 								getOfficials().remove(j);
-
 							}
 						}
 						getOfficials().add(new Official(name, age, state, id));
@@ -221,13 +196,55 @@ public class ParticipantList {
 
 			}
 
+		} catch (ClassNotFoundException | SQLException e) {
+			// If not found try file
+			try {
+				getFile.getParticipantList();
+				addAthletesByFile();
+				int checkFormat = checkFormat();
+
+				if (checkFormat == 4) {
+
+					addAthletesByFile();
+				}
+			} catch (IOException e1) {
+
+				// Dialog box if both not working
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Message");
+				alert.setHeaderText("Error : Database exception");
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
+				System.exit(0);
+			}
+
 		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				try {
+					getFile.getParticipantList();
+					addAthletesByFile();
+					int checkFormat = checkFormat();
 
-			connection.close();
+					if (checkFormat == 4) {
 
+						addAthletesByFile();
+					}
+				} catch (IOException e1) {
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.setTitle("Error Message");
+					alert.setHeaderText("Error : Database exception");
+					alert.setContentText(e.getMessage());
+					alert.showAndWait();
+					System.exit(0);
+				}
+			}
 		}
+
 	}
 
+	// Validate file format
 	public int checkFormat() {
 		int comma = 0;
 		for (int i = 0; i < getFile.getParticipants().size(); i++) {
@@ -240,7 +257,7 @@ public class ParticipantList {
 		}
 		return comma;
 	}
-/*
+
 	public void addAthletesByFile() {
 		int len = 0;
 		String ID = "";
@@ -250,7 +267,7 @@ public class ParticipantList {
 		String state = "";
 
 		for (int i = 0; i < getFile.getParticipants().size(); i++) {
-
+			// Loop through individual records and add to athlete objects
 			getFile.getParticipants().set(i, getFile.getParticipants().get(i).replace(" ", ""));
 			len = getFile.getParticipants().get(i).indexOf(",");
 			ID = getFile.getParticipants().get(i).substring(0, len);
@@ -275,7 +292,7 @@ public class ParticipantList {
 			len = getFile.getParticipants().get(i).indexOf(",");
 			state = getFile.getParticipants().get(i);
 			getFile.getParticipants().set(i, getFile.getParticipants().get(i).replace(state + ",", ""));
-
+			// Validate data
 			if (ID.equals("") || type.equals("") || name.equals("") || age.equals("") || state.equals("")) {
 				System.out.println("Error: Incorrect Data");
 			} else {
@@ -344,5 +361,5 @@ public class ParticipantList {
 
 		}
 
-	}*/
+	}
 }

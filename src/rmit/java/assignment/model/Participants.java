@@ -1,9 +1,10 @@
 package rmit.java.assignment.model;
 /**
 *
-* Class Description: Abstract Class that represents all participants in ozlympics.
 * 
-* @author : Eashan Tilve
+* @author : Carol Benita Saldanha 
+* @version 1.0 
+* @classDescription Abstract Class that represents all participants in ozlympics.
 */
 public abstract class Participants {
 	

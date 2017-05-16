@@ -5,9 +5,11 @@ import java.util.HashMap;
 
 /**
  *
- * Class Description: Class that assigns Officials for all the games
  * 
- * @author : Carol Benita Saldanha
+ * @author : Niraj Bohra
+ * @version 1.0
+ * @superclass Participants
+ * @classDescription Class that assigns Officials for all the games
  */
 
 public class Official extends Participants {
@@ -18,8 +20,8 @@ public class Official extends Participants {
 	private static final int FIRST_PLACE = 5;
 	private static final int SECOND_PLACE = 2;
 	private static final int THIRD_PLACE = 1;
-	private String type  = "official";
-	
+	private String type = "official";
+
 	/**
 	 * CONSTRUCTOR
 	 * 
@@ -53,10 +55,8 @@ public class Official extends Participants {
 	 */
 	@Override
 	public String toString() {
-		return "name=" + name + ", age=" + age + ", state=" + state + ", uniqueID=" + uniqueID+"type="+type;
+		return "name=" + name + ", age=" + age + ", state=" + state + ", uniqueID=" + uniqueID + "type=" + type;
 	}
-
-	
 
 	/**
 	 * This method is used to get the ID of the official.
@@ -68,10 +68,20 @@ public class Official extends Participants {
 		return uniqueID;
 	}
 
+	/**
+	 * Gets the name of official
+	 * 
+	 * @return name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * sets the nae of the official
+	 * 
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -84,8 +94,7 @@ public class Official extends Participants {
 	 * @return ArrayList<Athlete> sortedTimings returns the arrayList of
 	 *         athletes in the order of their position in the race
 	 */
-	public ArrayList<Athlete> computeWinners(HashMap<Athlete, Float> timings)
-	{
+	public ArrayList<Athlete> computeWinners(HashMap<Athlete, Float> timings) {
 		float minTime;
 		final float MAX_TIME = 1000;
 		Athlete nextAthlete = null;
@@ -108,7 +117,6 @@ public class Official extends Participants {
 		printResults(sortedTimings, timings);
 		return sortedTimings;
 	}
-
 
 	/**
 	 * This method is used to print the results of the game and give points to

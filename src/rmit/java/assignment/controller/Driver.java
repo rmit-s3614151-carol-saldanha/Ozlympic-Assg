@@ -1,47 +1,43 @@
 package rmit.java.assignment.controller;
 
-import java.sql.SQLException;
+// imports 
 import java.util.ArrayList;
-
 import java.util.HashMap;
-
 import java.util.Scanner;
-
 import rmit.java.assignment.database.ParticipantList;
-
 import rmit.java.assignment.model.Athlete;
-
 import rmit.java.assignment.model.Cycling;
-
 import rmit.java.assignment.model.Game;
-
 import rmit.java.assignment.model.Official;
-
 import rmit.java.assignment.model.Running;
-
 import rmit.java.assignment.model.Swimming;
 
 /**
  *
  * 
- * 
- * Class Description: The driver class is where user interaction occurs, and it
- * 
- * uses other classes to manage the games.
- * 
- * 
- * 
- * @author : Carol Benita Saldanha
+ * @author : Niraj Bohra
+ * @version 1.0
+ * @Class Description: The driver class is where user interaction occurs, and it
+ *        uses other classes to manage the games.
  * 
  */
 
 public class Driver {
 
+	// Constants
+	private static final int OPTION_1 = 1;
+	private static final int OPTION_2 = 2;
+	private static final int OPTION_3 = 3;
+	private static final int OPTION_4 = 4;
+	private static final int OPTION_5 = 5;
+	private static final int OPTION_6 = 6;
+	// Instance variables
+	public static final String SWIMMING = "SWIMMING";
+	public static final String CYCLING = "CYCLING";
+	public static final String RUNNING = "RUNNING";
 	private Game game;
-
-	private Scanner scanInput = new Scanner(System.in);
-
 	private ParticipantList participantList;
+	private Scanner scanInput = new Scanner(System.in);
 
 	public ParticipantList getParticipantList() {
 
@@ -55,72 +51,24 @@ public class Driver {
 
 	}
 
-	private static final int OPTION_1 = 1;
-
-	private static final int OPTION_2 = 2;
-
-	private static final int OPTION_3 = 3;
-
-	private static final int OPTION_4 = 4;
-
-	private static final int OPTION_5 = 5;
-
-	private static final int OPTION_6 = 6;
-
-	public static final String SWIMMING = "SWIMMING";
-
-	public static final String CYCLING = "CYCLING";
-
-	public static final String RUNNING = "RUNNING";
-
 	/**
 	 * 
 	 * CONSTRUCTOR
 	 * 
 	 * 
 	 * 
-	 * intializes participantList, game
+	 * Intializes participantList, game
 	 * 
 	 */
 
 	public Driver() {
-
-		try {
-			participantList = new ParticipantList();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		// Create objects
+		participantList = new ParticipantList();
 		game = new Game();
 
 	}
 
-	/**
-	 * 
-	 * This method is used to display the options of the Game to the user
-	 * 
-	 */
-
-	/**
-	 * 
-	 * This method is used to display the three games to the user
-	 * 
-	 */
-
-	/**
-	 * 
-	 * This method is used to start the Ozlympics and gives six options to the
-	 * 
-	 * user. 1) Select Game 2) Predict Winner 3) Start Game 4) Display Results
-	 * 
-	 * 5) Display Points 6) Exit
-	 *
-	 * 
-	 * 
-	 * If the user enters any other input an Invalid Choice is displayed.
-	 * 
-	 */
+	// Getter and setter for game
 
 	public Game getGame() {
 
@@ -170,8 +118,6 @@ public class Driver {
 		}
 
 		int maxPoints;
-		
-		int athleteCount = 0;
 
 		Athlete nextAthlete = null;
 		for (Athlete athlete : pointsTable.keySet()) {
@@ -194,12 +140,9 @@ public class Driver {
 
 			}
 
-		
-
 			pointsTable.remove(nextAthlete);
 
 		}
-		// System.out.println("POINTS TABLE ......:"+pointsTable);
 
 		return displayList;
 
@@ -215,8 +158,6 @@ public class Driver {
 
 		return game.displaySwimmingResults();
 
-		// System.out.println();
-
 	}
 
 	public ArrayList<Athlete> displayRunningResults() {
@@ -231,17 +172,12 @@ public class Driver {
 
 		return game.displayCyclingResults();
 
-		// System.out.println();
-
 	}
 
 	/**
 	 * 
-	 * This method is used to start the current game, record the time taken by
-	 * 
-	 * the Athletes and compare the results of the game with the user
-	 * 
-	 * prediction. The user Prediction is set to null after this method.
+	 * startGame() is used to set participants and get the compete time for each
+	 * athlete and retrieve official details
 	 * 
 	 */
 
@@ -305,20 +241,6 @@ public class Driver {
 
 			running.setContestants(official.computeWinners(running.getTimings()));
 
-			// if (swimming.getUserPredictedWinner() != null) {
-
-			// if (swimming.getUserPredictedWinner().getUniqueID() ==
-			// swimming.getContestants().get(0).getUniqueID()) {
-
-			// System.out.println("CONGRADULATIONS! YOUR PREDICTION WAS
-			// CORRECT!");
-
-			// }
-
-			// }
-
-			// swimming.setUserPredictedWinner(null);
-
 			break;
 
 		default:
@@ -329,14 +251,6 @@ public class Driver {
 		}
 
 	}
-
-	/**
-	 * 
-	 * This method displays the Athlete information to the user and asks him to
-	 * 
-	 * predict the winner
-	 * 
-	 **/
 
 	/**
 	 * 
@@ -421,15 +335,5 @@ public class Driver {
 		return null;
 
 	}
-
-	/**
-	 * 
-	 * This method allows the user to select a game It creates a new game and
-	 * 
-	 * initializes the games parameters depending on the user input
-	 * 
-	 * 
-	 * 
-	 */
 
 }

@@ -1,14 +1,12 @@
 package rmit.java.assignment.model;
 
-import javafx.collections.ObservableList;
-
 /**
- *
- * Class Description: Abstract Class of athletes. 
- * Superclass: Participants
- * Subclass: Swimmer, Sprinter, SuperAthlete, Cyclist
  * 
- * @author : Eashan Tilve
+ * @author : Carol Benita Saldanha 
+ * @version 1.0
+ * @classDescription Abstract Class of athletes. 
+ * @Superclass: Participants
+ * @Subclass: Swimmer, Sprinter, SuperAthlete, Cyclist
  */
 public abstract class Athlete extends Participants {
 	/**
@@ -39,9 +37,24 @@ public abstract class Athlete extends Participants {
 	 * 
 	 * @return int will return the athletes unique ID.
 	 */
+	/**
+	 * @return uniqueID of an athlete
+	 */
 	public abstract String getUniqueID();
-	
+	/**
+	 * get time for an athlete
+	 * @return time 
+	 */
 	public abstract float getATime();
+	/**
+	 * sets time of an athlete
+	 * @param time
+	 */
 	public abstract void setATime(float time);
+	/**
+	 *  Gets an athlete name 
+	 * @return name 
+	 */
+	public abstract String getAName();
 	
 }

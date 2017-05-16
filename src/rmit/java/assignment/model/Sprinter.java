@@ -4,16 +4,21 @@ import java.util.Random;
 
 /**
  *
- * Class Description: Class that represents sprinters. Superclass: Athlete
  * 
- * @author: Eashan Tilve
+ * 
+ * @author: Carol Benita Saldanha
+ * @version 1.0
+ * @classDescription Class that represents sprinters.
+ * @Superclass: Athlete
  */
 
 public class Sprinter extends Athlete {
 
+	// Constants
 	public static final int MINIMUM_SPRINT_TIME = 10;
 	public static final int MAXIMUM_SPRINT_TIME = 20;
 
+	// Instance variables
 	private String name;
 	private String age;
 	private String state;
@@ -21,6 +26,8 @@ public class Sprinter extends Athlete {
 	private int points = 0;
 	private String type = "Sprinters";
 	private float atime = getATime();
+
+	// Getter and setters
 
 	public String getName() {
 		return name;
@@ -48,6 +55,28 @@ public class Sprinter extends Athlete {
 
 	public void setUniqueID(String uniqueID) {
 		this.uniqueID = uniqueID;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public float getAtime() {
+		return atime;
+	}
+
+	public void setAtime(float atime) {
+		this.atime = atime;
+	}
+
+	@Override
+	public float getATime() {
+		// TODO Auto-generated method stub
+		return atime;
 	}
 
 	/**
@@ -127,33 +156,17 @@ public class Sprinter extends Athlete {
 		return "name=" + name + ", age=" + age + ", state=" + state + ", uniqueID=" + uniqueID + "type=" + type;
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public float getAtime() {
-		return atime;
-	}
-
-	public void setAtime(float atime) {
-		this.atime = atime;
-	}
-
-	@Override
-	public float getATime() {
-		// TODO Auto-generated method stub
-		return atime;
-	}
-
 	@Override
 	public void setATime(float time) {
 		// TODO Auto-generated method stub
-		this.atime = time ; 
+		this.atime = time;
 
+	}
+
+	@Override
+	public String getAName() {
+		// TODO Auto-generated method stub
+		return name;
 	}
 
 }

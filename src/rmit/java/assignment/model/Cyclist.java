@@ -156,4 +156,10 @@ public class Cyclist extends Athlete {
 
 	}
 
+	@Override
+	public String getAName() {
+		// TODO Auto-generated method stub
+		return name;
+	}
+
 }

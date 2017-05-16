@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
 
 import rmit.java.assignment.database.FileHandler;
@@ -15,13 +14,15 @@ import rmit.java.assignment.database.SQLConnection;
 
 /**
  *
- * Class Description: Class that represents all games in ozlympics.
  * 
- * @author: Eashan Tilve
+ * 
+ * @author: Carol Benita Saldanha
+ * @version 1.0
+ * @classDescription Description: Class that represents all games in ozlympics
  */
 
 public class Game {
-
+	// Instance variables
 	private ArrayList<Integer> uniqueCyclingID = new ArrayList<Integer>();
 	private ArrayList<Integer> uniqueRunningID = new ArrayList<Integer>();
 	private ArrayList<Integer> uniqueSwimmingID = new ArrayList<Integer>();
@@ -33,11 +34,14 @@ public class Game {
 	HashMap<Athlete, Float> cyclingTimings = null;
 	HashMap<Athlete, Float> sprinterTimings = null;
 	private String currentGame;
+
 	private static final char CYCLING_ID = 'C';
 	private static final char RUNNING_ID = 'R';
 	private static final char SWIMMING_ID = 'S';
 	private static final int OFFICIALS_COUNT = 8;
+
 	private SQLConnection con = new SQLConnection();
+	FileHandler set = new FileHandler();
 	private Connection connection = null;
 
 	/**
@@ -183,15 +187,14 @@ public class Game {
 	}
 
 	/**
-	 * This method is used to print the reults of swimming games
+	 * This class is used to store data into file and database.
+	 * 
+	 * @return swimmers
 	 * 
 	 */
-
 	public ArrayList<Athlete> displaySwimmingResults() {
 
-		FileHandler set = new FileHandler();
 		ArrayList<Athlete> swimmers = null;
-		ArrayList<String> results = new ArrayList<String>();
 		String sID = null;
 		String oID = null;
 		String aID = null;
@@ -206,6 +209,7 @@ public class Game {
 
 		sID = generateUniqueSwimmingID();
 		oID = swimming.getOfficial().getUniqueID();
+		int count = 0;
 
 		for (Athlete swimmer : swimmers)
 			swimmer.setATime(swimmwerTimings.get(swimmer));
@@ -224,43 +228,63 @@ public class Game {
 				times = swimmwerTimings.get(swimmer);
 				aID = swimmer.getUniqueID();
 
-				insertResult = "INSERT INTO results VALUES ('" + sID + "','" + oID + "','" + aID + "','"
-						+ Float.toString(times) + "','" + swimmer.getPoints() + "');";
+				if (count == 0) {
+					set.writeFile(aID + "," + Float.toString(times) + "," + "5");
 
-				stm = connection.prepareStatement(insertResult);
-				stm.executeUpdate();
+				} else if (count == 1) {
+					set.writeFile(aID + "," + Float.toString(times) + "," + "2");
+					insertResult = "INSERT INTO results VALUES ('" + sID + "','" + oID + "','" + aID + "','"
+							+ Float.toString(times) + "','" + 2 + "');";
+				} else if (count == 2) {
+					set.writeFile(aID + "," + Float.toString(times) + "," + "1");
+					insertResult = "INSERT INTO results VALUES ('" + sID + "','" + oID + "','" + aID + "','"
+							+ Float.toString(times) + "','" + 1 + "');";
+				} else {
+					set.writeFile(aID + "," + Float.toString(times) + "," + "0");
+					insertResult = "INSERT INTO results VALUES ('" + sID + "','" + oID + "','" + aID + "','"
+							+ Float.toString(times) + "','" + 0 + "');";
+				}
 
-				set.writeFile(aID + "," + Float.toString(times) + "," + swimmer.getPoints());
+				if (connection.isClosed() == true) {
+					if (count == 0) {
+
+						insertResult = "INSERT INTO results VALUES ('" + sID + "','" + oID + "','" + aID + "','"
+								+ Float.toString(times) + "','" + 5 + "');";
+					} else if (count == 1) {
+
+						insertResult = "INSERT INTO results VALUES ('" + sID + "','" + oID + "','" + aID + "','"
+								+ Float.toString(times) + "','" + 2 + "');";
+					} else if (count == 2) {
+
+						insertResult = "INSERT INTO results VALUES ('" + sID + "','" + oID + "','" + aID + "','"
+								+ Float.toString(times) + "','" + 1 + "');";
+					} else {
+
+						insertResult = "INSERT INTO results VALUES ('" + sID + "','" + oID + "','" + aID + "','"
+								+ Float.toString(times) + "','" + 0 + "');";
+					}
+
+					stm = connection.prepareStatement(insertResult);
+					stm.executeUpdate();
+
+				}
+
+				count++;
 
 			}
 			connection.commit();
 
 			set.writeFile("\n" + "\n");
-		} catch (SQLException e) {
-			if (connection != null) {
-				try {
-					connection.rollback();
-				} catch (SQLException excep) {
-				}
-			}
-			// e.printStackTrace();
+		} catch (SQLException | ClassNotFoundException e) {
+			System.err.println("Error occured : class not found");
+
 		} finally {
 			if (stm != null) {
 				try {
 					stm.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (connection != null) {
-				try {
 
-					connection.setAutoCommit(true);
-					connection.close();
-				} catch (SQLException e) {
-
-					e.printStackTrace();
+					System.err.println("Error : Exception occured");
 				}
 			}
 		}
@@ -269,14 +293,13 @@ public class Game {
 	}
 
 	/**
-	 * This method is used to print the reults of running games
+	 * This class is used to store the sprinter data into file and database.
 	 * 
-	 * @return
+	 * @return sprinters
 	 * 
 	 */
 	public ArrayList<Athlete> displayRunningResults() {
 
-		FileHandler set = new FileHandler();
 		ArrayList<Athlete> sprinters = null;
 
 		String rID = null;
@@ -294,6 +317,7 @@ public class Game {
 		rID = generateUniqueRunningID();
 		oID = running.getOfficial().getUniqueID();
 		running.setGameID(rID);
+		int count = 0;
 
 		set.writeFile(rID + "," + oID + "," + getTimeStamp() + "\n");
 
@@ -308,60 +332,72 @@ public class Game {
 				times = sprinterTimings.get(sprinter);
 				aID = sprinter.getUniqueID();
 
-				set.writeFile(aID + "," + Float.toString(times) + "," + sprinter.getPoints());
+				if (count == 0) {
+					set.writeFile(aID + "," + Float.toString(times) + "," + 5);
 
-				insertResult = "INSERT INTO results VALUES ('" + rID + "','" + oID + "','" + aID + "','"
-						+ Float.toString(times) + "','" + sprinter.getPoints() + "');";
+				} else if (count == 1) {
+					set.writeFile(aID + "," + Float.toString(times) + "," + 2);
 
-				stm = connection.prepareStatement(insertResult);
-				stm.executeUpdate();
+				} else if (count == 2) {
+					set.writeFile(aID + "," + Float.toString(times) + "," + 1);
+
+				} else {
+					set.writeFile(aID + "," + Float.toString(times) + "," + 0);
+
+				}
+				// If connection is closed then
+				if (connection.isClosed() == true) {
+					if (count == 0) {
+
+						insertResult = "INSERT INTO results VALUES ('" + rID + "','" + oID + "','" + aID + "','"
+								+ Float.toString(times) + "','" + 5 + "');";
+					} else if (count == 1) {
+
+						insertResult = "INSERT INTO results VALUES ('" + rID + "','" + oID + "','" + aID + "','"
+								+ Float.toString(times) + "','" + 2 + "');";
+					} else if (count == 2) {
+
+						insertResult = "INSERT INTO results VALUES ('" + rID + "','" + oID + "','" + aID + "','"
+								+ Float.toString(times) + "','" + 1 + "');";
+					} else {
+
+						insertResult = "INSERT INTO results VALUES ('" + rID + "','" + oID + "','" + aID + "','"
+								+ Float.toString(times) + "','" + 0 + "');";
+					}
+
+					stm = connection.prepareStatement(insertResult);
+					stm.executeUpdate();
+				}
+				count++;
 
 			}
 			connection.commit();
 
 			set.writeFile("\n" + "\n");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			if (connection != null) {
-				try {
-					connection.rollback();
-				} catch (SQLException exception) {
-					System.out.println("Error : please contact admin");
-				}
-			}
-			// e.printStackTrace();
+
+		} catch (SQLException | ClassNotFoundException e) {
+			System.err.println("Error : Exception occured");
 		} finally {
 			if (stm != null) {
 				try {
 					stm.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println("Error : Exception occured");
 				}
 			}
-			if (connection != null) {
-				try {
-					connection.setAutoCommit(true);
-					connection.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 
-			}
 		}
 		return sprinters;
 	}
 
 	/**
-	 * This method is used to print the reults of cycling games
+	 * This method is used to stores the reults of cycling games
 	 * 
-	 * @return
+	 * @return cyclists
 	 * 
 	 */
 	public ArrayList<Athlete> displayCyclingResults() {
 
-		FileHandler set = new FileHandler();
 		ArrayList<Athlete> cyclists = null;
 
 		String cID = null;
@@ -379,6 +415,7 @@ public class Game {
 		cID = generateUniqueCyclingID();
 		cycling.setGameID(cID);
 		oID = cycling.getOfficial().getUniqueID();
+		int count = 0;
 
 		set.writeFile(cID + "," + oID + "," + getTimeStamp() + "\n");
 
@@ -392,47 +429,59 @@ public class Game {
 				times = cyclingTimings.get(cyclist);
 				aID = cyclist.getUniqueID();
 
-				set.writeFile(aID + "," + Float.toString(times) + "," + cyclist.getPoints());
-				insertResult = "INSERT INTO results VALUES ('" + cID + "','" + oID + "','" + aID + "','"
-						+ Float.toString(times) + "','" + cyclist.getPoints() + "');";
+				if (count == 0) {
+					set.writeFile(aID + "," + Float.toString(times) + "," + 5);
 
-				stm = connection.prepareStatement(insertResult);
-				stm.executeUpdate();
+				} else if (count == 1) {
+					set.writeFile(aID + "," + Float.toString(times) + "," + 2);
+
+				} else if (count == 2) {
+					set.writeFile(aID + "," + Float.toString(times) + "," + 1);
+
+				} else {
+					set.writeFile(aID + "," + Float.toString(times) + "," + 0);
+				}
+
+				if (connection.isClosed() == true) {
+					if (count == 0) {
+
+						insertResult = "INSERT INTO results VALUES ('" + cID + "','" + oID + "','" + aID + "','"
+								+ Float.toString(times) + "','" + 5 + "');";
+					} else if (count == 1) {
+
+						insertResult = "INSERT INTO results VALUES ('" + cID + "','" + oID + "','" + aID + "','"
+								+ Float.toString(times) + "','" + 2 + "');";
+					} else if (count == 2) {
+
+						insertResult = "INSERT INTO results VALUES ('" + cID + "','" + oID + "','" + aID + "','"
+								+ Float.toString(times) + "','" + 1 + "');";
+					} else {
+
+						insertResult = "INSERT INTO results VALUES ('" + cID + "','" + oID + "','" + aID + "','"
+								+ Float.toString(times) + "','" + 0 + "');";
+					}
+
+					stm = connection.prepareStatement(insertResult);
+					stm.executeUpdate();
+				}
+				count++;
 
 			}
 
 			connection.commit();
 
 			set.writeFile("\n" + "\n");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			if (connection != null) {
-				try {
-					connection.rollback();
-				} catch (SQLException excep) {
-				}
-			}
-			e.printStackTrace();
+		} catch (SQLException | ClassNotFoundException e) {
+			System.err.println("Error : Exception has occured.");
 		} finally {
 			if (stm != null) {
 				try {
 					stm.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+
+					System.out.println("Exception has occured");
 				}
 			}
-			if (connection != null) {
-				try {
-					connection.setAutoCommit(true);
-					connection.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-			}
-
 		}
 
 		set.writeFile("\n" + "\n");

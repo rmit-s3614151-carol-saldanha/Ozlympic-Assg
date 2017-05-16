@@ -1,80 +1,106 @@
 package application;
 
-import java.io.IOException;
-
+// import 
 import com.jfoenix.controls.JFXButton;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
+
+/**
+ * 
+ * @author Carol Benita Saldanha
+ * @version 1.0
+ * @classDescription It displays the main page of the UI from which all the
+ *                   other functions are available.
+ *
+ */
 public class OzlympicController {
+
+	// Private instance variables for the FXML files.
 
 	@FXML
 	private JFXButton running;
 
-    @FXML
-    private Text displayText;
+	@FXML
+	private Text displayText;
 
-    @FXML
-    private Button displayGames;
+	@FXML
+	private Button displayGames;
 
-    @FXML
-    private Text welcomeText;
+	@FXML
+	private Text welcomeText;
 
-    @FXML
-    private Button cycling;
+	@FXML
+	private Button cycling;
 
-    @FXML
-    private Button displayAthletePoints;
-    
-    private static boolean isDBConnect = false;		
-    Utility utility = new Utility();
-    
-    public static boolean isDBConnectSuccessful()
-	{
-		return isDBConnect;
+	@FXML
+	private Button displayAthletePoints;
+
+	// Create object of Utility
+
+	Utility utility = new Utility();
+
+	/**
+	 * 
+	 * @param event
+	 * @throws Exception
+	 *             clickRunning(event) is an event that runs UI for selecting
+	 *             participants for running
+	 */
+	@FXML
+	void clickRunning(ActionEvent event) throws Exception {
+		utility.displayUX(RunningController.class, "application/Running.fxml", null);
 	}
 
-        
+	/**
+	 * 
+	 * @param event
+	 * @throws Exception
+	 *             clickCycling(event) is an event that runs UI for selecting
+	 *             participants for cycling
+	 */
+	@FXML
+	void clickCycling(ActionEvent event) throws Exception {
+		utility.displayUX(CyclingController.class, "application/Cycling.fxml", null);
+	}
 
+	/**
+	 * 
+	 * @param event
+	 * @throws Exception
+	 *             clickSwimming(event) is an event that runs UI for selecting
+	 *             participants for swimming
+	 */
+	@FXML
+	void clickSwimming(ActionEvent event) throws Exception {
+		utility.displayUX(SwimmingController.class, "application/Swimming.fxml", null);
+	}
 
-    @FXML
-    void clickRunning(ActionEvent event) throws Exception {
+	/**
+	 * 
+	 * @param event
+	 * @throws Exception
+	 *             clickDisplay(event) is an event that runs UI for displaying
+	 *             all games
+	 */
+	@FXML
+	void clickDisplay(ActionEvent event) throws Exception {
 
-//    		Stage primaryStage = new Stage();
-//    		primaryStage.hide();
-    		utility.displayUX(RunningController.class, "application/Running.fxml", null);
-			//Parent root = FXMLLoader.load(getClass().getResource("/application/Running.fxml"));
-	
-	
-    }
+		utility.displayUX(DisplayAllGames.class, "application/DisplayAllGames.fxml", null);
+	}
 
-    @FXML
-    void clickCycling(ActionEvent event) throws Exception {
-    	utility.displayUX(CyclingController.class, "application/Cycling.fxml", null);
-    }
-
-    @FXML
-    void clickSwimming(ActionEvent event) throws Exception {
-    	utility.displayUX(SwimmingController.class, "application/Swimming.fxml", null);
-    }
-
-    @FXML
-    void clickDisplay(ActionEvent event) throws Exception {
-    
-    	utility.displayUX(DisplayAllGames.class, "application/DisplayAllGames.fxml", null);
-    }
-    
-    
-    @FXML
-    void displayAllAthletePoints(ActionEvent event) throws Exception {
-    	utility.displayUX(DisplayPointsController.class, "application/DisplayAthletePoints.fxml", null);
-    }
+	/**
+	 * 
+	 * @param event
+	 * @throws Exception
+	 *             displayAllAthletePoints(event)is an event that runs UI for
+	 *             displaying all athlete points
+	 */
+	@FXML
+	void displayAllAthletePoints(ActionEvent event) throws Exception {
+		utility.displayUX(DisplayPointsController.class, "application/DisplayAthletePoints.fxml", null);
+	}
 
 }
