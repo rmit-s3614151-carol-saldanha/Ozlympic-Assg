@@ -122,7 +122,10 @@ public class Game {
 	private String generateUniqueCyclingID() {
 		int maxUniqueID = Collections.max(uniqueCyclingID) + 1;
 		uniqueCyclingID.add(maxUniqueID);
-		return CYCLING_ID + Integer.toString(maxUniqueID);
+		if (maxUniqueID < 10)
+			return CYCLING_ID + "0" + Integer.toString(maxUniqueID);
+		else
+			return CYCLING_ID + Integer.toString(maxUniqueID);
 
 	}
 
@@ -134,7 +137,10 @@ public class Game {
 	private String generateUniqueRunningID() {
 		int maxUniqueID = Collections.max(uniqueRunningID) + 1;
 		uniqueRunningID.add(maxUniqueID);
-		return RUNNING_ID + Integer.toString(maxUniqueID);
+		if (maxUniqueID < 10)
+			return RUNNING_ID + "0" + Integer.toString(maxUniqueID);
+		else
+			return RUNNING_ID + Integer.toString(maxUniqueID);
 
 	}
 
@@ -146,7 +152,10 @@ public class Game {
 	private String generateUniqueSwimmingID() {
 		int maxUniqueID = Collections.max(uniqueSwimmingID) + 1;
 		uniqueSwimmingID.add(maxUniqueID);
-		return SWIMMING_ID + Integer.toString(maxUniqueID);
+		if (maxUniqueID < 10)
+			return SWIMMING_ID + "0" + Integer.toString(maxUniqueID);
+		else
+			return SWIMMING_ID + Integer.toString(maxUniqueID);
 
 	}
 
