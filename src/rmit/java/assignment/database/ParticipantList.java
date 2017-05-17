@@ -267,6 +267,7 @@ public class ParticipantList {
 		String state = "";
 
 		for (int i = 0; i < getFile.getParticipants().size(); i++) {
+
 			// Loop through individual records and add to athlete objects
 			getFile.getParticipants().set(i, getFile.getParticipants().get(i).replace(" ", ""));
 			len = getFile.getParticipants().get(i).indexOf(",");
