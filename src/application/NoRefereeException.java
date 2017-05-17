@@ -9,6 +9,7 @@ package application;
  *                   official is not assigned
  *
  */
+@SuppressWarnings("serial")
 public class NoRefereeException extends Exception {
 	// Empty constructor with custom message
 	public NoRefereeException() {

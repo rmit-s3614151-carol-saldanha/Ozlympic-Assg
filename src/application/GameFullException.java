@@ -9,6 +9,7 @@ package application;
  *                   number of athletes are 8.
  *
  */
+@SuppressWarnings("serial")
 public class GameFullException extends Exception {
 	// Empty constructor with custom message
 	public GameFullException() {

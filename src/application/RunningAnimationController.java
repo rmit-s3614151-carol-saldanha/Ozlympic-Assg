@@ -13,28 +13,37 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
+import rmit.java.assignment.controller.Driver;
+import rmit.java.assignment.model.Athlete;
+import rmit.java.assignment.model.Game;
+import rmit.java.assignment.model.Running;
 
 /**
-*
-* 
-* @author : Niraj Bohra
-* @version : 1
-* Class Description: The RunningAnimation class is where the animation for swimming takes place. 
-* The UI elements are linked via RunningAnimation.fxml 
-* 
-* 
-* 
-* 
-*/
+ *
+ * 
+ * @author : Niraj Bohra
+ * @version : 1 Class Description: The RunningAnimation class is where the
+ *          animation for swimming takes place. The UI elements are linked via
+ *          RunningAnimation.fxml
+ * 
+ * 
+ * 
+ * 
+ */
 
-public class RunningAnimationController extends RefereeController implements Initializable {
+public class RunningAnimationController implements Initializable {
 
+	private final int FOUR = 4;
+	private final int FIVE = 5;
+	private final int SIX = 6;
+	private final int EIGHT = 8;
 	/**
 	 * 
-	 * These are the FXML variables that are set in SwimmingAnimation.fxml and linked to this controller.
+	 * These are the FXML variables that are set in SwimmingAnimation.fxml and
+	 * linked to this controller.
 	 * 
 	 */
-	
+
 	@FXML
 	private ImageView participant2;
 
@@ -66,35 +75,39 @@ public class RunningAnimationController extends RefereeController implements Ini
 	private ImageView participant3;
 
 	@FXML
-	private Label label1;
+	private Label playerOne;
 
 	@FXML
-	private Label label2;
+	private Label playerTwo;
 
 	@FXML
-	private Label label3;
+	private Label playerThree;
 
 	@FXML
-	private Label label4;
+	private Label playerFour;
 
 	@FXML
-	private Label label5;
+	private Label playerFive;
 
 	@FXML
-	private Label label6;
+	private Label playerSix;
 
 	@FXML
-	private Label label7;
+	private Label playerSeven;
 
 	@FXML
-	private Label label8;
+	private Label playerEight;
+
+	private ArrayList<Label> names = new ArrayList<Label>();
 
 	@FXML
 	private JFXButton displayResultsPage;
-	
+
 	/**
 	 * 
-	 * This method is an Action event that takes place when the View Results button is clicked. The DisplayController class for Running is invoked next.
+	 * This method is an Action event that takes place when the View Results
+	 * button is clicked. The DisplayController class for Running is invoked
+	 * next.
 	 * 
 	 */
 
@@ -104,39 +117,50 @@ public class RunningAnimationController extends RefereeController implements Ini
 		utility.displayUX(DisplayController.class, "application/Display.fxml", null);
 
 	}
-	
+
 	/**
 	 * 
-	 * This method is where all the initialization for the controller takes place.
+	 * This method is where all the initialization for the controller takes
+	 * place.
 	 * 
 	 */
 
 	public void initialize(URL url, ResourceBundle rb) {
-		
+
 		/**
 		 * 
-		 * time and name are two Array Lists that are created which fetch the time and name of all the players.
+		 * time and name are two Array Lists that are created which fetch the
+		 * time and name of all the players.
 		 * 
 		 */
 		ArrayList<Float> time = new ArrayList<Float>();
 		ArrayList<String> name = new ArrayList<String>();
 
-		for (int i = 0; i < driver.displayRunningResults().size(); i++) {
-			
-			time.add(driver.displayRunningResults().get(i).getATime());
+		Game game = Ozlympic.driver.getGame();
+		game.setCurrentGame(Driver.RUNNING);
+		int size = game.getRunningGames().get(game.getRunningGames().size() - 1).getContestants().size();
 
+		for (int i = 0; i < game.getRunningGames().size(); i++) {
+			ArrayList<Running> games = Ozlympic.driver.getGame().getRunningGames();
+			Running gameRunning = games.get(games.size() - 1);
+			for (Athlete athlete : gameRunning.getTimings().keySet()) {
+				time.add(gameRunning.getTimings().get(athlete));
+				System.out.println(time);
+
+			}
 		}
-		for (int i = 0; i < driver.displayRunningResults().size(); i++) {
-			
-			String result = driver.displayRunningResults().get(i).toString();
-			System.out.println(result);
-			name.add(result.substring(result.indexOf("name=") + 5, result.indexOf(",")));
+
+		for (Athlete athlete : game.getRunningGames().get(game.getRunningGames().size() - 1).getContestants()) {
+
+			name.add(athlete.getAName());
 
 		}
 		/**
 		 * 
-		 * This method is used to create a circular parallel transition for Running Animation and then play all these animations.These
-		 * animations will vary depending on the number of participants that the user will chose.
+		 * This method is used to create a circular parallel transition for
+		 * Running Animation and then play all these animations.These animations
+		 * will vary depending on the number of participants that the user will
+		 * chose.
 		 * 
 		 */
 
@@ -157,134 +181,64 @@ public class RunningAnimationController extends RefereeController implements Ini
 		circle.setCursor(participant1.getCursor());
 
 		PathTransition transition1 = new PathTransition();
-		transition1.setPath(circle);
-		transition1.setNode(participant1);
-
-		transition1.setDuration(Duration.seconds(5));
-
 		PathTransition transition2 = new PathTransition();
-		transition2.setPath(circle);
-		transition2.setNode(participant2);
-		transition2.setDuration(Duration.seconds(4));
-
 		PathTransition transition3 = new PathTransition();
-		transition3.setPath(circle);
-		transition3.setNode(participant3);
-		transition3.setDuration(Duration.seconds(3));
-
 		PathTransition transition4 = new PathTransition();
-		transition4.setPath(circle);
-		transition4.setNode(participant4);
-		transition4.setDuration(Duration.seconds(8));
-
 		PathTransition transition5 = new PathTransition();
-		transition5.setPath(circle);
-		transition5.setNode(participant5);
-		transition5.setDuration(Duration.seconds(7));
-
 		PathTransition transition6 = new PathTransition();
-		transition6.setPath(circle);
-		transition6.setNode(participant6);
-		transition6.setDuration(Duration.seconds(6));
-
 		PathTransition transition7 = new PathTransition();
-		transition7.setPath(circle);
-		transition7.setNode(participant7);
-		transition7.setDuration(Duration.seconds(9));
-
 		PathTransition transition8 = new PathTransition();
-		transition8.setPath(circle);
-		transition8.setNode(participant8);
-		transition8.setDuration(Duration.seconds(10));
 
-		if (driver.displayRunningResults().size() == 8) {
+		ArrayList<PathTransition> transitions = new ArrayList<PathTransition>();
+		transitions.add(transition1);
+		transitions.add(transition2);
+		transitions.add(transition3);
+		transitions.add(transition4);
+		transitions.add(transition5);
+		transitions.add(transition6);
+		transitions.add(transition7);
+		transitions.add(transition8);
 
-			transition5.setDuration(Duration.seconds(time.get(4)));
-			transition6.setDuration(Duration.seconds(time.get(5)));
-			transition7.setDuration(Duration.seconds(time.get(6)));
-			transition8.setDuration(Duration.seconds(time.get(7)));
-			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4,
-					transition5, transition6, transition7, transition8);
-			parallel.play();
-			label1.setText("1) " + name.get(0));
-			label2.setText("2) " + name.get(1));
-			label3.setText("3) " + name.get(2));
-			label4.setText("4) " + name.get(3));
-			label5.setText("5) " + name.get(4));
-			label6.setText("6) " + name.get(5));
-			label7.setText("7) " + name.get(6));
-			label8.setText("8) " + name.get(7));
-		}
+		createArrayListOfLabels();
+		ArrayList<ImageView> images = createArrayListOfImages();
+		ParallelTransition parallel = new ParallelTransition();
 
-		else if (driver.displayRunningResults().size() == 4) {
-
-			participant5.setVisible(false);
-			participant6.setVisible(false);
-			participant7.setVisible(false);
-			participant8.setVisible(false);
-
-			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4);
-			parallel.play();
-
-			label1.setText("1) " + name.get(0));
-			label2.setText("2) " + name.get(1));
-			label3.setText("3) " + name.get(2));
-			label4.setText("4) " + name.get(3));
-
-			if (!parallel.getStatus().equals("RUNNING")) {
-				displayResultsPage.setVisible(true);
-			}
-		} else if (driver.displayRunningResults().size() == 5) {
-
-			participant6.setVisible(false);
-			participant7.setVisible(false);
-			participant8.setVisible(false);
-
-			transition5.setDuration(Duration.seconds(time.get(4)));
-
-			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4,
-					transition5);
-			parallel.play();
-
-			label1.setText("1) " + name.get(0));
-			label2.setText("2) " + name.get(1));
-			label3.setText("3) " + name.get(2));
-			label4.setText("4) " + name.get(3));
-			label5.setText("5) " + name.get(4));
-		} else if (driver.displayRunningResults().size() == 6) {
-
-			transition5.setDuration(Duration.seconds(time.get(4)));
-			transition6.setDuration(Duration.seconds(time.get(5)));
-			participant7.setVisible(false);
-			participant8.setVisible(false);
-			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4,
-					transition5, transition6);
-			parallel.play();
-			label1.setText("1) " + name.get(0));
-			label2.setText("2) " + name.get(1));
-			label3.setText("3) " + name.get(2));
-			label4.setText("4) " + name.get(3));
-			label5.setText("5) " + name.get(4));
-			label6.setText("6) " + name.get(5));
-
-		} else {
-
-			transition5.setDuration(Duration.seconds(time.get(4)));
-			transition6.setDuration(Duration.seconds(time.get(5)));
-			transition7.setDuration(Duration.seconds(time.get(6)));
-			participant8.setVisible(false);
-			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4,
-					transition5, transition6, transition7);
-			parallel.play();
-			label1.setText("1) " + name.get(0));
-			label2.setText("2) " + name.get(1));
-			label3.setText("3) " + name.get(2));
-			label4.setText("4) " + name.get(3));
-			label5.setText("5) " + name.get(4));
-			label6.setText("6) " + name.get(5));
-			label7.setText("7) " + name.get(6));
+		for (int index = 0; index < size; index++) {
+			transitions.get(index).setPath(circle);
+			transitions.get(index).setNode(images.get(index));
+			transitions.get(index).setDuration(Duration.seconds(time.get(index)));
+			parallel.getChildren().add(transitions.get(index));
+			names.get(index).setText(Integer.toString((index + 1)) + "." + name.get(index));
 
 		}
+		for (int index = size; index < 8; index++) {
+			images.get(index).setVisible(false);
+		}
+		parallel.play();
 
+	}
+
+	private void createArrayListOfLabels() {
+		names.add(playerOne);
+		names.add(playerTwo);
+		names.add(playerThree);
+		names.add(playerFour);
+		names.add(playerFive);
+		names.add(playerSix);
+		names.add(playerSeven);
+		names.add(playerEight);
+	}
+
+	private ArrayList<ImageView> createArrayListOfImages() {
+		ArrayList<ImageView> images = new ArrayList<ImageView>();
+		images.add(participant1);
+		images.add(participant2);
+		images.add(participant3);
+		images.add(participant4);
+		images.add(participant5);
+		images.add(participant6);
+		images.add(participant7);
+		images.add(participant8);
+		return images;
 	}
 }

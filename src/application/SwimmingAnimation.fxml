@@ -148,42 +148,42 @@
 
       </ImageView>
 
-      <Label fx:id="label1" layoutX="8.0" layoutY="131.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
+      <Label fx:id="playerOne" layoutX="8.0" layoutY="131.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
          <font>
             <Font name="Trebuchet MS" size="7.0" />
          </font></Label>
 
-      <Label fx:id="label2" layoutX="8.0" layoutY="164.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
+      <Label fx:id="playerTwo" layoutX="8.0" layoutY="164.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
          <font>
             <Font name="Trebuchet MS" size="7.0" />
          </font></Label>
 
-      <Label fx:id="label3" layoutX="8.0" layoutY="194.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
+      <Label fx:id="playerThree" layoutX="8.0" layoutY="194.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
          <font>
             <Font name="Trebuchet MS" size="7.0" />
          </font></Label>
 
-      <Label fx:id="label4" layoutX="7.0" layoutY="227.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
+      <Label fx:id="playerFour" layoutX="7.0" layoutY="227.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
          <font>
             <Font name="Trebuchet MS" size="7.0" />
          </font></Label>
 
-      <Label fx:id="label5" layoutX="8.0" layoutY="251.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
+      <Label fx:id="playerFive" layoutX="8.0" layoutY="251.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
          <font>
             <Font name="Trebuchet MS" size="7.0" />
          </font></Label>
 
-      <Label fx:id="label6" layoutX="8.0" layoutY="281.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
+      <Label fx:id="playerSix" layoutX="8.0" layoutY="281.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
          <font>
             <Font name="Trebuchet MS" size="7.0" />
          </font></Label>
 
-      <Label fx:id="label7" layoutX="8.0" layoutY="312.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
+      <Label fx:id="playerSeven" layoutX="8.0" layoutY="312.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
          <font>
             <Font name="Trebuchet MS" size="7.0" />
          </font></Label>
 
-      <Label fx:id="label8" layoutX="8.0" layoutY="337.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
+      <Label fx:id="playerEight" layoutX="8.0" layoutY="337.0" prefHeight="17.0" prefWidth="88.0" textFill="RED">
          <font>
             <Font name="Trebuchet MS" size="7.0" />
          </font></Label>

@@ -17,7 +17,6 @@ import rmit.java.assignment.controller.Driver;
 import rmit.java.assignment.model.Athlete;
 import rmit.java.assignment.model.Game;
 
-
 /**
  * 
  * @author Niraj Bohra

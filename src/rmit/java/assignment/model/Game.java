@@ -205,6 +205,7 @@ public class Game {
 		Swimming swimming = swimmingGames.get(swimmingGames.size() - 1);
 
 		swimmers = swimming.getContestants();
+		System.out.println(swimmers);
 		swimmwerTimings = swimming.getTimings();
 
 		sID = generateUniqueSwimmingID();

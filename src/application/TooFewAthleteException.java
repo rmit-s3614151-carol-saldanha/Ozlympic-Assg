@@ -9,6 +9,7 @@ package application;
  *                   there are not a minimum of 4 athletes
  *
  */
+@SuppressWarnings("serial")
 public class TooFewAthleteException extends Exception {
 
 	public TooFewAthleteException() {

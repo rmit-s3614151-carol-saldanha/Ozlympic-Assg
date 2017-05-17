@@ -70,7 +70,6 @@ public class CyclingController implements Initializable {
 	// For Athletes
 	public static final ObservableList<String> athletes = FXCollections.observableArrayList();
 
-
 	// Get object of main class
 	Driver driver = Ozlympic.driver;
 
@@ -140,9 +139,8 @@ public class CyclingController implements Initializable {
 		}
 
 		else {
-			
+
 			cycling.setCurrentGame(Driver.CYCLING);
-			
 
 			for (int i = 0; i < get.getCyclists().size(); i++) {
 				for (int j = 0; j < selectedParticipants.getItems().size(); j++) {
@@ -223,6 +221,7 @@ public class CyclingController implements Initializable {
 								throw new WrongTypeException();
 							} catch (WrongTypeException e) {
 								// Trhow dialog for wrong type
+								System.out.println(e.getMessage());
 								Alert alert = new Alert(AlertType.ERROR);
 								alert.setTitle("Error Message");
 								alert.setHeaderText("Error : Wrong Type Exception");
@@ -251,6 +250,7 @@ public class CyclingController implements Initializable {
 						throw new GameFullException();
 					} catch (GameFullException e) {
 						// GameFullException to be thrown as dialog box
+						System.out.println(e.getMessage());
 						Alert alert = new Alert(AlertType.WARNING);
 						alert.setTitle("Error Message");
 						alert.setHeaderText("Error : Game Full Exception");

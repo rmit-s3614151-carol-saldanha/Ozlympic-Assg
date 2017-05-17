@@ -17,6 +17,7 @@ public class Utility {
 
 	private static Stage primaryStage = new Stage();
 
+	@SuppressWarnings("rawtypes")
 	public Stage displayUX(Class classname, String fxmlFile, String cssFile) throws Exception {
 		try {
 			ClassLoader classLoader = classname.getClassLoader();

@@ -29,7 +29,6 @@ public class ParticipantList {
 	private ArrayList<Athlete> cyclists = new ArrayList<Athlete>();
 	private ArrayList<Athlete> superAthletes = new ArrayList<Athlete>();
 	private ArrayList<Official> officials = new ArrayList<Official>();
-	private ArrayList<Integer> uniqueIDList = new ArrayList<Integer>();
 	private final String SWIMMERS = "swimmers";
 	private final String CYCLIST = "cyclists";
 	private final String SPRINTERS = "sprinters";
@@ -118,12 +117,11 @@ public class ParticipantList {
 
 		// Add by database at first
 		addAthletesByDatabase();
-	
 
 	}
 
 	public void addAthletesByDatabase() {
-		
+
 		Connection connection = null;
 		// TODO Auto-generated method stub
 		try {
@@ -197,12 +195,11 @@ public class ParticipantList {
 				}
 
 			}
-		
 
 		} catch (ClassNotFoundException | SQLException e) {
 			// If not found try file
 			try {
-				
+
 				getFile.getParticipantList();
 				addAthletesByFile();
 				int checkFormat = checkFormat();
@@ -211,7 +208,7 @@ public class ParticipantList {
 
 					addAthletesByFile();
 				}
-			
+
 			} catch (IOException e1) {
 
 				// Dialog box if both not working

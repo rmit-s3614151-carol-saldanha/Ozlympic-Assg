@@ -26,19 +26,14 @@ import rmit.java.assignment.model.Swimming;
 
 public class Driver {
 
-	// Constants
-	private static final int OPTION_1 = 1;
-	private static final int OPTION_2 = 2;
-	private static final int OPTION_3 = 3;
-	private static final int OPTION_4 = 4;
-	private static final int OPTION_5 = 5;
-	private static final int OPTION_6 = 6;
 	// Instance variables
 	public static final String SWIMMING = "SWIMMING";
 	public static final String CYCLING = "CYCLING";
 	public static final String RUNNING = "RUNNING";
 	private Game game;
 	private ParticipantList participantList;
+	@SuppressWarnings("unused")
+	
 	private Scanner scanInput = new Scanner(System.in);
 
 	public ParticipantList getParticipantList() {
@@ -66,7 +61,7 @@ public class Driver {
 	public Driver() {
 		// Create objects
 		participantList = new ParticipantList();
-		
+
 		FileHandler file = new FileHandler();
 		file.createFile();
 		game = new Game();
@@ -93,7 +88,9 @@ public class Driver {
 	 * 
 	 */
 
+	
 	public ArrayList<Athlete> displayPoints() {
+		@SuppressWarnings({ "rawtypes", "unchecked" })
 		ArrayList<Athlete> displayList = new ArrayList();
 
 		HashMap<Athlete, Integer> pointsTable = new HashMap<Athlete, Integer>();

@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="573.0" prefWidth="535.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CyclingController">
    <children>
-      <AnchorPane layoutX="-8.0" layoutY="-7.0" prefHeight="590.0" prefWidth="543.0" style="-fx-background-color: #FFF;">
+      <AnchorPane layoutX="-8.0" layoutY="-7.0" prefHeight="595.0" prefWidth="492.0" style="-fx-background-color: #FFF;">
          <children>
             <ImageView fitHeight="436.0" fitWidth="413.0" layoutX="63.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
                <image>

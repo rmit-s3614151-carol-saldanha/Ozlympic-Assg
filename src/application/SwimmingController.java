@@ -1,12 +1,11 @@
+
 package application;
 
+// imports
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,12 +17,23 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Alert.AlertType;
 import rmit.java.assignment.controller.Driver;
-import rmit.java.assignment.database.FileHandler;
 import rmit.java.assignment.database.ParticipantList;
 import rmit.java.assignment.model.Game;
 import rmit.java.assignment.model.Swimming;
 import rmit.java.assignment.model.SuperAthlete;
 
+/**
+ *
+ * 
+ * @author : Carol Benita Saldanha
+ * @version : 1 Class Description: The SwimmerAnimation class is where the
+ *          animation for swimming takes place. The UI elements are linked via
+ *          SwimmingAnimation.fxml
+ * 
+ * 
+ * 
+ * 
+ */
 public class SwimmingController implements Initializable {
 
 	@FXML
@@ -66,18 +76,12 @@ public class SwimmingController implements Initializable {
 	// For Officials
 	public static final ObservableList<String> officials = FXCollections.observableArrayList();
 
-	// For Playing 8
-	public static final ObservableList<String> playerList = FXCollections.observableArrayList();
-
-	public static final ObservableList<String> selected = FXCollections.observableArrayList();
-
 	Driver driver = Ozlympic.driver;
 	ParticipantList get = driver.getParticipantList();
 
 	Game get1 = driver.getGame();
 
 	Swimming swimming = new Swimming();
-
 
 	@FXML
 	void addParticipants(ActionEvent event) {
@@ -94,6 +98,7 @@ public class SwimmingController implements Initializable {
 
 	}
 
+	@SuppressWarnings("static-access")
 	@FXML
 	void nextPage(ActionEvent event) throws Exception {
 		if (selectedParticipants.getItems().size() < MINIMUM_PARTICIPANTS) {
@@ -114,7 +119,7 @@ public class SwimmingController implements Initializable {
 
 			System.out.println(selectedParticipants.getItems());
 			swimming.setCurrentGame(Driver.SWIMMING);
-			
+
 			System.out.println("current game " + swimming.getCurrentGame());
 
 			for (int i = 0; i < get.getSwimmers().size(); i++) {
@@ -141,7 +146,7 @@ public class SwimmingController implements Initializable {
 
 				}
 				// System.out.println("new" + swimming.getContestants());
-				
+
 			}
 
 			get1.getSwimmingGames().add(swimming);
@@ -154,26 +159,6 @@ public class SwimmingController implements Initializable {
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
-
-		Game game = Ozlympic.driver.getGame();
-		// Store the game as soon as user clicks on Swimming by..
-		game.getSwimmingGames().add(new Swimming());
-		Ozlympic.driver.getGame().setCurrentGame(driver.SWIMMING);
-		;
-
-		// getting all swimmming games played.
-		game.getSwimmingGames();
-
-		// finding out what is the current game being played. (Should be set as
-		// C, R or S when user clicks on new game)
-		String currentGame = Ozlympic.driver.getGame().getCurrentGame();
-
-		// Gets the current swimming game
-		if (currentGame.equals(driver.SWIMMING)) {
-			ArrayList<Swimming> games = Ozlympic.driver.getGame().getSwimmingGames();
-			Swimming gameSwimming = games.get(games.size() - 1);
-			gameSwimming.getTimings();
-		}
 
 		System.out.println("initializing ");
 		addParticipants.getItems().clear();

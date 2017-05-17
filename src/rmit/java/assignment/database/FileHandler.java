@@ -23,14 +23,17 @@ public class FileHandler {
 	// Instance variables
 	private ArrayList<String> participants = new ArrayList<String>();
 	private ArrayList<String> games = new ArrayList<String>();
+	@SuppressWarnings("unused")
 	private final String SWIMMERS = "swimmers";
+	@SuppressWarnings("unused")
 	private final String CYCLIST = "cyclist";
+	@SuppressWarnings("unused")
 	private final String SPRINTERS = "sprinters";
+	@SuppressWarnings("unused")
 	private final String SUPER = "super";
 
 	// Empty constructor
 	public FileHandler() {
-		
 
 	}
 
@@ -44,6 +47,7 @@ public class FileHandler {
 
 		File f = new File(participantList);
 
+		@SuppressWarnings("resource")
 		BufferedReader b = new BufferedReader(new FileReader(f.getAbsolutePath()));
 
 		String readLine = "";
@@ -92,6 +96,7 @@ public class FileHandler {
 
 		File f = new File("game.txt");
 
+		@SuppressWarnings("resource")
 		BufferedReader b = new BufferedReader(new FileReader(f.getAbsolutePath()));
 
 		String readLine = "";
@@ -109,7 +114,7 @@ public class FileHandler {
 	public ArrayList<String> getGames() {
 		return this.games;
 	}
-	
+
 	public void createFile() {
 		System.out.println("Called");
 		try {

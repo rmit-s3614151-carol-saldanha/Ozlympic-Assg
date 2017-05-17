@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.ParallelTransition;
 import javafx.animation.PathTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +14,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
+import rmit.java.assignment.controller.Driver;
+import rmit.java.assignment.model.Athlete;
+import rmit.java.assignment.model.Cycling;
+import rmit.java.assignment.model.Game;
 
 /**
  *
@@ -27,7 +32,7 @@ import javafx.util.Duration;
  * 
  */
 
-public class CyclingAnimationController extends RefereeController implements Initializable {
+public class CyclingAnimationController implements Initializable {
 
 	/**
 	 * 
@@ -37,58 +42,59 @@ public class CyclingAnimationController extends RefereeController implements Ini
 	 */
 
 	@FXML
-	private ImageView participant2;
-
-	@FXML
 	private Circle path;
-
-	@FXML
-	private ImageView participant1;
 
 	@FXML
 	private Circle innerCircle;
 
 	@FXML
-	private ImageView participant8;
-
+	private ImageView participant1;
 	@FXML
-	private ImageView participant7;
-
+	private ImageView participant2;
 	@FXML
-	private ImageView participant6;
-
-	@FXML
-	private ImageView participant5;
+	private ImageView participant3;
 
 	@FXML
 	private ImageView participant4;
 
 	@FXML
-	private ImageView participant3;
+	private ImageView participant5;
+	@FXML
+	private ImageView participant6;
+	@FXML
+	private ImageView participant7;
 
 	@FXML
-	private Label label1;
+	private ImageView participant8;
 
 	@FXML
-	private Label label2;
+	private Label playerOne;
 
 	@FXML
-	private Label label3;
+	private Label playerTwo;
 
 	@FXML
-	private Label label4;
+	private Label playerThree;
 
 	@FXML
-	private Label label5;
+	private Label playerFour;
 
 	@FXML
-	private Label label6;
+	private Label playerFive;
 
 	@FXML
-	private Label label7;
+	private Label playerSix;
 
 	@FXML
-	private Label label8;
+	private Label playerSeven;
+
+	@FXML
+	private Label playerEight;
+
+	private ArrayList<Label> names = new ArrayList<Label>();
+
+	// TO AVOID MAGIC NUMBERS
+	private final int FORWARD = 40;
 
 	@FXML
 	private JFXButton displayResultsPage;
@@ -109,34 +115,43 @@ public class CyclingAnimationController extends RefereeController implements Ini
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
-		
+
 		/**
 		 * 
-		 * time and name are two Array Lists that are created which fetch the time and name of all the players.
+		 * time and name are two Array Lists that are created which fetch the
+		 * time and name of all the players.
 		 * 
 		 */
 
 		ArrayList<Float> time = new ArrayList<Float>();
 		ArrayList<String> name = new ArrayList<String>();
 
-		System.out.println(driver.displayCyclingResults().get(0).getATime());
-		for (int i = 0; i < driver.displayCyclingResults().size(); i++) {
+		Game game = Ozlympic.driver.getGame();
+		game.setCurrentGame(Driver.CYCLING);
+		int size = game.getCyclingGames().get(game.getCyclingGames().size() - 1).getContestants().size();
 
-			time.add(driver.displayCyclingResults().get(i).getATime());
+		for (int i = 0; i < game.getCyclingGames().size(); i++) {
+			ArrayList<Cycling> games = Ozlympic.driver.getGame().getCyclingGames();
+			Cycling gameCycling = games.get(games.size() - 1);
+			for (Athlete athlete : gameCycling.getTimings().keySet()) {
+				time.add(gameCycling.getTimings().get(athlete));
+				System.out.println(time);
+
+			}
+		}
+
+		for (Athlete athlete : game.getCyclingGames().get(game.getCyclingGames().size() - 1).getContestants()) {
+
+			name.add(athlete.getAName());
 
 		}
-		for (int i = 0; i < driver.displayCyclingResults().size(); i++) {
 
-			String result = driver.displayCyclingResults().get(i).toString();
-			System.out.println(result);
-			name.add(result.substring(result.indexOf("name=") + 5, result.indexOf(",")));
-
-		}
-		
 		/**
 		 * 
-		 * This method is used to create a circular parallel transition for Cycling Animation and then play all these animations.These
-		 * animations will vary depending on the number of participants that the user will chose.
+		 * This method is used to create a circular parallel transition for
+		 * Cycling Animation and then play all these animations.These animations
+		 * will vary depending on the number of participants that the user will
+		 * chose.
 		 * 
 		 */
 
@@ -157,131 +172,65 @@ public class CyclingAnimationController extends RefereeController implements Ini
 		circle.setCursor(participant1.getCursor());
 
 		PathTransition transition1 = new PathTransition();
-		transition1.setPath(circle);
-		transition1.setNode(participant1);
-
-		transition1.setDuration(Duration.seconds(time.get(0) /40));
-
 		PathTransition transition2 = new PathTransition();
-		transition2.setPath(circle);
-		transition2.setNode(participant2);
-		transition2.setDuration(Duration.seconds(time.get(1) /40));
-
 		PathTransition transition3 = new PathTransition();
-		transition3.setPath(circle);
-		transition3.setNode(participant3);
-		transition3.setDuration(Duration.seconds(time.get(2) /40));
-
 		PathTransition transition4 = new PathTransition();
-		transition4.setPath(circle);
-		transition4.setNode(participant4);
-		transition4.setDuration(Duration.seconds(time.get(3) /40));
-
 		PathTransition transition5 = new PathTransition();
-		transition5.setPath(circle);
-		transition5.setNode(participant5);
-		transition5.setDuration(Duration.seconds(time.get(4) /40));
-
 		PathTransition transition6 = new PathTransition();
-		transition6.setPath(circle);
-		transition6.setNode(participant6);
-		transition6.setDuration(Duration.seconds(time.get(5) /40));
-
 		PathTransition transition7 = new PathTransition();
-		transition7.setPath(circle);
-		transition7.setNode(participant7);
-		transition7.setDuration(Duration.seconds(time.get(6) /40));
-
 		PathTransition transition8 = new PathTransition();
-		transition8.setPath(circle);
-		transition8.setNode(participant8);
-		transition1.setDuration(Duration.seconds(time.get(7) /40));
 
-		if (driver.displayCyclingResults().size() == 8) {
+		ArrayList<PathTransition> transitions = new ArrayList<PathTransition>();
+		transitions.add(transition1);
+		transitions.add(transition2);
+		transitions.add(transition3);
+		transitions.add(transition4);
+		transitions.add(transition5);
+		transitions.add(transition6);
+		transitions.add(transition7);
+		transitions.add(transition8);
 
-			transition5.setDuration(Duration.seconds(time.get(4) /40));
-			transition6.setDuration(Duration.seconds(time.get(5) /40));
-			transition7.setDuration(Duration.seconds(time.get(6) /40));
-			transition8.setDuration(Duration.seconds(time.get(7) /40));
-			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4,
-					transition5, transition6, transition7, transition8);
-			parallel.play();
-			label1.setText("1) " + name.get(0));
-			label2.setText("2) " + name.get(1));
-			label3.setText("3) " + name.get(2));
-			label4.setText("4) " + name.get(3));
-			label5.setText("5) " + name.get(4));
-			label6.setText("6) " + name.get(5));
-			label7.setText("7) " + name.get(6));
-			label8.setText("8) " + name.get(7));
-		}
+		createArrayListOfLabels();
+		ArrayList<ImageView> images = createArrayListOfImages();
+		ParallelTransition parallel = new ParallelTransition();
 
-		else if (driver.displayCyclingResults().size() == 4) {
-
-			participant5.setVisible(false);
-			participant6.setVisible(false);
-			participant7.setVisible(false);
-			participant8.setVisible(false);
-
-			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4);
-			parallel.play();
-
-			label1.setText("1) " + name.get(0));
-			label2.setText("2) " + name.get(1));
-			label3.setText("3) " + name.get(2));
-			label4.setText("4) " + name.get(3));
-
-		} else if (driver.displayCyclingResults().size() == 5) {
-
-			participant6.setVisible(false);
-			participant7.setVisible(false);
-			participant8.setVisible(false);
-
-			transition5.setDuration(Duration.seconds(time.get(4) /40));
-
-			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4,
-					transition5);
-			parallel.play();
-
-			label1.setText("1) " + name.get(0));
-			label2.setText("2) " + name.get(1));
-			label3.setText("3) " + name.get(2));
-			label4.setText("4) " + name.get(3));
-			label5.setText("5) " + name.get(4));
-		} else if (driver.displayCyclingResults().size() == 6) {
-
-			transition5.setDuration(Duration.seconds(time.get(4) /40));
-			transition6.setDuration(Duration.seconds(time.get(5) /40));
-			participant7.setVisible(false);
-			participant8.setVisible(false);
-			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4,
-					transition5, transition6);
-			parallel.play();
-			label1.setText("1) " + name.get(0));
-			label2.setText("2) " + name.get(1));
-			label3.setText("3) " + name.get(2));
-			label4.setText("4) " + name.get(3));
-			label5.setText("5) " + name.get(4));
-			label6.setText("6) " + name.get(5));
-
-		} else {
-
-			transition5.setDuration(Duration.seconds(time.get(4) /40));
-			transition6.setDuration(Duration.seconds(time.get(5) /40));
-			transition7.setDuration(Duration.seconds(time.get(6) /40));
-			participant8.setVisible(false);
-			ParallelTransition parallel = new ParallelTransition(transition1, transition2, transition3, transition4,
-					transition5, transition6, transition7);
-			parallel.play();
-			label1.setText("1) " + name.get(0));
-			label2.setText("2) " + name.get(1));
-			label3.setText("3) " + name.get(2));
-			label4.setText("4) " + name.get(3));
-			label5.setText("5) " + name.get(4));
-			label6.setText("6) " + name.get(5));
-			label7.setText("7) " + name.get(6));
+		for (int index = 0; index < size; index++) {
+			transitions.get(index).setPath(circle);
+			transitions.get(index).setNode(images.get(index));
+			transitions.get(index).setDuration(Duration.seconds(time.get(index) / FORWARD));
+			parallel.getChildren().add(transitions.get(index));
+			names.get(index).setText(Integer.toString((index + 1)) + ". " + name.get(index));
 
 		}
+		for (int index = size; index < 8; index++) {
+			images.get(index).setVisible(false);
+		}
+		parallel.play();
 
 	}
+
+	private void createArrayListOfLabels() {
+		names.add(playerOne);
+		names.add(playerTwo);
+		names.add(playerThree);
+		names.add(playerFour);
+		names.add(playerFive);
+		names.add(playerSix);
+		names.add(playerSeven);
+		names.add(playerEight);
+	}
+
+	private ArrayList<ImageView> createArrayListOfImages() {
+		ArrayList<ImageView> images = new ArrayList<ImageView>();
+		images.add(participant1);
+		images.add(participant2);
+		images.add(participant3);
+		images.add(participant4);
+		images.add(participant5);
+		images.add(participant6);
+		images.add(participant7);
+		images.add(participant8);
+		return images;
+	}
+
 }

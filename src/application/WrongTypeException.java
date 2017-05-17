@@ -11,6 +11,7 @@ package application;
  *                   For example : If user selects a swimmer for a runnng game.
  *
  */
+@SuppressWarnings("serial")
 public class WrongTypeException extends Exception {
 
 	public WrongTypeException() {
