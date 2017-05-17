@@ -132,7 +132,7 @@ public class SwimmingController implements Initializable {
 					}
 
 				}
-				// System.out.println("new" + swimming.getContestants());
+
 			}
 
 			for (int i = 0; i < get.getSuperAthletes().size(); i++) {
@@ -145,13 +145,12 @@ public class SwimmingController implements Initializable {
 					}
 
 				}
-				// System.out.println("new" + swimming.getContestants());
 
 			}
 
+			System.out.println("Participants Selected....");
 			get1.getSwimmingGames().add(swimming);
 			Ozlympic.driver.getGame().setCurrentGame(Driver.SWIMMING);
-
 			Utility utility = new Utility();
 			utility.displayUX(RefereeController.class, "application/Referee.fxml", null);
 		}
@@ -160,11 +159,12 @@ public class SwimmingController implements Initializable {
 
 	public void initialize(URL url, ResourceBundle rb) {
 
-		System.out.println("initializing ");
+		System.out.print("initializing ");
+		System.out.println(Driver.SWIMMING);
 		addParticipants.getItems().clear();
 		athletes.clear();
 		selectedParticipants.getItems().clear();
-		System.out.println(addParticipants.getItems().size());
+
 		for (int i = 0; i < get.getSwimmers().size(); i++) {
 			athletes.add(get.getSwimmers().get(i).toString());
 		}
@@ -198,10 +198,7 @@ public class SwimmingController implements Initializable {
 
 						type = selectedAddParticipantList.substring(selectedAddParticipantList.indexOf("type=") + 5,
 								selectedAddParticipantList.length());
-						// String type1
-						// =selectedAddParticipantList.substring(selectedAddParticipantList.indexOf("ID=")
-						// + 3, selectedAddParticipantList.indexOf("ID=")+9);
-						// System.out.println(type1);
+
 						System.out.println(selectedAddParticipantList);
 						if (!type.equals(TYPE_1) && !type.equals(TYPE_2)) {
 							try {

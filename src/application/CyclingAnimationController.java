@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.ParallelTransition;
 import javafx.animation.PathTransition;
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -135,7 +134,6 @@ public class CyclingAnimationController implements Initializable {
 			Cycling gameCycling = games.get(games.size() - 1);
 			for (Athlete athlete : gameCycling.getTimings().keySet()) {
 				time.add(gameCycling.getTimings().get(athlete));
-				System.out.println(time);
 
 			}
 		}
@@ -151,18 +149,11 @@ public class CyclingAnimationController implements Initializable {
 		 * This method is used to create a circular parallel transition for
 		 * Cycling Animation and then play all these animations.These animations
 		 * will vary depending on the number of participants that the user will
-		 * chose.
+		 * choose.
 		 * 
 		 */
 
 		Circle circle = new Circle();
-		System.out.println(innerCircle.getLayoutX());
-		System.out.println(innerCircle.getLayoutY());
-		System.out.println(innerCircle.getRadius());
-		System.out.println(innerCircle.getCenterX());
-		System.out.println(innerCircle.getCenterX());
-		System.out.println(innerCircle.getTranslateX());
-		System.out.println(innerCircle.getTranslateX());
 
 		circle.setRadius(175);
 		circle.setCenterX(0);

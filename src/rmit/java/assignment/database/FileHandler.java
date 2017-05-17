@@ -77,7 +77,6 @@ public class FileHandler {
 			writer = new FileWriter("game.txt", true);
 
 			writer.write(string.toString() + "\n");
-			System.out.println(writer);
 
 			writer.close();// flushes the stream.
 
@@ -104,7 +103,6 @@ public class FileHandler {
 		while ((readLine = b.readLine()) != null) {
 			if (readLine.length() > 0) {
 				games.add(readLine);
-				System.out.println(readLine);
 			}
 		}
 
@@ -116,9 +114,10 @@ public class FileHandler {
 	}
 
 	public void createFile() {
-		System.out.println("Called");
+		System.out.println("Creating file....");
 		try {
 			FileWriter writer = new FileWriter("game.txt");
+			System.out.println("File created : game.txt");
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

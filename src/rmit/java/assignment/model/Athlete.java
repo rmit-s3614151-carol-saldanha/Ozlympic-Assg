@@ -2,9 +2,9 @@ package rmit.java.assignment.model;
 
 /**
  * 
- * @author : Carol Benita Saldanha 
+ * @author : Carol Benita Saldanha
  * @version 1.0
- * @classDescription Abstract Class of athletes. 
+ * @classDescription Abstract Class of athletes.
  * @Superclass: Participants
  * @Subclass: Swimmer, Sprinter, SuperAthlete, Cyclist
  */
@@ -41,22 +41,26 @@ public abstract class Athlete extends Participants {
 	 * @return uniqueID of an athlete
 	 */
 	public abstract String getUniqueID();
+
 	/**
 	 * get time for an athlete
-	 * @return time 
+	 * 
+	 * @return time
 	 */
 	public abstract float getATime();
+
 	/**
 	 * sets time of an athlete
+	 * 
 	 * @param time
 	 */
 	public abstract void setATime(float time);
+
 	/**
-	 *  Gets an athlete name 
-	 * @return name 
+	 * Gets an athlete name
+	 * 
+	 * @return name
 	 */
 	public abstract String getAName();
-	
-	
-	
+
 }

@@ -122,7 +122,7 @@ public class RefereeController implements Initializable {
 			try {
 				throw new NoRefereeException();
 			} catch (NoRefereeException e) {
-
+				System.out.println(e.getMessage());
 				// Show dialog box if no referee found
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Error Message");
@@ -141,12 +141,14 @@ public class RefereeController implements Initializable {
 							.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
 						game.getSwimmingGames().get(game.getSwimmingGames().size() - 1)
 								.setOfficial(get.getOfficials().get(i));
+						System.out.println("Official Selected : " + get.getOfficials().get(i));
 					}
 				}
 			}
 			// Start game
-			System.out.println("Official Selected....");
+			System.out.println("Game starting...");
 			driver.startGame();
+			System.out.println("Game ended");
 			driver.displayPoints();
 			// Show UI Screen of display.fxml
 			Utility utility = new Utility();
@@ -161,11 +163,13 @@ public class RefereeController implements Initializable {
 							.equals(item.substring(item.indexOf("ID=") + 3, item.indexOf("ID=") + 9))) {
 						game.getRunningGames().get(game.getRunningGames().size() - 1)
 								.setOfficial(get.getOfficials().get(i));
+						System.out.println("Official Selected : " + get.getOfficials().get(i));
 					}
 				}
 			}
-
+			System.out.println("Game starting...");
 			driver.startGame();
+			System.out.println("Game ended");
 			driver.displayPoints();
 			Utility utility = new Utility();
 			utility.displayUX(RunningAnimationController.class, "application/RunningAnimation.fxml", null);
@@ -181,12 +185,14 @@ public class RefereeController implements Initializable {
 
 						game.getCyclingGames().get(game.getCyclingGames().size() - 1)
 								.setOfficial(get.getOfficials().get(i));
+						System.out.println("Official Selected : " + get.getOfficials().get(i));
 					}
 				}
 
 			}
-
+			System.out.println("Game starting...");
 			driver.startGame();
+			System.out.println("Game ended");
 			driver.displayPoints();
 			Utility utility = new Utility();
 			utility.displayUX(CyclingAnimationController.class, "application/CyclingAnimation.fxml", null);
@@ -211,7 +217,7 @@ public class RefereeController implements Initializable {
 		right.setOnAction((ActionEvent event) -> {
 
 			addReferee.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-		//	System.out.println(selectedReferee.getItems().size() + 1);
+
 			if (addReferee.getSelectionModel().getSelectedItem() != null)
 
 				selectedAddRefereeList = addReferee.getSelectionModel().getSelectedItem();

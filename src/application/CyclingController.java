@@ -179,7 +179,8 @@ public class CyclingController implements Initializable {
 	 * It initializes all the values in the controller
 	 */
 	public void initialize(URL url, ResourceBundle rb) {
-		System.out.println("Initializing.. ");
+		System.out.print("initializing ");
+		System.out.println(Driver.CYCLING);
 		athletes.clear();
 
 		for (int i = 0; i < get.getSwimmers().size(); i++) {
@@ -214,6 +215,7 @@ public class CyclingController implements Initializable {
 					if (selectedParticipants.getItems().size() + 1 <= MAXIMUM_PARTICIPANTS) {
 
 						addParticipants.getSelectionModel().clearSelection();
+						System.out.println(selectedAddParticipantList);
 						type = selectedAddParticipantList.substring(selectedAddParticipantList.indexOf("type=") + 5,
 								selectedAddParticipantList.length());
 						if (!type.equals(TYPE_1) && !type.equals(TYPE_2)) {

@@ -152,7 +152,7 @@ public class Cyclist extends Athlete {
 	@Override
 	public void setATime(float time) {
 		// TODO Auto-generated method stub
-		this.atime = time ;
+		this.atime = time;
 
 	}
 

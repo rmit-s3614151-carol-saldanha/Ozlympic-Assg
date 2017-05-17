@@ -33,10 +33,7 @@ import rmit.java.assignment.model.Running;
 
 public class RunningAnimationController implements Initializable {
 
-	private final int FOUR = 4;
-	private final int FIVE = 5;
-	private final int SIX = 6;
-	private final int EIGHT = 8;
+
 	/**
 	 * 
 	 * These are the FXML variables that are set in SwimmingAnimation.fxml and
@@ -145,8 +142,6 @@ public class RunningAnimationController implements Initializable {
 			Running gameRunning = games.get(games.size() - 1);
 			for (Athlete athlete : gameRunning.getTimings().keySet()) {
 				time.add(gameRunning.getTimings().get(athlete));
-				System.out.println(time);
-
 			}
 		}
 
@@ -165,14 +160,6 @@ public class RunningAnimationController implements Initializable {
 		 */
 
 		Circle circle = new Circle();
-		System.out.println(innerCircle.getLayoutX());
-		System.out.println(innerCircle.getLayoutY());
-		System.out.println(innerCircle.getRadius());
-		System.out.println(innerCircle.getCenterX());
-		System.out.println(innerCircle.getCenterX());
-		System.out.println(innerCircle.getTranslateX());
-		System.out.println(innerCircle.getTranslateX());
-
 		circle.setRadius(175);
 		circle.setCenterX(0);
 		circle.setCenterY(0);

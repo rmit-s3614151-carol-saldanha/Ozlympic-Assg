@@ -116,134 +116,107 @@ public class ParticipantList {
 	public ParticipantList() {
 
 		// Add by database at first
-		addAthletesByDatabase();
+		try {
+			addAthletesByDatabase();
+		} catch (ClassNotFoundException | SQLException e) {
+			// Dialog box if both not working
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Message");
+			alert.setHeaderText("Error : Database exception");
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
+
+			try {
+				getFile.getParticipantList();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				Alert alert1 = new Alert(AlertType.ERROR);
+				alert1.setTitle("Error Message");
+				alert1.setHeaderText("Error : Please contact administrator");
+				alert1.setContentText(e.getMessage());
+				alert1.showAndWait();
+				System.exit(0);
+			}
+			addAthletesByFile();
+
+		}
 
 	}
 
-	public void addAthletesByDatabase() {
+	public void addAthletesByDatabase() throws SQLException, ClassNotFoundException {
 
 		Connection connection = null;
 		// TODO Auto-generated method stub
-		try {
-			connection = connect.createConnection();
-			String sql = "SELECT * from participants;";
-			String sqlClear = "DELETE FROM results;";
 
-			// create a Statement from the connection
-			Statement statement = connection.createStatement();
-			Statement stmt = connection.createStatement();
-			stmt.executeUpdate(sqlClear);
+		connection = connect.createConnection();
+		String sql = "SELECT * from participants;";
+		String sqlClear = "DELETE FROM results;";
 
-			ResultSet rs = statement.executeQuery(sql);
-			while (rs.next()) {
-				String id = rs.getString("id");
-				String type = rs.getString("type");
-				String name = rs.getString("name");
-				String state = rs.getString("state");
-				String age = rs.getString("age");
+		// create a Statement from the connection
+		Statement statement = connection.createStatement();
+		Statement stmt = connection.createStatement();
+		stmt.executeUpdate(sqlClear);
 
-				if (id.equals("") || age.equals("") || state.equals("") || type.equals("") || name.equals("")) {
-					System.out.println("Error : Null value found.");
-				} else {
+		ResultSet rs = statement.executeQuery(sql);
+		while (rs.next()) {
+			String id = rs.getString("id");
+			String type = rs.getString("type");
+			String name = rs.getString("name");
+			String state = rs.getString("state");
+			String age = rs.getString("age");
 
-					switch (type) {
-					case SWIMMERS:
-						for (int j = 0; j < getSwimmers().size(); j++) {
-							if (getSwimmers().get(j).getUniqueID().contains(id) == true) {
-								getSwimmers().remove(j);
-							}
+			if (id.equals("") || age.equals("") || state.equals("") || type.equals("") || name.equals("")) {
+				System.out.println("Error : Null value found.");
+			} else {
+
+				switch (type) {
+				case SWIMMERS:
+					for (int j = 0; j < getSwimmers().size(); j++) {
+						if (getSwimmers().get(j).getUniqueID().contains(id) == true) {
+							getSwimmers().remove(j);
 						}
-
-						getSwimmers().add(new Swimmer(name, age, state, id));
-						break;
-					case CYCLIST:
-						for (int j = 0; j < getCyclists().size(); j++) {
-							if (getCyclists().get(j).getUniqueID().contains(id) == true) {
-								getCyclists().remove(j);
-							}
-						}
-						getCyclists().add(new Cyclist(name, age, state, id));
-						break;
-					case SPRINTERS:
-						for (int j = 0; j < getSprinters().size(); j++) {
-							if (getSprinters().get(j).getUniqueID().contains(id) == true) {
-								getSprinters().remove(j);
-							}
-						}
-						getSprinters().add(new Sprinter(name, age, state, id));
-						break;
-					case SUPER:
-						for (int j = 0; j < getSuperAthletes().size(); j++) {
-							if (getSuperAthletes().get(j).getUniqueID().contains(id) == true) {
-
-								getSuperAthletes().remove(j);
-							}
-						}
-						getSuperAthletes().add(new SuperAthlete(name, age, state, id));
-						break;
-					default:
-						for (int j = 0; j < getOfficials().size(); j++) {
-							if (getOfficials().get(j).getUniqueID().contains(id) == true) {
-
-								getOfficials().remove(j);
-							}
-						}
-						getOfficials().add(new Official(name, age, state, id));
-						break;
 					}
 
-				}
-
-			}
-
-		} catch (ClassNotFoundException | SQLException e) {
-			// If not found try file
-			try {
-
-				getFile.getParticipantList();
-				addAthletesByFile();
-				int checkFormat = checkFormat();
-
-				if (checkFormat == 4) {
-
-					addAthletesByFile();
-				}
-
-			} catch (IOException e1) {
-
-				// Dialog box if both not working
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Error Message");
-				alert.setHeaderText("Error : Database exception");
-				alert.setContentText(e.getMessage());
-				alert.showAndWait();
-				System.exit(0);
-			}
-
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				try {
-					getFile.getParticipantList();
-					addAthletesByFile();
-					int checkFormat = checkFormat();
-
-					if (checkFormat == 4) {
-
-						addAthletesByFile();
+					getSwimmers().add(new Swimmer(name, age, state, id));
+					break;
+				case CYCLIST:
+					for (int j = 0; j < getCyclists().size(); j++) {
+						if (getCyclists().get(j).getUniqueID().contains(id) == true) {
+							getCyclists().remove(j);
+						}
 					}
-				} catch (IOException e1) {
-					Alert alert = new Alert(AlertType.ERROR);
-					alert.setTitle("Error Message");
-					alert.setHeaderText("Error : Database exception");
-					alert.setContentText(e.getMessage());
-					alert.showAndWait();
-					System.exit(0);
+					getCyclists().add(new Cyclist(name, age, state, id));
+					break;
+				case SPRINTERS:
+					for (int j = 0; j < getSprinters().size(); j++) {
+						if (getSprinters().get(j).getUniqueID().contains(id) == true) {
+							getSprinters().remove(j);
+						}
+					}
+					getSprinters().add(new Sprinter(name, age, state, id));
+					break;
+				case SUPER:
+					for (int j = 0; j < getSuperAthletes().size(); j++) {
+						if (getSuperAthletes().get(j).getUniqueID().contains(id) == true) {
+
+							getSuperAthletes().remove(j);
+						}
+					}
+					getSuperAthletes().add(new SuperAthlete(name, age, state, id));
+					break;
+				default:
+					for (int j = 0; j < getOfficials().size(); j++) {
+						if (getOfficials().get(j).getUniqueID().contains(id) == true) {
+
+							getOfficials().remove(j);
+						}
+					}
+					getOfficials().add(new Official(name, age, state, id));
+					break;
 				}
+
 			}
 		}
-
 	}
 
 	// Validate file format

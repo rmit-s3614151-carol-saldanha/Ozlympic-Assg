@@ -127,6 +127,7 @@ public class RunningController implements Initializable {
 				throw new TooFewAthleteException();
 			} catch (TooFewAthleteException e) {
 				// Throw dialog box on too few athlete exception
+				System.out.println(e.getMessage());
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error Message");
 				alert.setHeaderText("Error: To Few Athlete Exception ");
@@ -177,7 +178,8 @@ public class RunningController implements Initializable {
 	 * It initializes all the values in the controller
 	 */
 	public void initialize(URL url, ResourceBundle rb) {
-		System.out.println("Initializing.. ");
+		System.out.print("initializing ");
+		System.out.println(Driver.RUNNING);
 		athletes.clear();
 
 		for (int i = 0; i < get.getSwimmers().size(); i++) {
@@ -212,8 +214,10 @@ public class RunningController implements Initializable {
 					if (selectedParticipants.getItems().size() + 1 <= MAXIMUM_PARTICIPANTS) {
 
 						addParticipants.getSelectionModel().clearSelection();
+
 						type = selectedAddParticipantList.substring(selectedAddParticipantList.indexOf("type=") + 5,
 								selectedAddParticipantList.length());
+
 						if (!type.equals(TYPE_1) && !type.equals(TYPE_2)) {
 							try {
 								throw new WrongTypeException();
@@ -235,6 +239,7 @@ public class RunningController implements Initializable {
 							} else {
 
 								selectedParticipants.getItems().addAll(selectedAddParticipantList);
+
 							}
 						}
 					}
@@ -248,6 +253,7 @@ public class RunningController implements Initializable {
 						throw new GameFullException();
 					} catch (GameFullException e) {
 						// Throw dialog box on exception call
+						System.out.println(e.getMessage());
 						Alert alert = new Alert(AlertType.WARNING);
 						alert.setTitle("Error Message");
 						alert.setHeaderText("Error : Game Full Exception");
@@ -264,6 +270,7 @@ public class RunningController implements Initializable {
 
 		left.setOnAction((ActionEvent event) -> {
 			selectedParticipants.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
 			if (selectedParticipants.getSelectionModel().getSelectedItem() != null)
 
 				selectedParticipantList = selectedParticipants.getSelectionModel().getSelectedItem();
@@ -279,7 +286,9 @@ public class RunningController implements Initializable {
 						if (addParticipants.getItems().contains(selectedParticipantList)) {
 							// Do nothing
 						} else {
+
 							addParticipants.getItems().addAll(selectedParticipantList);
+							System.out.println(addParticipants);
 						}
 						isValid = true;
 					}

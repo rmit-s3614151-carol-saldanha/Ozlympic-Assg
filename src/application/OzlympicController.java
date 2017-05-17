@@ -86,7 +86,7 @@ public class OzlympicController {
 	 */
 	@FXML
 	void clickDisplay(ActionEvent event) throws Exception {
-
+		System.out.println("Opening played games..");
 		utility.displayUX(DisplayAllGames.class, "application/DisplayAllGames.fxml", null);
 	}
 
@@ -99,6 +99,7 @@ public class OzlympicController {
 	 */
 	@FXML
 	void displayAllAthletePoints(ActionEvent event) throws Exception {
+		System.out.println("Opening display points..");
 		utility.displayUX(DisplayPointsController.class, "application/DisplayAthletePoints.fxml", null);
 	}
 

@@ -33,7 +33,7 @@ public class Driver {
 	private Game game;
 	private ParticipantList participantList;
 	@SuppressWarnings("unused")
-	
+
 	private Scanner scanInput = new Scanner(System.in);
 
 	public ParticipantList getParticipantList() {
@@ -60,6 +60,8 @@ public class Driver {
 
 	public Driver() {
 		// Create objects
+		System.out.println("Starting application : Ozlympic.java");
+		System.out.println("Database connected : Ozlympic.db");
 		participantList = new ParticipantList();
 
 		FileHandler file = new FileHandler();
@@ -88,7 +90,6 @@ public class Driver {
 	 * 
 	 */
 
-	
 	public ArrayList<Athlete> displayPoints() {
 		@SuppressWarnings({ "rawtypes", "unchecked" })
 		ArrayList<Athlete> displayList = new ArrayList();
