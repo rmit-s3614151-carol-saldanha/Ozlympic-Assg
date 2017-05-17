@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import rmit.java.assignment.controller.Driver;
 import rmit.java.assignment.model.Athlete;
+import rmit.java.assignment.model.Game;
 
 
 /**
@@ -26,7 +27,7 @@ import rmit.java.assignment.model.Athlete;
  *                   , type , time of each athlete.
  *
  */
-public class DisplayController extends RefereeController implements Initializable {
+public class DisplayController implements Initializable {
 
 	// Private instance variables for the FXML files.
 
@@ -88,6 +89,8 @@ public class DisplayController extends RefereeController implements Initializabl
 
 		// Based on the current game it retrieves the result and the official
 		// details
+		Game game = Ozlympic.driver.getGame();
+		Driver driver = Ozlympic.driver;
 
 		if (game.getCurrentGame().equals(Driver.SWIMMING)) {
 			athletes = FXCollections.observableArrayList(driver.displaySwimmingResults());

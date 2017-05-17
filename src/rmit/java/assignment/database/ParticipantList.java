@@ -118,10 +118,12 @@ public class ParticipantList {
 
 		// Add by database at first
 		addAthletesByDatabase();
+	
 
 	}
 
 	public void addAthletesByDatabase() {
+		
 		Connection connection = null;
 		// TODO Auto-generated method stub
 		try {
@@ -195,10 +197,12 @@ public class ParticipantList {
 				}
 
 			}
+		
 
 		} catch (ClassNotFoundException | SQLException e) {
 			// If not found try file
 			try {
+				
 				getFile.getParticipantList();
 				addAthletesByFile();
 				int checkFormat = checkFormat();
@@ -207,6 +211,7 @@ public class ParticipantList {
 
 					addAthletesByFile();
 				}
+			
 			} catch (IOException e1) {
 
 				// Dialog box if both not working

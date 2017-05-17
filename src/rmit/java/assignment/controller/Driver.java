@@ -4,6 +4,8 @@ package rmit.java.assignment.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import rmit.java.assignment.database.FileHandler;
 import rmit.java.assignment.database.ParticipantList;
 import rmit.java.assignment.model.Athlete;
 import rmit.java.assignment.model.Cycling;
@@ -64,6 +66,9 @@ public class Driver {
 	public Driver() {
 		// Create objects
 		participantList = new ParticipantList();
+		
+		FileHandler file = new FileHandler();
+		file.createFile();
 		game = new Game();
 
 	}

@@ -30,13 +30,7 @@ public class FileHandler {
 
 	// Empty constructor
 	public FileHandler() {
-		try {
-			FileWriter writer = new FileWriter("game.txt");
-			writer.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 
 	}
 
@@ -79,6 +73,7 @@ public class FileHandler {
 			writer = new FileWriter("game.txt", true);
 
 			writer.write(string.toString() + "\n");
+			System.out.println(writer);
 
 			writer.close();// flushes the stream.
 
@@ -113,6 +108,17 @@ public class FileHandler {
 	// Getter for games
 	public ArrayList<String> getGames() {
 		return this.games;
+	}
+	
+	public void createFile() {
+		System.out.println("Called");
+		try {
+			FileWriter writer = new FileWriter("game.txt");
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
