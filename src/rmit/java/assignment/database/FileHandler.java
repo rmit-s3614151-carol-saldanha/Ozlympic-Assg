@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * 
  * @author Carol Benita Saldanha
- * @version 3.0
+ * @version 5.0
  * @classDescription File Handler has read and write functions. It loads the
  *                   data from file into array objects an writes to file.
  *
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class FileHandler {
 
 	// File name
-	private String participantList = "partiipants.txt";
+	private String participantList = "participants.txt";
 	private String gameFile = "gameResult.txt";
 
 	// Instance variables

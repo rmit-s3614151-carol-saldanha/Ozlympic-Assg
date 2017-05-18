@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 /**
  * 
  * @author Carol Benita Saldanha
- * @version 3.0
+ * @version 5.0
  * @classDescription It displays the main page of the UI from which all the
  *                   other functions are available.
  *

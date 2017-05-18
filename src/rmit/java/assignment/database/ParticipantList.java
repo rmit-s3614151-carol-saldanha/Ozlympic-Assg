@@ -1,6 +1,6 @@
 package rmit.java.assignment.database;
 
-import java.io.IOException;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +18,7 @@ import rmit.java.assignment.model.Swimmer;
 /**
  *
  * @author : Niraj Bohra
- * @version 3.0
+ * @version 5.0
  * @classDescription Class Description: Database Class that contains data of all
  *                   the participants
  */

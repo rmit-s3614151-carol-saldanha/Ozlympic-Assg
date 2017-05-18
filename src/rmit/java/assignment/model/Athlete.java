@@ -3,7 +3,7 @@ package rmit.java.assignment.model;
 /**
  * 
  * @author : Carol Benita Saldanha
- * @version 3.0
+ * @version 5.0
  * @classDescription Abstract Class of athletes.
  * @Superclass: Participants
  * @Subclass: Swimmer, Sprinter, SuperAthlete, Cyclist

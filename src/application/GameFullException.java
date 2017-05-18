@@ -3,7 +3,7 @@ package application;
 /**
  * 
  * @author Niraj Bohra
- * @version 3.0
+ * @version 5.0
  * @superclass Exception
  * @ClassDescription GameFullException displays custom made exception if the
  *                   number of athletes are 8.

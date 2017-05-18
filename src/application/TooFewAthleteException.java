@@ -3,7 +3,7 @@ package application;
 /**
  * 
  * @author Carol Benita Saldanha
- * @version 3.0
+ * @version 5.0
  * @superclass Exception
  * @ClassDescription TooFewAthleteException displays custom made exception if
  *                   there are not a minimum of 4 athletes

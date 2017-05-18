@@ -7,7 +7,7 @@ import java.util.Random;
  * 
  * 
  * @author: Carol Saldanha Benita
- * @version 3.0
+ * @version 5.0
  * @classDescription: Class that represents swimmers.
  * @Superclass: Athlete
  */

@@ -26,7 +26,7 @@ import rmit.java.assignment.model.SuperAthlete;
  *
  * 
  * @author : Carol Benita Saldanha
- * @version : 3.0 
+ * @version : 5.0 
  * @ClassDescription: The SwimmerAnimation class is where the
  *          animation for swimming takes place. The UI elements are linked via
  *          SwimmingAnimation.fxml

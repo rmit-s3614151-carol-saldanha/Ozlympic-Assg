@@ -7,7 +7,7 @@ import java.util.Random;
  * @ClassDescription: Class that represents cyclists. 
  * @Superclass: Athlete
  * @author: Niraj Bohra
- * @version 3.0
+ * @version 5.0
  * @classDescription  Class that represents Cycling games. 
  * @Superclass: Game
  */

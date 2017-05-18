@@ -20,7 +20,7 @@ import rmit.java.assignment.model.Game;
 /**
  * 
  * @author Niraj Bohra
- * @version 3.0
+ * @version 5.0
  * @ClassDescription Display Controller is used to display the final results
  *                   after the games it has a table with id , name , age , state
  *                   , type , time of each athlete.

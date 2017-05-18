@@ -9,7 +9,7 @@ import java.sql.SQLException;
 /**
  * 
  * @author Niraj Bohra
- * @version 3.0
+ * @version 5.0
  * @classDescription SQL Connection file is a connectivity to database
  *
  */
@@ -29,7 +29,7 @@ public class SQLConnection {
 	 */
 	public Connection createConnection() throws SQLException, ClassNotFoundException {
 		Connection connection = null;
-		URL url = getClass().getResource("Ozlymic.db");
+		URL url = getClass().getResource("Ozlympic.db");
 		// ADD DATA ON SCREEN
 		Class.forName("org.sqlite.JDBC");
 		connection = DriverManager.getConnection("jdbc:sqlite:" + url.getPath());

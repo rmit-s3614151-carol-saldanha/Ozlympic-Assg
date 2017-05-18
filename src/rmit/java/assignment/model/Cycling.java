@@ -10,7 +10,7 @@ import rmit.java.assignment.database.ParticipantList;
  *
  * 
  * @author: Niraj Bohra
- * @version 3.0
+ * @version 5.0
  * @classDescription Class that represents Cycling games. Superclass: Game
  * 
  * 
