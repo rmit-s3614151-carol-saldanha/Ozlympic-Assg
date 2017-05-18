@@ -3,7 +3,7 @@ package application;
 /**
  * 
  * @author Carol Benita Saldanha
- * @version 1.0
+ * @version 3.0
  * @superclass Exception
  * @ClassDescription WrongTypeException displays custom made exception if the
  *                   athlete is not playing the game he belongs too.

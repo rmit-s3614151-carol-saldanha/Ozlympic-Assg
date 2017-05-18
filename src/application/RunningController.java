@@ -25,7 +25,7 @@ import rmit.java.assignment.model.SuperAthlete;
 /**
  * 
  * @author Carol Benita Saldanha
- * @version 1.0
+ * @version 3.0
  * @classDescription Running controller makes the user select participants for
  *                   the game and run the game.
  *

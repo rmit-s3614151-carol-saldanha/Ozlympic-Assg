@@ -18,7 +18,7 @@ import rmit.java.assignment.model.Athlete;
 /**
  * 
  * @author Carol Benita Saldanha
- * @version 1.0
+ * @version 3.0
  * @ClassDescription Display points controller loads the points of all athletes
  *                   in a ascending format.
  *

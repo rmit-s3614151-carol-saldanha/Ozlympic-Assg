@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 /**
  * 
  * @author Niraj Bohra
- * @version 1.0
+ * @version 3.0
  * @classDescription It is a utility function that loads the UI.
  *
  */

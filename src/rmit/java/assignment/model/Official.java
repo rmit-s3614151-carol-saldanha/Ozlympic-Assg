@@ -7,7 +7,7 @@ import java.util.HashMap;
  *
  * 
  * @author : Niraj Bohra
- * @version 1.0
+ * @version 3.0
  * @superclass Participants
  * @classDescription Class that assigns Officials for all the games
  */

@@ -3,7 +3,7 @@ package application;
 /**
  * 
  * @author Carol Benita Saldanha
- * @version 1.0
+ * @version 3.0
  * @superclass Exception
  * @ClassDescription NoRefereeException displays custom made exception if the
  *                   official is not assigned

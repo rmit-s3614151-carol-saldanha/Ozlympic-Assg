@@ -17,7 +17,7 @@ import rmit.java.assignment.database.SQLConnection;
  * 
  * 
  * @author: Carol Benita Saldanha
- * @version 1.0
+ * @version 3.0
  * @classDescription Description: Class that represents all games in ozlympics
  */
 

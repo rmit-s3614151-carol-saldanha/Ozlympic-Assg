@@ -17,8 +17,8 @@ import rmit.java.assignment.model.Swimmer;
 
 /**
  *
- * @author : Carol Benita Saldanha
- * @version 1.0
+ * @author : Niraj Bohra
+ * @version 3.0
  * @classDescription Class Description: Database Class that contains data of all
  *                   the participants
  */
@@ -118,7 +118,7 @@ public class ParticipantList {
 		// Add by database at first
 		try {
 			addAthletesByDatabase();
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch ( Exception e) {
 			// Dialog box if both not working
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error Message");
@@ -128,11 +128,11 @@ public class ParticipantList {
 
 			try {
 				getFile.getParticipantList();
-			} catch (IOException e1) {
+			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				Alert alert1 = new Alert(AlertType.ERROR);
 				alert1.setTitle("Error Message");
-				alert1.setHeaderText("Error : Please contact administrator");
+				alert1.setHeaderText("Error : Both file and database not found");
 				alert1.setContentText(e.getMessage());
 				alert1.showAndWait();
 				System.exit(0);

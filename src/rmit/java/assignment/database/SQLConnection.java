@@ -1,5 +1,6 @@
 package rmit.java.assignment.database;
 
+import java.net.URL;
 // imports 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 /**
  * 
  * @author Niraj Bohra
- * @version 1.0
+ * @version 3.0
  * @classDescription SQL Connection file is a connectivity to database
  *
  */
@@ -28,10 +29,10 @@ public class SQLConnection {
 	 */
 	public Connection createConnection() throws SQLException, ClassNotFoundException {
 		Connection connection = null;
+		URL url = getClass().getResource("Ozlymic.db");
 		// ADD DATA ON SCREEN
 		Class.forName("org.sqlite.JDBC");
-		connection = DriverManager
-				.getConnection("jdbc:sqlite:/Users/MacBook_Main/Documents/workspace/Ozlympic/Ozlympic.db");
+		connection = DriverManager.getConnection("jdbc:sqlite:" + url.getPath());
 		connection.setAutoCommit(true);
 		return connection;
 

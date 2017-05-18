@@ -23,7 +23,7 @@ import rmit.java.assignment.model.SuperAthlete;
 /**
  * 
  * @author Niraj Bohra
- * @version 1.0
+ * @version 3.0
  * @ClassDescrption Cycling Controller is a class that controls all data
  *                  manipulation on Cycling.fxml
  * 

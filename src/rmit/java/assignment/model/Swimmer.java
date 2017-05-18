@@ -2,14 +2,12 @@ package rmit.java.assignment.model;
 
 import java.util.Random;
 
-
-
 /**
  *
  * 
  * 
  * @author: Carol Saldanha Benita
- * @version 1.0
+ * @version 3.0
  * @classDescription: Class that represents swimmers.
  * @Superclass: Athlete
  */

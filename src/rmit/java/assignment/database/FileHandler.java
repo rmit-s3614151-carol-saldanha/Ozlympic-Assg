@@ -5,12 +5,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
  * 
  * @author Carol Benita Saldanha
- * @version 1.0
+ * @version 3.0
  * @classDescription File Handler has read and write functions. It loads the
  *                   data from file into array objects an writes to file.
  *
@@ -18,7 +19,8 @@ import java.util.ArrayList;
 public class FileHandler {
 
 	// File name
-	private String participantList = "participants.txt";
+	private String participantList = "partiipants.txt";
+	private String gameFile = "gameResult.txt";
 
 	// Instance variables
 	private ArrayList<String> participants = new ArrayList<String>();
@@ -44,8 +46,8 @@ public class FileHandler {
 	 *             of strings
 	 */
 	public void getParticipantList() throws IOException {
-
-		File f = new File(participantList);
+		URL url = getClass().getResource(participantList);
+		File f = new File(url.getPath());
 
 		@SuppressWarnings("resource")
 		BufferedReader b = new BufferedReader(new FileReader(f.getAbsolutePath()));
@@ -71,10 +73,13 @@ public class FileHandler {
 	 */
 	public void writeFile(String string) {
 
+		URL url = getClass().getResource(gameFile);
 		FileWriter writer = null;
+		
 
 		try {
-			writer = new FileWriter("game.txt", true);
+			
+			writer = new FileWriter(url.getPath(), true);
 
 			writer.write(string.toString() + "\n");
 
@@ -92,8 +97,8 @@ public class FileHandler {
 	 * @throws IOException
 	 */
 	public void getPlayedGames() throws IOException {
-
-		File f = new File("game.txt");
+		URL url = getClass().getResource(gameFile);
+		File f = new File(url.getPath());
 
 		@SuppressWarnings("resource")
 		BufferedReader b = new BufferedReader(new FileReader(f.getAbsolutePath()));
@@ -114,10 +119,12 @@ public class FileHandler {
 	}
 
 	public void createFile() {
+		
 		System.out.println("Creating file....");
+		URL url = getClass().getResource(gameFile);
 		try {
-			FileWriter writer = new FileWriter("game.txt");
-			System.out.println("File created : game.txt");
+			FileWriter writer = new FileWriter(url.getPath());
+			System.out.println("File created : gameResults.txt");
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

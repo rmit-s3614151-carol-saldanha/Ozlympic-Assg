@@ -22,7 +22,8 @@ import rmit.java.assignment.model.Running;
  *
  * 
  * @author : Niraj Bohra
- * @version : 1 Class Description: The RunningAnimation class is where the
+ * @version : 3.0 
+ * @Class Description: The RunningAnimation class is where the
  *          animation for swimming takes place. The UI elements are linked via
  *          RunningAnimation.fxml
  * 

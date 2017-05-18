@@ -22,9 +22,10 @@ import rmit.java.assignment.model.Game;
  *
  * 
  * @author : Carol Benita Saldanha
- * @version : 1 Class Description: The CyclingAnimation class is where the
- *          animation for swimming takes place. The UI elements are linked via
- *          CyclingAnimation.fxml
+ * @version : 3.0
+ * @classDescription Class Description: The CyclingAnimation class is where the
+ *                   animation for swimming takes place. The UI elements are
+ *                   linked via CyclingAnimation.fxml
  * 
  * 
  * 

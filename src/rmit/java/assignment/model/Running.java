@@ -11,7 +11,7 @@ import rmit.java.assignment.database.ParticipantList;
  * Class Description:
  * 
  * @author: Niraj Bohra
- * @version 1.0
+ * @version 3.0
  * @classDescription Class that represents Running games.
  * @Superclass: Game
  */

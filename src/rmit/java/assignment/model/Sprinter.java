@@ -7,7 +7,7 @@ import java.util.Random;
  * 
  * 
  * @author: Carol Benita Saldanha
- * @version 1.0
+ * @version 3.0
  * @classDescription Class that represents sprinters.
  * @Superclass: Athlete
  */
