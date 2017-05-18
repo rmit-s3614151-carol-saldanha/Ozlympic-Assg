@@ -37,7 +37,7 @@ oz1020,cyclists,Aditya,26,NSW
 oz1020  ,cyclists, Aditya, 26 , NSW
 
 oz1020,cyclists,Aditya,26,NSW
-oz1027,cyclists,Doremon, 23,TAS
+oz1027,cyclists,Praveen, 23,TAS
 oz1029,cyclists,Luke,23,TAS
 oz1031,cyclists,David,23,TAS
 oz1032,super,Satya,22,QLD
