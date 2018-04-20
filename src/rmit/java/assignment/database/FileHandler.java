@@ -53,7 +53,10 @@ public class FileHandler {
 		BufferedReader b = new BufferedReader(new FileReader(f.getAbsolutePath()));
 
 		String readLine = "";
+<<<<<<< HEAD
 		System.out.println("Reading");
+=======
+>>>>>>> 78dc2f82445dd7eed9be7171a7d1c6d812818688
 
 		while ((readLine = b.readLine()) != null) {
 			if (readLine.length() > 0) {

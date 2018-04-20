@@ -60,8 +60,13 @@ public class Driver {
 
 	public Driver() {
 		// Create objects
+<<<<<<< HEAD
 //		System.out.println("Starting application : Ozlympic.java");
 //		System.out.println("Database connected : Ozlympic.db");
+=======
+		System.out.println("Starting application : Ozlympic.java");
+		System.out.println("Database connected : Ozlympic.db");
+>>>>>>> 78dc2f82445dd7eed9be7171a7d1c6d812818688
 		participantList = new ParticipantList();
 
 		FileHandler file = new FileHandler();

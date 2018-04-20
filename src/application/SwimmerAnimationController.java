@@ -16,12 +16,19 @@ import rmit.java.assignment.model.Athlete;
 import rmit.java.assignment.model.Game;
 import rmit.java.assignment.model.Swimming;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 78dc2f82445dd7eed9be7171a7d1c6d812818688
 /**
  *
  *  
  * 
+<<<<<<< HEAD
  * @author : Carol Saldanha
+=======
+ * @author : Niraj Bohra
+>>>>>>> 78dc2f82445dd7eed9be7171a7d1c6d812818688
  * @version : 5.0
  * @ClassDescription: The SwimmerAnimation class is where the animation for
  *                    swimming takes place.  The UI elements are linked via
