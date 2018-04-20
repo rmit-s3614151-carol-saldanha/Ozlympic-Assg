@@ -8,9 +8,12 @@ import rmit.java.assignment.database.ParticipantList;
 
 /**
  *
- * Class Description: Class that represents Cycling games. Superclass: Game
  * 
- * @author: Eashan Tilve
+ * @author: Niraj Bohra
+ * @version 5.0
+ * @classDescription Class that represents Cycling games. Superclass: Game
+ * 
+ * 
  */
 public class Cycling extends Game {
 
@@ -20,8 +23,6 @@ public class Cycling extends Game {
 	private static final int MAXIMUM_PARTICIPANT_COUNT = 8;
 	private HashMap<Athlete, Float> timings = new HashMap<Athlete, Float>();
 	private ArrayList<Athlete> contestants = new ArrayList<Athlete>();
-	private Athlete userPredictedWinner;
-
 
 	/**
 	 * CONSTRUCTOR
@@ -32,7 +33,7 @@ public class Cycling extends Game {
 	 *            official: used to assign an official to the cycling game
 	 */
 	public Cycling() {
-		
+
 	}
 
 	/**
@@ -72,6 +73,7 @@ public class Cycling extends Game {
 	public void setGameID(String ID) {
 		this.gameID = ID;
 	}
+
 	/**
 	 * This method is used to get the Cycling Games unique ID
 	 * 
@@ -129,11 +131,21 @@ public class Cycling extends Game {
 	public void setContestants(ArrayList<Athlete> contestants) {
 		this.contestants = contestants;
 	}
-	
+
+	/**
+	 * this is used to set a contestant
+	 * 
+	 * @param contestant
+	 */
 	public void addContestant(Athlete contestant) {
-		this.contestants.add(contestant); 
+		this.contestants.add(contestant);
 	}
-	
+
+	/**
+	 * this sets an official
+	 * 
+	 * @param official
+	 */
 	public void setOfficial(Official official) {
 		this.official = official;
 	}

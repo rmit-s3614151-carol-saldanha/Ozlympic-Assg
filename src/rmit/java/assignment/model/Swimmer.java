@@ -2,14 +2,14 @@ package rmit.java.assignment.model;
 
 import java.util.Random;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 /**
  *
- * Class Description: Class that represents swimmers. Superclass: Athlete
  * 
- * @author: Eashan Tilve
+ * 
+ * @author: Carol Saldanha Benita
+ * @version 5.0
+ * @classDescription: Class that represents swimmers.
+ * @Superclass: Athlete
  */
 
 public class Swimmer extends Athlete {
@@ -24,7 +24,6 @@ public class Swimmer extends Athlete {
 	private int points;
 	private String type = "Swimmers";
 	private float atime = getATime();
-	// Image image = new Image(file.toURI().toString());
 
 	/**
 	 * CONSTRUCTOR
@@ -73,6 +72,41 @@ public class Swimmer extends Athlete {
 
 	public void setUniqueID(String uniqueID) {
 		this.uniqueID = uniqueID;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public float getAtime() {
+		return atime;
+	}
+
+	public void setAtime(float atime) {
+		this.atime = atime;
+	}
+
+	@Override
+	public float getATime() {
+		// TODO Auto-generated method stub
+		return atime;
+	}
+
+	@Override
+	public void setATime(float time) {
+		// TODO Auto-generated method stub
+		this.atime = time;
+
+	}
+
+	@Override
+	public String getAName() {
+		// TODO Auto-generated method stub
+		return name;
 	}
 
 	/**
@@ -128,35 +162,6 @@ public class Swimmer extends Athlete {
 	@Override
 	public String toString() {
 		return "name=" + name + ", age=" + age + ", state=" + state + ", ID=" + uniqueID + "type=" + type;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public float getAtime() {
-		return atime;
-	}
-
-	public void setAtime(float atime) {
-		this.atime = atime;
-	}
-
-	@Override
-	public float getATime() {
-		// TODO Auto-generated method stub
-		return atime;
-	}
-
-	@Override
-	public void setATime(float time) {
-		// TODO Auto-generated method stub
-		this.atime = time;
-
 	}
 
 }

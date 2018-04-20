@@ -8,11 +8,15 @@ import rmit.java.assignment.database.ParticipantList;
 
 /**
  *
- * Class Description: Class that represents Running games. Superclass: Game
+ * Class Description:
  * 
- * @author: Eashan Tilve
+ * @author: Niraj Bohra
+ * @version 5.0
+ * @classDescription Class that represents Running games.
+ * @Superclass: Game
  */
 public class Running extends Game {
+
 	private static final int MINIMUM_PARTICIPANT_COUNT = 5;
 	private static final int MAXIMUM_PARTICIPANT_COUNT = 8;
 	private Athlete userPredictedWinner;
@@ -33,7 +37,8 @@ public class Running extends Game {
 	/**
 	 * This method is used to set the user predicted winner for this game
 	 * 
-	 * @param Athlete userPredictedWinner 
+	 * @param Athlete
+	 *            userPredictedWinner
 	 */
 	public void setUserPredictedWinner(Athlete userPredictedWinner) {
 		this.userPredictedWinner = userPredictedWinner;
@@ -48,7 +53,7 @@ public class Running extends Game {
 	 *            official: used to assign an official to the running game
 	 */
 	public Running() {
-		
+
 	}
 
 	/**
@@ -94,11 +99,15 @@ public class Running extends Game {
 		return contestants;
 	}
 
-	
+	/**
+	 * gets the GameID of the object
+	 * 
+	 * @param ID
+	 */
 	public void setGameID(String ID) {
 		this.gameID = ID;
 	}
-	
+
 	/**
 	 * This method is used to get the running Games unique ID
 	 * 
@@ -147,8 +156,9 @@ public class Running extends Game {
 	public void setContestants(ArrayList<Athlete> contestants) {
 		this.contestants = contestants;
 	}
+
 	public void addContestant(Athlete contestant) {
-		this.contestants.add(contestant); 
+		this.contestants.add(contestant);
 	}
 
 	public void setOfficial(Official official) {

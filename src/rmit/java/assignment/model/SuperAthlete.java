@@ -6,17 +6,24 @@ import rmit.java.assignment.controller.Driver;
 
 /**
  *
- * Class Description: Class that represents swimmers. Superclass: Athlete
+ * Class Description:
  * 
- * @author: Eashan Tilve
+ * @author: Niraj Bohra
+ * @version 5.0
+ * @classDescription Class that represents swimmers.
+ * @Superclass: Athlete
  */
 public class SuperAthlete extends Athlete {
+
+	// Instance variables
 
 	private String name;
 	private String age;
 	private String state;
 	private String type = "Super Athletes";
 	private float atime = getATime();
+
+	// Getter and setters
 
 	public String getName() {
 		return name;
@@ -44,6 +51,46 @@ public class SuperAthlete extends Athlete {
 
 	public void setUniqueID(String uniqueID) {
 		this.uniqueID = uniqueID;
+	}
+
+	@Override
+	public int getPoints() {
+		return this.points;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public float getAtime() {
+		return atime;
+	}
+
+	public void setAtime(float atime) {
+		this.atime = atime;
+	}
+
+	@Override
+	public float getATime() {
+
+		return atime;
+	}
+
+	@Override
+	public void setATime(float time) {
+
+		this.atime = time;
+
+	}
+
+	@Override
+	public String getAName() {
+
+		return name;
 	}
 
 	private String uniqueID;
@@ -106,7 +153,7 @@ public class SuperAthlete extends Athlete {
 		Random randomGenerator = new Random();
 		System.out.println();
 		switch (currentGame) {
-		
+
 		case Driver.SWIMMING:
 			return Swimmer.MINIMUM_SWIM_TIME
 					+ randomGenerator.nextFloat() * (Swimmer.MAXIMUM_SWIM_TIME - Swimmer.MINIMUM_SWIM_TIME);
@@ -152,38 +199,5 @@ public class SuperAthlete extends Athlete {
 	 * 
 	 * @return int will return number of points that the superAthlete has.
 	 */
-	@Override
-	public int getPoints() {
-		return this.points;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public float getAtime() {
-		return atime;
-	}
-
-	public void setAtime(float atime) {
-		this.atime = atime;
-	}
-
-	@Override
-	public float getATime() {
-		// TODO Auto-generated method stub
-		return atime;
-	}
-
-	@Override
-	public void setATime(float time) {
-		// TODO Auto-generated method stub
-		this.atime = time;
-
-	}
 
 }

@@ -1,8 +1,8 @@
 package application;
 
+//imports
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,11 +13,22 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import rmit.java.assignment.controller.Driver;
 import rmit.java.assignment.model.Athlete;
+import rmit.java.assignment.model.Game;
 
-public class DisplayController extends RefereeController implements Initializable {
+/**
+ * 
+ * @author Niraj Bohra
+ * @version 5.0
+ * @ClassDescription Display Controller is used to display the final results
+ *                   after the games it has a table with id , name , age , state
+ *                   , type , time of each athlete.
+ *
+ */
+public class DisplayController implements Initializable {
+
+	// Private instance variables for the FXML files.
 
 	@FXML
 	private TableView<Athlete> table;
@@ -39,9 +50,6 @@ public class DisplayController extends RefereeController implements Initializabl
 
 	@FXML
 	private TableColumn<Athlete, String> age;
-	
-	@FXML
-    private TableColumn<Athlete, ImageView> medals;
 
 	@FXML
 	private JFXButton home;
@@ -51,97 +59,69 @@ public class DisplayController extends RefereeController implements Initializabl
 
 	@FXML
 	private Label gameID;
-	
-    @FXML
-    private Label refereeName;
-    
-    @FXML
-    private Label winner;
-    
-    @FXML
-    private Label winner2;
-    
-    @FXML
-    private Label winner3;
-    
-    @FXML
-    private ImageView WinnerImg;
 
-    @FXML
-    private ImageView tropheeImg;
-    
-    private ObservableList<Athlete> athletes;
+	@FXML
+	private Label refereeName;
 
+	// List to get athlete objects to initialize on table.
+
+	private ObservableList<Athlete> athletes;
+
+	/**
+	 * 
+	 * @param event
+	 * @throws Exception
+	 *             homeMenu(event) is a method that takes the user to the home
+	 *             page or the menu page.
+	 * 
+	 */
 	@FXML
 	void homeMenu(ActionEvent event) throws Exception {
 		Utility utility = new Utility();
 		utility.displayUX(OzlympicController.class, "application/Ozlympic.fxml", null);
 	}
 
-	@FXML
-	void display(ActionEvent event) {
-
-		// label.setText(driver.displayResults().get(0));
-	}
-
 	public void initialize(URL url, ResourceBundle rb) {
+		// Clear text on UI
+
 		refereeID.setText("");
-	
+
+		// Based on the current game it retrieves the result and the official
+		// details
+		Game game = Ozlympic.driver.getGame();
+		Driver driver = Ozlympic.driver;
+
 		if (game.getCurrentGame().equals(Driver.SWIMMING)) {
 			athletes = FXCollections.observableArrayList(driver.displaySwimmingResults());
-			refereeID.setText(game.getSwimmingGames().get(game.getSwimmingGames().size() - 1).getOfficial().getUniqueID()
-					.toString());
-			gameID.setText(game.getSwimmingGames().get(game.getSwimmingGames().size() -1 ).getGameID() );
-			refereeName.setText(game.getSwimmingGames().get(game.getSwimmingGames().size() - 1 ).getOfficial().getName());
+			refereeID.setText(game.getSwimmingGames().get(game.getSwimmingGames().size() - 1).getOfficial()
+					.getUniqueID().toString());
+			gameID.setText(game.getSwimmingGames().get(game.getSwimmingGames().size() - 1).getGameID());
+			refereeName
+					.setText(game.getSwimmingGames().get(game.getSwimmingGames().size() - 1).getOfficial().getName());
 
 		} else if (game.getCurrentGame().equals(Driver.CYCLING)) {
 			athletes = FXCollections.observableArrayList(driver.displayCyclingResults());
 			refereeID.setText(game.getCyclingGames().get(game.getCyclingGames().size() - 1).getOfficial().getUniqueID()
 					.toString());
-			gameID.setText(game.getCyclingGames().get(game.getCyclingGames().size() -1 ).getGameID() );
-			refereeName.setText(game.getCyclingGames().get(game.getCyclingGames().size() - 1 ).getOfficial().getName());
+			gameID.setText(game.getCyclingGames().get(game.getCyclingGames().size() - 1).getGameID());
+			refereeName.setText(game.getCyclingGames().get(game.getCyclingGames().size() - 1).getOfficial().getName());
 		} else if (game.getCurrentGame().equals(Driver.RUNNING)) {
 			athletes = FXCollections.observableArrayList(driver.displayRunningResults());
 			refereeID.setText(game.getRunningGames().get(game.getRunningGames().size() - 1).getOfficial().getUniqueID()
 					.toString());
-			gameID.setText(game.getRunningGames().get(game.getRunningGames().size() -1 ).getGameID() );
-			refereeName.setText(game.getRunningGames().get(game.getRunningGames().size() - 1 ).getOfficial().getName());
+			gameID.setText(game.getRunningGames().get(game.getRunningGames().size() - 1).getGameID());
+			refereeName.setText(game.getRunningGames().get(game.getRunningGames().size() - 1).getOfficial().getName());
 		}
 
-		id.setMinWidth(40);
+		// Sets data to columns
 		id.setCellValueFactory(new PropertyValueFactory<Athlete, String>("uniqueID"));
-
-		name.setMinWidth(100);
 		name.setCellValueFactory(new PropertyValueFactory<Athlete, String>("name"));
-
-		age.setMinWidth(10);
 		age.setCellValueFactory(new PropertyValueFactory<Athlete, String>("age"));
-
-		state.setMinWidth(20);
 		state.setCellValueFactory(new PropertyValueFactory<Athlete, String>("state"));
-
-		type.setMinWidth(60);
 		type.setCellValueFactory(new PropertyValueFactory<Athlete, String>("type"));
-
 		time.setCellValueFactory(new PropertyValueFactory<Athlete, Float>("atime"));
-		
-		//medals.setCellValueFactory(new PropertyValueFactory<Athlete, ImageView>("winners"));
-		
 
 		table.setItems(athletes);
-		
-		
-		String firstPlace= table.getItems().get(0).toString();
-		winner.setText(firstPlace.substring(firstPlace.indexOf("name=")+5, firstPlace.indexOf(",")));
-		
-		String secondPlace= table.getItems().get(1).toString();
-		winner2.setText(secondPlace.substring(secondPlace.indexOf("name=")+5, secondPlace.indexOf(",")));
-		
-		
-		String thirdPlace= table.getItems().get(2).toString();
-		winner3.setText(thirdPlace.substring(thirdPlace.indexOf("name=")+5, thirdPlace.indexOf(",")));
-//		star1.setVisible(true);
-//		star2.setVisible(true);
-//		star3.setVisible(true);
+
 	}
 }

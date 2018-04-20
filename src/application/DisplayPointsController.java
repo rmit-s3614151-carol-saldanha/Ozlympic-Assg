@@ -1,25 +1,31 @@
 package application;
+// imports 
 
 import java.net.URL;
-import java.util.HashMap;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import rmit.java.assignment.controller.Driver;
 import rmit.java.assignment.model.Athlete;
-import rmit.java.assignment.model.Cyclist;
 
-public class DisplayPointsController extends RefereeController implements Initializable {
+/**
+ * 
+ * @author Carol Benita Saldanha
+ * @version 5.0
+ * @ClassDescription Display points controller loads the points of all athletes
+ *                   in a ascending format.
+ *
+ */
+public class DisplayPointsController implements Initializable {
+
+	// Private instance variables for the FXML files.
 
 	@FXML
 	private TableView<Athlete> table;
@@ -45,7 +51,14 @@ public class DisplayPointsController extends RefereeController implements Initia
 	@FXML
 	private JFXButton home;
 
-	//public static final ObservableList<Athlete> athletes = FXCollections.observableArrayList();
+	/**
+	 * 
+	 * @param event
+	 * @throws Exception
+	 *             homeMenu(event) is a method that takes the user to the home
+	 *             page or the menu page.
+	 * 
+	 */
 
 	@FXML
 	void homeMenu(ActionEvent event) throws Exception {
@@ -53,69 +66,32 @@ public class DisplayPointsController extends RefereeController implements Initia
 		utility.displayUX(OzlympicController.class, "application/Ozlympic.fxml", null);
 	}
 
-	@FXML
-	void display(ActionEvent event) {
-
-		// label.setText(driver.displayResults().get(0));
-	}
-
 	public void initialize(URL url, ResourceBundle rb) {
 
-//		if (game.getCurrentGame().equals(driver.SWIMMING)) {
-//			athletes = FXCollections.observableArrayList(driver.displaySwimmingResults());
-//		} else if (game.getCurrentGame().equals(driver.CYCLING)) {
-//			athletes = FXCollections.observableArrayList(driver.displayCyclingResults());
-//		} else if (game.getCurrentGame().equals(driver.RUNNING)) {
-//			athletes = FXCollections.observableArrayList(driver.displayRunningResults());
-//		}
-//		for (int i = 0; i < driver.displayPoints().size(); i++) {
-//			athletes.add(driver.displayPoints().get(i));
-//		}
-		
-		id.setMinWidth(20);
+		// Display data to columns and set min width of each column
+
 		id.setCellValueFactory(new PropertyValueFactory<Athlete, String>("uniqueID"));
-
-		name.setMinWidth(30);
 		name.setCellValueFactory(new PropertyValueFactory<Athlete, String>("name"));
-
-		age.setMinWidth(5);
 		age.setCellValueFactory(new PropertyValueFactory<Athlete, String>("age"));
-
-		state.setMinWidth(30);
 		state.setCellValueFactory(new PropertyValueFactory<Athlete, String>("state"));
-
-		type.setMinWidth(40);
 		type.setCellValueFactory(new PropertyValueFactory<Athlete, String>("type"));
-
-		points.setMinWidth(30);
 		points.setCellValueFactory(new PropertyValueFactory<Athlete, Float>("points"));
-		points.setSortable(false);
-		ObservableList<Athlete> list = FXCollections.observableArrayList();;
-		//table.setItems(athletes1);
-		System.out.println("adding to list "+ driver.displayPoints());
-//		for(Athlete athlete:driver.displayPoints().keySet()){
-//			list.add(athlete);
-//			System.out.println("adding to list " + athlete);
-//			}
-//			table.setItems(list);
-		System.out.println("size"+driver.displayPoints().size());
-		for(int i =0;i<driver.displayPoints().size();i++){
-		list.add(driver.displayPoints().get(i));
 
-	}	//table.setBackground();
-		System.out.println("LIST" +list);
-		
-		
+		ObservableList<Athlete> list = FXCollections.observableArrayList();
+
+		Driver driver = Ozlympic.driver;
+
+		for (int i = 0; i < driver.displayPoints().size(); i++) {
+			// adds to observable list to display on UI
+			list.add(driver.displayPoints().get(i));
+		}
+
+		// Set itmes to table
 		table.setItems(list);
-		points.setSortable(true);
 
-
+		// sort list
 		points.setSortType(TableColumn.SortType.DESCENDING);
 		table.getSortOrder().add(points);
-		points.setSortable(true);
-		table.sort();
 
-		
-
-	}	
+	}
 }

@@ -4,9 +4,12 @@ import java.util.Random;
 
 /**
  *
- * Class Description: Class that represents cyclists. Superclass: Athlete
- * 
- * @author: Eashan Tilve
+ * @ClassDescription: Class that represents cyclists. 
+ * @Superclass: Athlete
+ * @author: Niraj Bohra
+ * @version 5.0
+ * @classDescription  Class that represents Cycling games. 
+ * @Superclass: Game
  */
 public class Cyclist extends Athlete {
 
@@ -152,8 +155,14 @@ public class Cyclist extends Athlete {
 	@Override
 	public void setATime(float time) {
 		// TODO Auto-generated method stub
-		this.atime = time ;
+		this.atime = time;
 
+	}
+
+	@Override
+	public String getAName() {
+		// TODO Auto-generated method stub
+		return name;
 	}
 
 }

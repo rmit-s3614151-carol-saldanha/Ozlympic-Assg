@@ -1,11 +1,11 @@
+
 package application;
 
+// imports
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,7 +13,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Alert.AlertType;
@@ -23,9 +22,21 @@ import rmit.java.assignment.model.Game;
 import rmit.java.assignment.model.Swimming;
 import rmit.java.assignment.model.SuperAthlete;
 
+/**
+ *
+ * 
+ * @author : Carol Benita Saldanha
+ * @version : 5.0 
+ * @ClassDescription: The SwimmerAnimation class is where the
+ *          animation for swimming takes place. The UI elements are linked via
+ *          SwimmingAnimation.fxml
+ * 
+ * 
+ * 
+ * 
+ */
 public class SwimmingController implements Initializable {
-	
-	
+
 	@FXML
 	private ListView<String> selectedParticipants;
 
@@ -35,20 +46,17 @@ public class SwimmingController implements Initializable {
 	@FXML
 	private Button right;
 
-	
-
 	@FXML
 	private ListView<String> addParticipants;
 
 	@FXML
 	private JFXButton Next;
-	
+
 	@FXML
 	private JFXButton back;
-	
 
-    @FXML
-    private JFXDialog except;
+	@FXML
+	private JFXDialog except;
 
 	private static final String TYPE_1 = "Swimmers";
 
@@ -60,7 +68,7 @@ public class SwimmingController implements Initializable {
 
 	private String selectedAddParticipantList = "";
 
-	private String selectedParticipantList = "";
+	public String selectedParticipantList = "";
 	// private Ozlympic ozlympic = new Ozlympic();
 
 	// For Athletes
@@ -68,11 +76,6 @@ public class SwimmingController implements Initializable {
 
 	// For Officials
 	public static final ObservableList<String> officials = FXCollections.observableArrayList();
-
-	// For Playing 8
-	public static final ObservableList<String> playerList = FXCollections.observableArrayList();
-
-	public static final ObservableList<String> selected = FXCollections.observableArrayList();
 
 	Driver driver = Ozlympic.driver;
 	ParticipantList get = driver.getParticipantList();
@@ -87,7 +90,7 @@ public class SwimmingController implements Initializable {
 		addParticipants.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
 	}
-	
+
 	@FXML
 	void back(ActionEvent event) throws Exception {
 
@@ -96,6 +99,7 @@ public class SwimmingController implements Initializable {
 
 	}
 
+	@SuppressWarnings("static-access")
 	@FXML
 	void nextPage(ActionEvent event) throws Exception {
 		if (selectedParticipants.getItems().size() < MINIMUM_PARTICIPANTS) {
@@ -116,6 +120,7 @@ public class SwimmingController implements Initializable {
 
 			System.out.println(selectedParticipants.getItems());
 			swimming.setCurrentGame(Driver.SWIMMING);
+
 			System.out.println("current game " + swimming.getCurrentGame());
 
 			for (int i = 0; i < get.getSwimmers().size(); i++) {
@@ -128,7 +133,7 @@ public class SwimmingController implements Initializable {
 					}
 
 				}
-				// System.out.println("new" + swimming.getContestants());
+
 			}
 
 			for (int i = 0; i < get.getSuperAthletes().size(); i++) {
@@ -141,13 +146,12 @@ public class SwimmingController implements Initializable {
 					}
 
 				}
-				// System.out.println("new" + swimming.getContestants());
 
 			}
 
+			System.out.println("Participants Selected....");
 			get1.getSwimmingGames().add(swimming);
 			Ozlympic.driver.getGame().setCurrentGame(Driver.SWIMMING);
-
 			Utility utility = new Utility();
 			utility.displayUX(RefereeController.class, "application/Referee.fxml", null);
 		}
@@ -155,11 +159,13 @@ public class SwimmingController implements Initializable {
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
-		System.out.println("initializing ");
+
+		System.out.print("initializing ");
+		System.out.println(Driver.SWIMMING);
 		addParticipants.getItems().clear();
 		athletes.clear();
 		selectedParticipants.getItems().clear();
-		System.out.println(addParticipants.getItems().size());
+
 		for (int i = 0; i < get.getSwimmers().size(); i++) {
 			athletes.add(get.getSwimmers().get(i).toString());
 		}
@@ -174,8 +180,6 @@ public class SwimmingController implements Initializable {
 		}
 
 		addParticipants.setItems(athletes);
-		
-
 
 		right.setOnAction((ActionEvent event) -> {
 
@@ -195,10 +199,7 @@ public class SwimmingController implements Initializable {
 
 						type = selectedAddParticipantList.substring(selectedAddParticipantList.indexOf("type=") + 5,
 								selectedAddParticipantList.length());
-						// String type1
-						// =selectedAddParticipantList.substring(selectedAddParticipantList.indexOf("ID=")
-						// + 3, selectedAddParticipantList.indexOf("ID=")+9);
-						// System.out.println(type1);
+
 						System.out.println(selectedAddParticipantList);
 						if (!type.equals(TYPE_1) && !type.equals(TYPE_2)) {
 							try {
@@ -217,7 +218,7 @@ public class SwimmingController implements Initializable {
 							}
 
 						} else {
-						
+
 							addParticipants.getItems().remove(selectedAddParticipantList);
 							if (selectedParticipants.getItems().contains(selectedAddParticipantList)) {
 								// Do nothing
@@ -262,13 +263,12 @@ public class SwimmingController implements Initializable {
 				boolean isValid = false;
 				while (!isValid) {
 
-				
 					if (selectedParticipants.getSelectionModel().getSelectedItem() != null) {
 						System.out.println(selectedParticipantList);
 						selectedParticipants.getItems().remove(selectedParticipantList);
 					}
 					if (addParticipants.getItems().contains(selectedParticipantList)) {
-						//Do nothing
+						// Do nothing
 					} else {
 						addParticipants.getItems().addAll(selectedParticipantList);
 

@@ -8,11 +8,17 @@ import rmit.java.assignment.database.ParticipantList;
 
 /**
  *
- * Class Description: Class that represents Swimming games. Superclass: Game
  * 
- * @author:Eashan Tilve
+ * 
+ * @author: Niraj Bohra
+ * @version 5.0
+ * @classDescription: Class that represents Swimming games.
+ * @Superclass: Game
+ * 
+ * 
  */
 public class Swimming extends Game {
+
 	private static final int MINIMUM_PARTICIPANT_COUNT = 5;
 	private static final int MAXIMUM_PARTICIPANT_COUNT = 8;
 	private String gameID;
@@ -90,6 +96,7 @@ public class Swimming extends Game {
 	public void setGameID(String ID) {
 		this.gameID = ID;
 	}
+
 	/**
 	 * This method is used to get the swimming Games unique ID
 	 * 
