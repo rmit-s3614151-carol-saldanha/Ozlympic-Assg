@@ -4,8 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,8 +14,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import rmit.java.assignment.controller.Driver;
 import rmit.java.assignment.model.Athlete;
-import rmit.java.assignment.model.Cyclist;
 
 public class DisplayController extends RefereeController implements Initializable {
 
@@ -57,9 +55,22 @@ public class DisplayController extends RefereeController implements Initializabl
     @FXML
     private Label refereeName;
     
+    @FXML
+    private Label winner;
     
+    @FXML
+    private Label winner2;
+    
+    @FXML
+    private Label winner3;
+    
+    @FXML
+    private ImageView WinnerImg;
 
-	private ObservableList<Athlete> athletes;
+    @FXML
+    private ImageView tropheeImg;
+    
+    private ObservableList<Athlete> athletes;
 
 	@FXML
 	void homeMenu(ActionEvent event) throws Exception {
@@ -75,21 +86,21 @@ public class DisplayController extends RefereeController implements Initializabl
 
 	public void initialize(URL url, ResourceBundle rb) {
 		refereeID.setText("");
-		
-		if (game.getCurrentGame().equals(driver.SWIMMING)) {
+	
+		if (game.getCurrentGame().equals(Driver.SWIMMING)) {
 			athletes = FXCollections.observableArrayList(driver.displaySwimmingResults());
 			refereeID.setText(game.getSwimmingGames().get(game.getSwimmingGames().size() - 1).getOfficial().getUniqueID()
 					.toString());
 			gameID.setText(game.getSwimmingGames().get(game.getSwimmingGames().size() -1 ).getGameID() );
 			refereeName.setText(game.getSwimmingGames().get(game.getSwimmingGames().size() - 1 ).getOfficial().getName());
 
-		} else if (game.getCurrentGame().equals(driver.CYCLING)) {
+		} else if (game.getCurrentGame().equals(Driver.CYCLING)) {
 			athletes = FXCollections.observableArrayList(driver.displayCyclingResults());
 			refereeID.setText(game.getCyclingGames().get(game.getCyclingGames().size() - 1).getOfficial().getUniqueID()
 					.toString());
 			gameID.setText(game.getCyclingGames().get(game.getCyclingGames().size() -1 ).getGameID() );
 			refereeName.setText(game.getCyclingGames().get(game.getCyclingGames().size() - 1 ).getOfficial().getName());
-		} else if (game.getCurrentGame().equals(driver.RUNNING)) {
+		} else if (game.getCurrentGame().equals(Driver.RUNNING)) {
 			athletes = FXCollections.observableArrayList(driver.displayRunningResults());
 			refereeID.setText(game.getRunningGames().get(game.getRunningGames().size() - 1).getOfficial().getUniqueID()
 					.toString());
@@ -118,6 +129,19 @@ public class DisplayController extends RefereeController implements Initializabl
 		
 
 		table.setItems(athletes);
-
+		
+		
+		String firstPlace= table.getItems().get(0).toString();
+		winner.setText(firstPlace.substring(firstPlace.indexOf("name=")+5, firstPlace.indexOf(",")));
+		
+		String secondPlace= table.getItems().get(1).toString();
+		winner2.setText(secondPlace.substring(secondPlace.indexOf("name=")+5, secondPlace.indexOf(",")));
+		
+		
+		String thirdPlace= table.getItems().get(2).toString();
+		winner3.setText(thirdPlace.substring(thirdPlace.indexOf("name=")+5, thirdPlace.indexOf(",")));
+//		star1.setVisible(true);
+//		star2.setVisible(true);
+//		star3.setVisible(true);
 	}
 }
